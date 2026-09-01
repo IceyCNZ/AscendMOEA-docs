@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ascendmoea.algorithms - AscendMOEA Documentation</title><link rel="shortcut icon" href="../../../_static/favicon.svg"/><link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="搜索" href="../../../search.html" /><link rel="next" title="ascendmoea.algorithms.bico" href="ascendmoea.algorithms.bico.html" /><link rel="prev" title="ascendmoea" href="ascendmoea.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="ascendmoea.algorithms"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      <img class="light-logo" src="../../../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="../../../index.html">首页</a></li>
+  <li class="link"><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="./ascendmoea.algorithms.html">中文</a></li>
+      <li><a lang="en" href="./ascendmoea.algorithms.html?lang=en">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="../../../01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="../../../02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="../../../03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="../../../04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="../../../05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="../../../06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+    <li><a href="../../../07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="../../../08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="../../../09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+    <li><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="../../../10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+    <li><a href="../../../11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+    <li><a href="../../../12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="../../../13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="../../../16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="../../../17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="../../../18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="../../../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+<li><a class="reference internal" href="#api">API</a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.ALGORITHMS"><code class="docutils literal notranslate"><span class="pre">ALGORITHMS</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.BiCo"><code class="docutils literal notranslate"><span class="pre">BiCo</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.BiCo.name"><code class="docutils literal notranslate"><span class="pre">BiCo.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CCMO"><code class="docutils literal notranslate"><span class="pre">CCMO</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CCMO.name"><code class="docutils literal notranslate"><span class="pre">CCMO.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMEGL"><code class="docutils literal notranslate"><span class="pre">CMEGL</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMEGL.name"><code class="docutils literal notranslate"><span class="pre">CMEGL.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMMO"><code class="docutils literal notranslate"><span class="pre">CMMO</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMMO.name"><code class="docutils literal notranslate"><span class="pre">CMMO.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEACD"><code class="docutils literal notranslate"><span class="pre">CMOEACD</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEACD.name"><code class="docutils literal notranslate"><span class="pre">CMOEACD.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEAD"><code class="docutils literal notranslate"><span class="pre">CMOEAD</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEAD.name"><code class="docutils literal notranslate"><span class="pre">CMOEAD.name</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEAD.history_requires_snapshot"><code class="docutils literal notranslate"><span class="pre">CMOEAD.history_requires_snapshot</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEAMS"><code class="docutils literal notranslate"><span class="pre">CMOEAMS</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CMOEAMS.name"><code class="docutils literal notranslate"><span class="pre">CMOEAMS.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CoMMEA"><code class="docutils literal notranslate"><span class="pre">CoMMEA</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.CoMMEA.name"><code class="docutils literal notranslate"><span class="pre">CoMMEA.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.EMCMO"><code class="docutils literal notranslate"><span class="pre">EMCMO</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.EMCMO.name"><code class="docutils literal notranslate"><span class="pre">EMCMO.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.HREA"><code class="docutils literal notranslate"><span class="pre">HREA</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.HREA.name"><code class="docutils literal notranslate"><span class="pre">HREA.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.LMEA"><code class="docutils literal notranslate"><span class="pre">LMEA</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.LMEA.name"><code class="docutils literal notranslate"><span class="pre">LMEA.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.MOEAD"><code class="docutils literal notranslate"><span class="pre">MOEAD</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.MOEAD.name"><code class="docutils literal notranslate"><span class="pre">MOEAD.name</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.MOEAD.history_requires_snapshot"><code class="docutils literal notranslate"><span class="pre">MOEAD.history_requires_snapshot</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.MOEAPSL"><code class="docutils literal notranslate"><span class="pre">MOEAPSL</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.MOEAPSL.name"><code class="docutils literal notranslate"><span class="pre">MOEAPSL.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.NSGAII"><code class="docutils literal notranslate"><span class="pre">NSGAII</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.NSGAII.name"><code class="docutils literal notranslate"><span class="pre">NSGAII.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SPEA2"><code class="docutils literal notranslate"><span class="pre">SPEA2</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SPEA2.name"><code class="docutils literal notranslate"><span class="pre">SPEA2.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SparseEA"><code class="docutils literal notranslate"><span class="pre">SparseEA</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SparseEA.name"><code class="docutils literal notranslate"><span class="pre">SparseEA.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SparseEA2"><code class="docutils literal notranslate"><span class="pre">SparseEA2</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SparseEA2.name"><code class="docutils literal notranslate"><span class="pre">SparseEA2.name</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.SparseEA2.number_of_groups"><code class="docutils literal notranslate"><span class="pre">SparseEA2.number_of_groups</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.TSSparseEA"><code class="docutils literal notranslate"><span class="pre">TSSparseEA</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.algorithms.TSSparseEA.name"><code class="docutils literal notranslate"><span class="pre">TSSparseEA.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.create_algorithm"><code class="docutils literal notranslate"><span class="pre">create_algorithm()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.get_algorithm"><code class="docutils literal notranslate"><span class="pre">get_algorithm()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.algorithms.register_algorithm"><code class="docutils literal notranslate"><span class="pre">register_algorithm</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../en/index.html"><span itemprop="name">AscendMOEA Documentation</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Python API 参考</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Python API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.algorithms</span></code></strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.algorithms.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.algorithms.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="../../../_sources/api/generated/ascendmoea/ascendmoea.algorithms.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.algorithms.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.algorithms.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="module-ascendmoea.algorithms">
+<span id="ascendmoea-algorithms"></span><h1><a class="reference internal" href="#module-ascendmoea.algorithms" title="ascendmoea.algorithms"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.algorithms</span></code></a><a class="headerlink" href="#module-ascendmoea.algorithms" title="链接到此标题。">#</a></h1>
+<p>Built-in multi-objective evolutionary algorithms and extension helpers.</p>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="链接到此标题。">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.bico.html#ascendmoea.algorithms.bico.BiCo" title="ascendmoea.algorithms.bico.BiCo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BiCo</span></code></a></p></td>
+<td><p>Co-evolve complementary populations for constrained optimization.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.ccmo.html#ascendmoea.algorithms.ccmo.CCMO" title="ascendmoea.algorithms.ccmo.CCMO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CCMO</span></code></a></p></td>
+<td><p>Co-evolve constrained and unconstrained auxiliary populations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.cmegl.html#ascendmoea.algorithms.cmegl.CMEGL" title="ascendmoea.algorithms.cmegl.CMEGL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CMEGL</span></code></a></p></td>
+<td><p>Coordinate constrained, global, and local search populations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.cmmo.html#ascendmoea.algorithms.cmmo.CMMO" title="ascendmoea.algorithms.cmmo.CMMO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CMMO</span></code></a></p></td>
+<td><p>Co-evolve convergence and decision-diversity populations.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.cmoeacd.html#ascendmoea.algorithms.cmoeacd.CMOEACD" title="ascendmoea.algorithms.cmoeacd.CMOEACD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CMOEACD</span></code></a></p></td>
+<td><p>Coordinate exploration, feasibility, and diversity archives.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.cmoead.html#ascendmoea.algorithms.cmoead.CMOEAD" title="ascendmoea.algorithms.cmoead.CMOEAD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CMOEAD</span></code></a></p></td>
+<td><p>Apply decomposition and constraint violation to neighborhood replacement.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.cmoeams.html#ascendmoea.algorithms.cmoeams.CMOEAMS" title="ascendmoea.algorithms.cmoeams.CMOEAMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CMOEAMS</span></code></a></p></td>
+<td><p>Balance objective optimization and feasibility across multiple stages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.commea.html#ascendmoea.algorithms.commea.CoMMEA" title="ascendmoea.algorithms.commea.CoMMEA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CoMMEA</span></code></a></p></td>
+<td><p>Cooperate between convergence and local decision-space niches.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.emcmo.html#ascendmoea.algorithms.emcmo.EMCMO" title="ascendmoea.algorithms.emcmo.EMCMO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">EMCMO</span></code></a></p></td>
+<td><p>Adaptively transfer candidates between constrained auxiliary populations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.hrea.html#ascendmoea.algorithms.hrea.HREA" title="ascendmoea.algorithms.hrea.HREA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HREA</span></code></a></p></td>
+<td><p>Maintain hierarchical objective- and decision-space diversity archives.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.lmea.html#ascendmoea.algorithms.lmea.LMEA" title="ascendmoea.algorithms.lmea.LMEA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LMEA</span></code></a></p></td>
+<td><p>Optimize large-scale problems through variable clustering and grouping.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.moead.html#ascendmoea.algorithms.moead.MOEAD" title="ascendmoea.algorithms.moead.MOEAD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MOEAD</span></code></a></p></td>
+<td><p>Optimize scalar subproblems over neighborhoods of reference weights.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.moea_psl.html#ascendmoea.algorithms.moea_psl.MOEAPSL" title="ascendmoea.algorithms.moea_psl.MOEAPSL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MOEAPSL</span></code></a></p></td>
+<td><p>Learn sparse Pareto-set structure with generative latent models.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.nsga2.html#ascendmoea.algorithms.nsga2.NSGAII" title="ascendmoea.algorithms.nsga2.NSGAII"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NSGAII</span></code></a></p></td>
+<td><p>Select solutions by constrained nondominated rank and crowding distance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.spea2.html#ascendmoea.algorithms.spea2.SPEA2" title="ascendmoea.algorithms.spea2.SPEA2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SPEA2</span></code></a></p></td>
+<td><p>Combine strength fitness, density estimation, and distance truncation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.sparse_ea.html#ascendmoea.algorithms.sparse_ea.SparseEA" title="ascendmoea.algorithms.sparse_ea.SparseEA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SparseEA</span></code></a></p></td>
+<td><p>Evolve decision values and sparse activation masks jointly.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.sparse_ea2.html#ascendmoea.algorithms.sparse_ea2.SparseEA2" title="ascendmoea.algorithms.sparse_ea2.SparseEA2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SparseEA2</span></code></a></p></td>
+<td><p>Enhance sparse mask evolution with grouped decision-variable variation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.ts_sparse_ea.html#ascendmoea.algorithms.ts_sparse_ea.TSSparseEA" title="ascendmoea.algorithms.ts_sparse_ea.TSSparseEA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TSSparseEA</span></code></a></p></td>
+<td><p>Perform group-level mask discovery before sparse population evolution.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ascendmoea.algorithms.create_algorithm" title="ascendmoea.algorithms.create_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_algorithm</span></code></a></p></td>
+<td><p>Construct a registered algorithm with the supplied keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ascendmoea.algorithms.get_algorithm" title="ascendmoea.algorithms.get_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_algorithm</span></code></a></p></td>
+<td><p>Return an algorithm class by its registered name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ascendmoea.algorithms.list_algorithms" title="ascendmoea.algorithms.list_algorithms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_algorithms</span></code></a></p></td>
+<td><p>Return all built-in and user-registered algorithm names.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ascendmoea.algorithms.ALGORITHMS" title="ascendmoea.algorithms.ALGORITHMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALGORITHMS</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ascendmoea.algorithms.register_algorithm" title="ascendmoea.algorithms.register_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_algorithm</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="api">
+<h3>API<a class="headerlink" href="#api" title="链接到此标题。">#</a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.ALGORITHMS">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">ALGORITHMS</span></span><a class="headerlink" href="#ascendmoea.algorithms.ALGORITHMS" title="链接到此定义。">#</a></dt>
+<dd><p>'ComponentRegistry(...)'</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.BiCo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">BiCo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.BiCo" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Co-evolve complementary populations for constrained optimization.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.BiCo.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.BiCo.name" title="链接到此定义。">#</a></dt>
+<dd><p>'BiCo'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CCMO">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CCMO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CCMO" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Co-evolve constrained and unconstrained auxiliary populations.</p>
+<p class="rubric">Initialization</p>
+<p>Configure the variation operator.</p>
+<p>Args:
+op_type: <code class="docutils literal notranslate"><span class="pre">1</span></code> selects GA and <code class="docutils literal notranslate"><span class="pre">2</span></code> selects DE.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CCMO.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CCMO.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CCMO'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMEGL">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CMEGL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CMEGL" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Coordinate constrained, global, and local search populations.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMEGL.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMEGL.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CMEGL'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMMO">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CMMO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tao</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CMMO" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Co-evolve convergence and decision-diversity populations.</p>
+<p class="rubric">Initialization</p>
+<p>Configure the adaptive epsilon schedule and diversity threshold.</p>
+<p>Args:
+eta: Fraction of generations before epsilon relaxation begins.
+tao: Per-generation epsilon decay rate.
+theta: Decision-space neighborhood threshold.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMMO.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMMO.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CMMO'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEACD">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CMOEACD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CMOEACD" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Coordinate exploration, feasibility, and diversity archives.</p>
+<p class="rubric">Initialization</p>
+<p>Configure environmental selection for two external archives.</p>
+<p>Args:
+e1: Exploration archive mode: <code class="docutils literal notranslate"><span class="pre">1</span></code> distance, <code class="docutils literal notranslate"><span class="pre">2</span></code> crowding,
+or <code class="docutils literal notranslate"><span class="pre">3</span></code> reference-vector association.
+e2: Feasibility archive mode with the same values as <code class="docutils literal notranslate"><span class="pre">e1</span></code>.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEACD.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMOEACD.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CMOEACD'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEAD">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CMOEAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CMOEAD" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Apply decomposition and constraint violation to neighborhood replacement.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEAD.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMOEAD.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CMOEAD'</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEAD.history_requires_snapshot">
+<span class="sig-name descname"><span class="pre">history_requires_snapshot</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMOEAD.history_requires_snapshot" title="链接到此定义。">#</a></dt>
+<dd><p>True</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEAMS">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CMOEAMS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">op_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CMOEAMS" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Balance objective optimization and feasibility across multiple stages.</p>
+<p class="rubric">Initialization</p>
+<p>Configure variation and the feasible-ratio stage threshold.</p>
+<p>Args:
+op_type: Variation operator, where <code class="docutils literal notranslate"><span class="pre">1</span></code> is GA and <code class="docutils literal notranslate"><span class="pre">2</span></code> is DE.
+lam: Feasible-population ratio required to enter the final stage.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CMOEAMS.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CMOEAMS.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CMOEAMS'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CoMMEA">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">CoMMEA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.CoMMEA" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Cooperate between convergence and local decision-space niches.</p>
+<p class="rubric">Initialization</p>
+<p>Configure the minimum local-convergence neighborhood radius.</p>
+<p>Args:
+eps: Lower bound of the adaptive decision-space radius.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.CoMMEA.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.CoMMEA.name" title="链接到此定义。">#</a></dt>
+<dd><p>'CoMMEA'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.EMCMO">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">EMCMO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.EMCMO" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Adaptively transfer candidates between constrained auxiliary populations.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.EMCMO.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.EMCMO.name" title="链接到此定义。">#</a></dt>
+<dd><p>'EMCMO'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.HREA">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">HREA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.HREA" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Maintain hierarchical objective- and decision-space diversity archives.</p>
+<p class="rubric">Initialization</p>
+<p>Configure archive resolution and late-stage archive sampling.</p>
+<p>Args:
+eps: Decision-space neighborhood radius used by archive selection.
+p: Probability of selecting archive parents after half the budget.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.HREA.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.HREA.name" title="链接到此定义。">#</a></dt>
+<dd><p>'HREA'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.LMEA">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">LMEA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_sel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_per</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operator_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.LMEA" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Optimize large-scale problems through variable clustering and grouping.</p>
+<p class="rubric">Initialization</p>
+<p>Configure variable-analysis sampling and variation.</p>
+<p>Args:
+save: History retention policy inherited from :class:<code class="docutils literal notranslate"><span class="pre">Algorithm</span></code>.
+n_sel: Population samples used to analyze each variable.
+n_per: Perturbations generated per selected solution.
+n_cor: Trials used in each pairwise correlation test.
+operator_type: <code class="docutils literal notranslate"><span class="pre">1</span></code> selects GA and <code class="docutils literal notranslate"><span class="pre">2</span></code> selects DE.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.LMEA.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.LMEA.name" title="链接到此定义。">#</a></dt>
+<dd><p>'LMEA'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.MOEAD">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">MOEAD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agg_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.MOEAD" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Optimize scalar subproblems over neighborhoods of reference weights.</p>
+<p class="rubric">Initialization</p>
+<p>Select the scalar aggregation function.</p>
+<p>Args:
+agg_type: <code class="docutils literal notranslate"><span class="pre">1</span></code> PBI, <code class="docutils literal notranslate"><span class="pre">2</span></code> weighted Tchebycheff, <code class="docutils literal notranslate"><span class="pre">3</span></code> normalized
+Tchebycheff, or <code class="docutils literal notranslate"><span class="pre">4</span></code> modified Tchebycheff.
+**kwargs: Arguments forwarded to :class:<code class="docutils literal notranslate"><span class="pre">~ascendmoea.Algorithm</span></code>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.MOEAD.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.MOEAD.name" title="链接到此定义。">#</a></dt>
+<dd><p>'MOEAD'</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.MOEAD.history_requires_snapshot">
+<span class="sig-name descname"><span class="pre">history_requires_snapshot</span></span><a class="headerlink" href="#ascendmoea.algorithms.MOEAD.history_requires_snapshot" title="链接到此定义。">#</a></dt>
+<dd><p>True</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.MOEAPSL">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">MOEAPSL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.MOEAPSL" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Learn sparse Pareto-set structure with generative latent models.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.MOEAPSL.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.MOEAPSL.name" title="链接到此定义。">#</a></dt>
+<dd><p>'MOEA-PSL'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.NSGAII">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">NSGAII</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.NSGAII" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Select solutions by constrained nondominated rank and crowding distance.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.NSGAII.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.NSGAII.name" title="链接到此定义。">#</a></dt>
+<dd><p>'NSGAII'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SPEA2">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">SPEA2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.SPEA2" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Combine strength fitness, density estimation, and distance truncation.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SPEA2.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.SPEA2.name" title="链接到此定义。">#</a></dt>
+<dd><p>'SPEA2'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SparseEA">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">SparseEA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.SparseEA" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Evolve decision values and sparse activation masks jointly.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SparseEA.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.SparseEA.name" title="链接到此定义。">#</a></dt>
+<dd><p>'SparseEA'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SparseEA2">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">SparseEA2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.SparseEA2" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Enhance sparse mask evolution with grouped decision-variable variation.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SparseEA2.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.SparseEA2.name" title="链接到此定义。">#</a></dt>
+<dd><p>'SparseEA2'</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.SparseEA2.number_of_groups">
+<span class="sig-name descname"><span class="pre">number_of_groups</span></span><a class="headerlink" href="#ascendmoea.algorithms.SparseEA2.number_of_groups" title="链接到此定义。">#</a></dt>
+<dd><p>4</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.TSSparseEA">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">TSSparseEA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_eva</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_group</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.TSSparseEA" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.core.Algorithm</span></code></a></p>
+<p>Perform group-level mask discovery before sparse population evolution.</p>
+<p class="rubric">Initialization</p>
+<p>Configure the initial group-optimization stage.</p>
+<p>Args:
+save: History retention policy inherited from :class:<code class="docutils literal notranslate"><span class="pre">Algorithm</span></code>.
+r_eva: Fraction of the evaluation budget assigned to group search.
+n_group: Number of variables represented by each search group.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.TSSparseEA.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.algorithms.TSSparseEA.name" title="链接到此定义。">#</a></dt>
+<dd><p>'TS-SparseEA'</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.create_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">create_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="仅位置参数分隔符 (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.create_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>Construct a registered algorithm with the supplied keyword arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.get_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">get_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.algorithms.get_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>Return an algorithm class by its registered name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.list_algorithms">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">list_algorithms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(位于 Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ascendmoea.algorithms.list_algorithms" title="链接到此定义。">#</a></dt>
+<dd><p>Return all built-in and user-registered algorithm names.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.algorithms.register_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.algorithms.</span></span><span class="sig-name descname"><span class="pre">register_algorithm</span></span><a class="headerlink" href="#ascendmoea.algorithms.register_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="ascendmoea.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea</span></code></div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="ascendmoea.algorithms.bico.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.algorithms.bico</span></code></div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=34088549"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../../../_static/translations.js?v=540d3cec"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../../_static/site.js?v=5d939ab5"></script></body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Multi-NPU Batch Scheduling - AscendMOEA Documentation</title><link rel="shortcut icon" href="../_static/favicon.svg"/><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Troubleshooting Installation and Execution" href="13_troubleshooting.html" /><link rel="prev" title="CPU and NPU Performance Specifications" href="11_performance.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Multi-NPU Batch Scheduling"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">Home</a></li>
+  <li class="link"><a href="00_reading_guide.html">Guide</a></li>
+  <li class="link"><a href="15_api_index.html">API Reference</a></li>
+  <li class="link"><a href="14_examples.html">Examples</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" required />
+  <button type="submit" aria-label="Search"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="Switch language">
+    <span class="md:hidden">Language</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="../12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">中文</a></li>
+      <li><a lang="en" href="#">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="Documentation">
+  <details class="nav-section">
+  <summary class="caption">Getting started</summary>
+  <ul>
+  
+    <li><a href="00_reading_guide.html">Documentation guide</a></li>
+    <li><a href="01_platform_scope.html">Platform scope</a></li>
+    <li><a href="02_installation.html">Installation and Ascend environment</a></li>
+    <li><a href="03_first_optimization.html">Your first optimization</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Core components</summary>
+  <ul>
+  
+    <li><a href="04_core_workflow.html">Core objects and workflow</a></li>
+    <li><a href="05_algorithm_catalog.html">Algorithm catalog</a></li>
+    <li><a href="06_problem_library.html">Problem library</a></li>
+    <li><a href="07_tensor_operators.html">Tensor operators</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Development</summary>
+  <ul>
+  
+    <li><a href="08_custom_problems.html">Custom problems</a></li>
+    <li><a href="09_custom_algorithms.html">Custom algorithms</a></li>
+    <li><a href="14_examples.html">Runnable examples</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Experiments and performance</summary>
+  <ul>
+  
+    <li><a href="10_experiments.html">Metrics, experiments, and monitoring</a></li>
+    <li><a href="11_performance.html">CPU and NPU performance</a></li>
+    <li><a href="#">Multi-NPU scheduling</a></li>
+    <li><a href="13_troubleshooting.html">Troubleshooting</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API reference</summary>
+  <ul>
+  
+    <li><a href="15_api_index.html">Public API index</a></li>
+    <li><a href="16_core_api.html">Core and workflow API</a></li>
+    <li><a href="17_algorithm_api.html">Algorithm API</a></li>
+    <li><a href="18_problem_api.html">Problem API</a></li>
+    <li><a href="19_analysis_api.html">Operators and analysis API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>Discussions</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#scheduling-architecture">Scheduling Architecture</a></li>
+<li><a class="reference internal" href="#single-node-8-npu-execution-example">Single-Node 8-NPU Execution Example</a></li>
+<li><a class="reference internal" href="#cpu-parallel-execution-with-joblib">CPU Parallel Execution with joblib</a></li>
+<li><a class="reference internal" href="#reliable-background-execution">Reliable Background Execution</a></li>
+<li><a class="reference internal" href="#task-manifest-files">Task Manifest Files</a></li>
+<li><a class="reference internal" href="#monitoring-frequency">Monitoring Frequency</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA Documentation</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Multi-NPU Batch Scheduling</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="../_sources/en/12_multi_npu.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="../_sources/en/12_multi_npu.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="../_sources/en/12_multi_npu.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../_sources/en/12_multi_npu.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../_sources/en/12_multi_npu.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="multi-npu-batch-scheduling">
+<h1>Multi-NPU Batch Scheduling<a class="headerlink" href="#multi-npu-batch-scheduling" title="链接到此标题。">#</a></h1>
+<section id="scheduling-architecture">
+<h2>Scheduling Architecture<a class="headerlink" href="#scheduling-architecture" title="链接到此标题。">#</a></h2>
+<p>AscendMOEA's <code class="docutils literal notranslate"><span class="pre">Workflow</span></code> orchestrates single-run executions. Multi-process parallel scheduling is managed externally, isolating random states, evaluation counters, and device contexts across processes while simplifying retry logic and artifact segregation.</p>
+<p>Concurrency strategies differ across hardware:</p>
+<ul class="simple">
+<li><p>CPU: Fix 8 threads per process and parallelize across independent random seeds using <code class="docutils literal notranslate"><span class="pre">joblib</span></code>.</p></li>
+<li><p>NPU: Launch one (or a capacity-validated small number of) independent worker processes per physical accelerator.</p></li>
+<li><p>Do not share algorithm, problem, or NPU device instances across threads or worker processes.</p></li>
+</ul>
+</section>
+<section id="single-node-8-npu-execution-example">
+<h2>Single-Node 8-NPU Execution Example<a class="headerlink" href="#single-node-8-npu-execution-example" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">run_one.py</span></code> reads target device parameters from the environment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_algorithm</span><span class="p">,</span> <span class="n">create_problem</span><span class="p">,</span> <span class="n">optimize</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="n">card</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ASCENDMOEA_NPU_INDEX&quot;</span><span class="p">])</span>
+</span><span data-line="6"><span class="n">algorithm</span> <span class="o">=</span> <span class="n">create_algorithm</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;ALGORITHM&quot;</span><span class="p">],</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="7"><span class="n">problem</span> <span class="o">=</span> <span class="n">create_problem</span><span class="p">(</span>
+</span><span data-line="8">    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PROBLEM&quot;</span><span class="p">],</span>
+</span><span data-line="9">    <span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;POPULATION_SIZE&quot;</span><span class="p">]),</span>
+</span><span data-line="10">    <span class="n">max_fe</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;MAX_FE&quot;</span><span class="p">]),</span>
+</span><span data-line="11"><span class="p">)</span>
+</span><span data-line="12"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
+</span><span data-line="13">    <span class="n">algorithm</span><span class="p">,</span>
+</span><span data-line="14">    <span class="n">problem</span><span class="p">,</span>
+</span><span data-line="15">    <span class="n">device</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;npu:</span><span class="si">{</span><span class="n">card</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span data-line="16">    <span class="n">seed</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;SEED&quot;</span><span class="p">]),</span>
+</span><span data-line="17"><span class="p">)</span>
+</span><span data-line="18">
+</span></pre></div>
+</div>
+<p>Launch isolated worker processes across distinct physical cards:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">for</span><span class="w"> </span>card<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+</span><span data-line="2"><span class="w">  </span><span class="nv">ASCENDMOEA_NPU_INDEX</span><span class="o">=</span><span class="nv">$card</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="3"><span class="w">  </span><span class="nv">ASCEND_RT_VISIBLE_DEVICES</span><span class="o">=</span><span class="nv">$card</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="4"><span class="w">  </span><span class="nv">ALGORITHM</span><span class="o">=</span>NSGAII<span class="w"> </span><span class="nv">PROBLEM</span><span class="o">=</span>DTLZ2<span class="w"> </span><span class="se">\</span>
+</span><span data-line="5"><span class="w">  </span><span class="nv">POPULATION_SIZE</span><span class="o">=</span><span class="m">1000</span><span class="w"> </span><span class="nv">MAX_FE</span><span class="o">=</span><span class="m">100000</span><span class="w"> </span><span class="nv">SEED</span><span class="o">=</span><span class="k">$((</span><span class="m">1001</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">card</span><span class="k">))</span><span class="w"> </span><span class="se">\</span>
+</span><span data-line="6"><span class="w">  </span>python<span class="w"> </span>run_one.py<span class="w"> </span>&gt;<span class="s2">&quot;worker_</span><span class="si">${</span><span class="nv">card</span><span class="si">}</span><span class="s2">.log&quot;</span><span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+</span><span data-line="7"><span class="k">done</span>
+</span><span data-line="8"><span class="nb">wait</span>
+</span></pre></div>
+</div>
+<p>Because environment variable semantics for visible devices may vary across CANN releases, verify behavior against the installed environment. Explicitly pass <code class="docutils literal notranslate"><span class="pre">npu:k</span></code> in application code and log mappings between logical identifiers and physical cards.</p>
+</section>
+<section id="cpu-parallel-execution-with-joblib">
+<h2>CPU Parallel Execution with joblib<a class="headerlink" href="#cpu-parallel-execution-with-joblib" title="链接到此标题。">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">joblib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">def</span><span class="w"> </span><span class="nf">run_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">):</span>
+</span><span data-line="4">    <span class="k">return</span> <span class="n">optimize</span><span class="p">(</span>
+</span><span data-line="5">        <span class="n">create_algorithm</span><span class="p">(</span><span class="s2">&quot;NSGAII&quot;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+</span><span data-line="6">        <span class="n">create_problem</span><span class="p">(</span><span class="s2">&quot;DTLZ2&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">),</span>
+</span><span data-line="7">        <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+</span><span data-line="8">        <span class="n">cpu_threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+</span><span data-line="9">        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span data-line="10">    <span class="p">)</span><span class="o">.</span><span class="n">elapsed_seconds</span>
+</span><span data-line="11">
+</span><span data-line="12"><span class="n">times</span> <span class="o">=</span> <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;loky&quot;</span><span class="p">)(</span>
+</span><span data-line="13">    <span class="n">delayed</span><span class="p">(</span><span class="n">run_seed</span><span class="p">)(</span><span class="n">seed</span><span class="p">)</span> <span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1001</span><span class="p">,</span> <span class="mi">1021</span><span class="p">)</span>
+</span><span data-line="14"><span class="p">)</span>
+</span><span data-line="15">
+</span></pre></div>
+</div>
+<p>The aggregate concurrency <code class="docutils literal notranslate"><span class="pre">n_jobs</span> <span class="pre">*</span> <span class="pre">cpu_threads</span></code> must not exceed validated physical limits verified via NUMA profiling. Pin workers to dedicated CPU core sets to prevent cross-NUMA memory transfers and scheduler drift.</p>
+</section>
+<section id="reliable-background-execution">
+<h2>Reliable Background Execution<a class="headerlink" href="#reliable-background-execution" title="链接到此标题。">#</a></h2>
+<p>Long-running batch queues should be managed via systemd, Slurm, or equivalent workload managers rather than interactive SSH sessions. A production systemd unit should:</p>
+<ul class="simple">
+<li><p>Define a static working directory and environment file.</p></li>
+<li><p>Configure <code class="docutils literal notranslate"><span class="pre">Restart=on-failure</span></code> with restart rate limits.</p></li>
+<li><p>Route stdout and stderr to persistent log files.</p></li>
+<li><p>Run an independent, read-only monitoring timer.</p></li>
+<li><p>Trigger alerts when progress files remain unupdated beyond a timeout threshold, without terminating active processes automatically.</p></li>
+<li><p>Skip previously finished runs by checking for valid <code class="docutils literal notranslate"><span class="pre">COMPLETE</span></code> marker files.</p></li>
+</ul>
+</section>
+<section id="task-manifest-files">
+<h2>Task Manifest Files<a class="headerlink" href="#task-manifest-files" title="链接到此标题。">#</a></h2>
+<p>Generate an immutable JSON Lines manifest prior to queue execution, specifying one run per line:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="p">{</span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="s2">&quot;NSGAII&quot;</span><span class="p">,</span><span class="nt">&quot;problem&quot;</span><span class="p">:</span><span class="s2">&quot;DTLZ2&quot;</span><span class="p">,</span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="mi">1001</span><span class="p">,</span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span><span class="nt">&quot;max_fe&quot;</span><span class="p">:</span><span class="mi">100000</span><span class="p">,</span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="s2">&quot;npu:0&quot;</span><span class="p">}</span>
+</span></pre></div>
+</div>
+<p>Workers update execution progress via atomic progress files. Upon restarting a batch queue, verify existing summary files and checksums before skipping tasks; do not infer task completion based solely on directory existence.</p>
+</section>
+<section id="monitoring-frequency">
+<h2>Monitoring Frequency<a class="headerlink" href="#monitoring-frequency" title="链接到此标题。">#</a></h2>
+<p>For stable long-running queues, set external monitoring checks to a maximum interval of 30 minutes. Recommended best practices: execute lightweight, read-only local health checks every 5 minutes, and aggregate metrics on remote controllers every 20 to 30 minutes:</p>
+<ul class="simple">
+<li><p>Service operational status and queue heartbeats</p></li>
+<li><p>Completed worker count, error counts, and oldest active timestamp</p></li>
+<li><p>Per-NPU active processes, utilization, operating temperature, and HBM consumption</p></li>
+<li><p>CPU load averages, PSS memory, available host memory, and swap utilization</p></li>
+<li><p>Disk space and readable result files</p></li>
+<li><p>Runtime latency outliers and non-finite (NaN/Inf) metric detections</p></li>
+</ul>
+<p>If a software bug is detected, pause and re-queue only the affected experimental stage while allowing independent production queues to continue execution.</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="11_performance.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">CPU and NPU Performance Specifications</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="13_troubleshooting.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">Troubleshooting Installation and Execution</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=34088549"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/site.js?v=5d939ab5"></script></body>
+</html>

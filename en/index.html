@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AscendMOEA Documentation - AscendMOEA Documentation</title><link rel="shortcut icon" href="../_static/favicon.svg"/><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="AscendMOEA Documentation Reading Roadmap" href="00_reading_guide.html" /><link rel="prev" title="算子、指标、实验与绘图 API" href="../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="AscendMOEA Documentation"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="#">Home</a></li>
+  <li class="link"><a href="00_reading_guide.html">Guide</a></li>
+  <li class="link"><a href="15_api_index.html">API Reference</a></li>
+  <li class="link"><a href="14_examples.html">Examples</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" required />
+  <button type="submit" aria-label="Search"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="Switch language">
+    <span class="md:hidden">Language</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="../index.html">中文</a></li>
+      <li><a lang="en" href="#">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="Documentation">
+  <details class="nav-section">
+  <summary class="caption">Getting started</summary>
+  <ul>
+  
+    <li><a href="00_reading_guide.html">Documentation guide</a></li>
+    <li><a href="01_platform_scope.html">Platform scope</a></li>
+    <li><a href="02_installation.html">Installation and Ascend environment</a></li>
+    <li><a href="03_first_optimization.html">Your first optimization</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Core components</summary>
+  <ul>
+  
+    <li><a href="04_core_workflow.html">Core objects and workflow</a></li>
+    <li><a href="05_algorithm_catalog.html">Algorithm catalog</a></li>
+    <li><a href="06_problem_library.html">Problem library</a></li>
+    <li><a href="07_tensor_operators.html">Tensor operators</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Development</summary>
+  <ul>
+  
+    <li><a href="08_custom_problems.html">Custom problems</a></li>
+    <li><a href="09_custom_algorithms.html">Custom algorithms</a></li>
+    <li><a href="14_examples.html">Runnable examples</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Experiments and performance</summary>
+  <ul>
+  
+    <li><a href="10_experiments.html">Metrics, experiments, and monitoring</a></li>
+    <li><a href="11_performance.html">CPU and NPU performance</a></li>
+    <li><a href="12_multi_npu.html">Multi-NPU scheduling</a></li>
+    <li><a href="13_troubleshooting.html">Troubleshooting</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API reference</summary>
+  <ul>
+  
+    <li><a href="15_api_index.html">Public API index</a></li>
+    <li><a href="16_core_api.html">Core and workflow API</a></li>
+    <li><a href="17_algorithm_api.html">Algorithm API</a></li>
+    <li><a href="18_problem_api.html">Problem API</a></li>
+    <li><a href="19_analysis_api.html">Operators and analysis API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>Discussions</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#built-for-ascend-ready-for-research">Built for Ascend, ready for research</a></li>
+<li><a class="reference internal" href="#quick-start">Quick start</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">AscendMOEA Documentation</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <article class="yue" role="main">
+          <section class="home-title" id="ascendmoea-documentation">
+<h1>AscendMOEA Documentation<a class="headerlink" href="#ascendmoea-documentation" title="链接到此标题。">#</a></h1>
+<section class="hero hero-en">
+  <div class="hero-copy">
+    <span class="hero-kicker">TENSORIZED · REPRODUCIBLE · ASCEND-NATIVE</span>
+    <h1><span>AscendMOEA</span><small>An Ascend NPU-accelerated Platform for<br>Multi-Objective Evolutionary Optimization</small></h1>
+    <p>Tensorized workflows for algorithms, problems, operators, and reproducible experiments.</p>
+    <div class="hero-actions">
+      <a class="primary" href="00_reading_guide.html">Get started</a>
+      <a class="secondary" href="15_api_index.html">API Reference</a>
+    </div>
+  </div>
+  <div class="hero-mark" aria-hidden="true">
+    <img src="../_static/ascendmoea-mark.svg" alt="">
+  </div>
+</section><section id="built-for-ascend-ready-for-research">
+<h2>Built for Ascend, ready for research<a class="headerlink" href="#built-for-ascend-ready-for-research" title="链接到此标题。">#</a></h2>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-3 sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm feature-card docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+⚡ Tensorized core</div>
+<p class="sd-card-text">Batch-first PyTorch operators keep population data, precision, and device placement consistent while limiting avoidable transfers.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm feature-card docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+◈ Ascend NPU acceleration</div>
+<p class="sd-card-text">Run the same workflow on an Ascend NPU for acceleration or on a CPU for development, debugging, and result validation.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm feature-card docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+◎ Research workflow</div>
+<p class="sd-card-text">Combine algorithms, problem suites, quality indicators, monitoring, and repeated experiments in one reproducible workflow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="链接到此标题。">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Install</label><div class="sd-tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
+</span></pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Run</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">optimize</span>
+</span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">NSGAII</span>
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.problems</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTLZ2</span>
+</span><span data-line="4">
+</span><span data-line="5"><span class="n">problem</span> <span class="o">=</span> <span class="n">DTLZ2</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">NSGAII</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span> <span class="n">problem</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</span><span data-line="7"><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">elapsed_seconds</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-2">
+Ascend NPU</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
+</span><span data-line="2">    <span class="n">NSGAII</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="mi">20</span><span class="p">),</span>
+</span><span data-line="3">    <span class="n">problem</span><span class="p">,</span>
+</span><span data-line="4">    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;npu:0&quot;</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+</span><span data-line="6"><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Project repository</p>
+<p>Source code, issue tracking, and contribution entry point: <a class="reference external" href="https://github.com/dqlme/AscendMOEA">dqlme/AscendMOEA</a></p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">算子、指标、实验与绘图 API</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="00_reading_guide.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">AscendMOEA Documentation Reading Roadmap</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=34088549"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/site.js?v=5d939ab5"></script></body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>自定义算法开发 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="指标实验与监控" href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html" /><link rel="prev" title="自定义问题开发" href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="自定义算法开发"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">首页</a></li>
+  <li class="link"><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="#">中文</a></li>
+      <li><a lang="en" href="en/09_custom_algorithms.html">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+    <li><a href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="#">自定义算法开发</a></li>
+    <li><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+    <li><a href="11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+    <li><a href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#id2">&#26368;&#23567;&#31639;&#27861;&#26694;&#26550;</a></li>
+<li><a class="reference internal" href="#id3">&#32456;&#27490;&#21327;&#35758;</a></li>
+<li><a class="reference internal" href="#id4">&#24352;&#37327;&#21270;&#36793;&#30028;</a></li>
+<li><a class="reference internal" href="#id5">&#35774;&#22791;&#26080;&#20851;&#23454;&#29616;</a></li>
+<li><a class="reference internal" href="#id6">&#29366;&#24577;&#21644;&#32531;&#23384;</a></li>
+<li><a class="reference internal" href="#id7">&#27880;&#20876;&#19982;&#31532;&#19977;&#26041;&#21253;</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">自定义算法开发</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="_sources/09_自定义算法开发.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="_sources/09_自定义算法开发.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="_sources/09_自定义算法开发.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20_sources/09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20_sources/09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="id1">
+<h1>自定义算法开发<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h1>
+<section id="id2">
+<h2>最小算法框架<a class="headerlink" href="#id2" title="链接到此标题。">#</a></h2>
+<p>自定义算法继承 <code class="docutils literal notranslate"><span class="pre">Algorithm</span></code>，保留代际主循环，并把代内个体操作交给批量算子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">Algorithm</span><span class="p">,</span> <span class="n">register_algorithm</span>
+</span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.operators</span><span class="w"> </span><span class="kn">import</span> <span class="n">crowding_distance</span><span class="p">,</span> <span class="n">merge_pop</span><span class="p">,</span> <span class="n">nd_sort</span><span class="p">,</span> <span class="n">operator_ga</span>
+</span><span data-line="5">
+</span><span data-line="6">
+</span><span data-line="7"><span class="k">def</span><span class="w"> </span><span class="nf">environmental_selection</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+</span><span data-line="8">    <span class="n">front_no</span><span class="p">,</span> <span class="n">last_front</span> <span class="o">=</span> <span class="n">nd_sort</span><span class="p">(</span>
+</span><span data-line="9">        <span class="n">population</span><span class="o">.</span><span class="n">objs</span><span class="p">,</span> <span class="n">population</span><span class="o">.</span><span class="n">cons</span><span class="p">,</span> <span class="n">n_sort</span><span class="o">=</span><span class="n">size</span>
+</span><span data-line="10">    <span class="p">)</span>
+</span><span data-line="11">    <span class="n">crowding</span> <span class="o">=</span> <span class="n">crowding_distance</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">objs</span><span class="p">,</span> <span class="n">front_no</span><span class="p">)</span>
+</span><span data-line="12">    <span class="n">selected</span> <span class="o">=</span> <span class="n">front_no</span> <span class="o">&lt;</span> <span class="n">last_front</span>
+</span><span data-line="13">    <span class="n">remaining</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="nb">int</span><span class="p">(</span><span class="n">selected</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+</span><span data-line="14">    <span class="k">if</span> <span class="n">remaining</span><span class="p">:</span>
+</span><span data-line="15">        <span class="n">candidates</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">front_no</span> <span class="o">==</span> <span class="n">last_front</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span data-line="16">        <span class="n">order</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">crowding</span><span class="p">[</span><span class="n">candidates</span><span class="p">],</span> <span class="n">descending</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="17">        <span class="n">selected</span><span class="p">[</span><span class="n">candidates</span><span class="p">[</span><span class="n">order</span><span class="p">[:</span><span class="n">remaining</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span data-line="18">    <span class="k">return</span> <span class="n">population</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
+</span><span data-line="19">
+</span><span data-line="20">
+</span><span data-line="21"><span class="nd">@register_algorithm</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;BatchGA&quot;</span><span class="p">)</span>
+</span><span data-line="22"><span class="k">class</span><span class="w"> </span><span class="nc">BatchGA</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">):</span>
+</span><span data-line="23"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple batch-oriented multi-objective genetic algorithm.&quot;&quot;&quot;</span>
+</span><span data-line="24">
+</span><span data-line="25">    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;BatchGA&quot;</span>
+</span><span data-line="26">
+</span><span data-line="27">    <span class="k">def</span><span class="w"> </span><span class="nf">_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">should_stop</span><span class="p">,</span> <span class="n">should_pause</span><span class="p">):</span>
+</span><span data-line="28">        <span class="n">population</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">initialization</span><span class="p">()</span>
+</span><span data-line="29">        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">not_terminated</span><span class="p">(</span>
+</span><span data-line="30">            <span class="n">problem</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">should_stop</span><span class="p">,</span> <span class="n">should_pause</span>
+</span><span data-line="31">        <span class="p">):</span>
+</span><span data-line="32">            <span class="n">offspring</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">operator_ga</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">population</span><span class="o">.</span><span class="n">decs</span><span class="p">))</span>
+</span><span data-line="33">            <span class="n">population</span> <span class="o">=</span> <span class="n">environmental_selection</span><span class="p">(</span>
+</span><span data-line="34">                <span class="n">merge_pop</span><span class="p">(</span><span class="n">population</span><span class="p">,</span> <span class="n">offspring</span><span class="p">),</span> <span class="n">problem</span><span class="o">.</span><span class="n">N</span>
+</span><span data-line="35">            <span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>终止协议<a class="headerlink" href="#id3" title="链接到此标题。">#</a></h2>
+<p>必须在每代当前种群上调用 <code class="docutils literal notranslate"><span class="pre">not_terminated</span></code>。该方法负责：</p>
+<ul class="simple">
+<li><p>更新 <code class="docutils literal notranslate"><span class="pre">algorithm.result</span></code> 和 <code class="docutils literal notranslate"><span class="pre">final_population</span></code>；</p></li>
+<li><p>触发工作流输出和监控器；</p></li>
+<li><p>检查外部停止、暂停和 <code class="docutils literal notranslate"><span class="pre">problem.max_fe</span></code>；</p></li>
+<li><p>保证最终结果可由统一接口读取。</p></li>
+</ul>
+<p>不要另写只检查 <code class="docutils literal notranslate"><span class="pre">problem.FE</span></code> 的循环，否则历史和监控生命周期会失效。</p>
+</section>
+<section id="id4">
+<h2>张量化边界<a class="headerlink" href="#id4" title="链接到此标题。">#</a></h2>
+<p>允许保留一层代际 <code class="docutils literal notranslate"><span class="pre">while</span></code>。代内应优先张量化：</p>
+<ul class="simple">
+<li><p>父代抽样和索引；</p></li>
+<li><p>支配关系、非支配排序和适应度；</p></li>
+<li><p>拥挤距离、邻域距离和参考向量关联；</p></li>
+<li><p>交叉、变异和边界修复；</p></li>
+<li><p>子问题更新和环境选择；</p></li>
+<li><p>批量问题评价。</p></li>
+</ul>
+<p>少量依赖前一步选择结果的顺序截断允许保留结构循环，但应把每步比较向量化，并可为 CPU
+提供可选加速路径。实现应保持平局、稳定排序和随机数消费语义。</p>
+</section>
+<section id="id5">
+<h2>设备无关实现<a class="headerlink" href="#id5" title="链接到此标题。">#</a></h2>
+<p>错误示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">population</span><span class="o">.</span><span class="n">objs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>正确示例：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+</span><span data-line="2">    <span class="n">population</span><span class="o">.</span><span class="n">objs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bool</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">population</span><span class="o">.</span><span class="n">objs</span><span class="o">.</span><span class="n">device</span>
+</span><span data-line="3"><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>更稳妥的方式是从现有张量派生，例如 <code class="docutils literal notranslate"><span class="pre">torch.zeros_like(front_no,</span> <span class="pre">dtype=torch.bool)</span></code>。
+算法内部不应直接导入 <code class="docutils literal notranslate"><span class="pre">torch_npu</span></code>，设备后端由工作流管理。</p>
+</section>
+<section id="id6">
+<h2>状态和缓存<a class="headerlink" href="#id6" title="链接到此标题。">#</a></h2>
+<p>构造参数保存在实例属性中。每次 <code class="docutils literal notranslate"><span class="pre">solve</span></code> 会清空基础 <code class="docutils literal notranslate"><span class="pre">result</span></code> 和 <code class="docutils literal notranslate"><span class="pre">metric_cache</span></code>，算法新增
+的运行期缓存也应在 <code class="docutils literal notranslate"><span class="pre">_solve</span></code> 开头重置。不要把可变张量放在类属性中。</p>
+<p>若算法维护参考向量、邻域或模型：</p>
+<ul class="simple">
+<li><p>在问题设备确定后创建；</p></li>
+<li><p>dtype 继承 <code class="docutils literal notranslate"><span class="pre">problem.dtype</span></code>；</p></li>
+<li><p>不跨不同维数的问题复用；</p></li>
+<li><p>保存模型训练时间和内存，以便解释性能。</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>注册与第三方包<a class="headerlink" href="#id7" title="链接到此标题。">#</a></h2>
+<p>装饰器注册适合用户代码：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_algorithm</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">algorithm</span> <span class="o">=</span> <span class="n">create_algorithm</span><span class="p">(</span><span class="s2">&quot;BatchGA&quot;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>第三方扩展包应在自身导入时显式注册，并使用不与内置组件冲突的稳定名称。注册表默认拒绝
+同名替换；只有明确的兼容性迁移才应使用 <code class="docutils literal notranslate"><span class="pre">replace=True</span></code>。</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">自定义问题开发</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">指标实验与监控</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=34088549"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/translations.js?v=540d3cec"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script src="_static/site.js?v=5d939ab5"></script></body>
+</html>

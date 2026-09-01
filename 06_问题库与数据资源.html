@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>问题库与数据资源 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="张量算子手册" href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html" /><link rel="prev" title="算法目录与选择" href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="问题库与数据资源"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">首页</a></li>
+  <li class="link"><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="#">中文</a></li>
+      <li><a lang="en" href="en/06_problem_library.html">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="#">问题库与数据资源</a></li>
+    <li><a href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+    <li><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+    <li><a href="11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+    <li><a href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#id2">&#38382;&#39064;&#20307;&#31995;</a></li>
+<li><a class="reference internal" href="#id3">&#20027;&#35201;&#22522;&#20934;&#26063;</a></li>
+<li><a class="reference internal" href="#id4">&#23454;&#38469;&#19982;&#32452;&#21512;&#38382;&#39064;</a></li>
+<li><a class="reference internal" href="#id5">&#30452;&#25509;&#23548;&#20837;&#19982;&#27880;&#20876;&#21517;&#26500;&#36896;</a></li>
+<li><a class="reference internal" href="#id6">&#32534;&#30721;&#32422;&#23450;</a></li>
+<li><a class="reference internal" href="#id7">&#21442;&#32771;&#25968;&#25454;&#19982;&#25351;&#26631;</a></li>
+<li><a class="reference internal" href="#id8">&#21253;&#36164;&#28304;&#35775;&#38382;</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">问题库与数据资源</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="_sources/06_问题库与数据资源.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="_sources/06_问题库与数据资源.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="_sources/06_问题库与数据资源.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20_sources/06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20_sources/06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="id1">
+<h1>问题库与数据资源<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h1>
+<section id="id2">
+<h2>问题体系<a class="headerlink" href="#id2" title="链接到此标题。">#</a></h2>
+<p>发布版注册 155 个问题，覆盖解析基准、约束、多模态、稀疏大规模和实际应用。完整名称
+应通过代码查询，以安装版本为准：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_problems</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">list_problems</span><span class="p">():</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+<section id="id3">
+<h2>主要基准族<a class="headerlink" href="#id3" title="链接到此标题。">#</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>类型</p></th>
+<th class="head"><p>问题族</p></th>
+<th class="head text-right"><p>数量或范围</p></th>
+<th class="head"><p>关注性质</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>通用</p></td>
+<td><p>ZDT</p></td>
+<td class="text-right"><p>ZDT1 至 ZDT6</p></td>
+<td><p>双目标形状、非凸与不连续前沿</p></td>
+</tr>
+<tr class="row-odd"><td><p>通用</p></td>
+<td><p>DTLZ</p></td>
+<td class="text-right"><p>DTLZ1 至 DTLZ7</p></td>
+<td><p>可变目标数与退化前沿</p></td>
+</tr>
+<tr class="row-even"><td><p>大规模</p></td>
+<td><p>LSMOP</p></td>
+<td class="text-right"><p>LSMOP1 至 LSMOP9</p></td>
+<td><p>变量分组和大维决策空间</p></td>
+</tr>
+<tr class="row-odd"><td><p>稀疏</p></td>
+<td><p>SMOP</p></td>
+<td class="text-right"><p>SMOP1 至 SMOP8</p></td>
+<td><p>稀疏最优决策结构</p></td>
+</tr>
+<tr class="row-even"><td><p>约束</p></td>
+<td><p>CF</p></td>
+<td class="text-right"><p>CF1 至 CF10</p></td>
+<td><p>非线性约束和断裂可行前沿</p></td>
+</tr>
+<tr class="row-odd"><td><p>约束</p></td>
+<td><p>DASCMOP</p></td>
+<td class="text-right"><p>DASCMOP1 至 DASCMOP9</p></td>
+<td><p>可调困难度约束</p></td>
+</tr>
+<tr class="row-even"><td><p>约束</p></td>
+<td><p>LIRCMOP</p></td>
+<td class="text-right"><p>LIRCMOP1 至 LIRCMOP14</p></td>
+<td><p>大不可行区域与复杂约束</p></td>
+</tr>
+<tr class="row-odd"><td><p>多模态</p></td>
+<td><p>MMF</p></td>
+<td class="text-right"><p>多个 MMF 变体</p></td>
+<td><p>多 Pareto 集与映射结构</p></td>
+</tr>
+<tr class="row-even"><td><p>多模态</p></td>
+<td><p>MMMOP</p></td>
+<td class="text-right"><p>MMMOP1A 至 MMMOP6D</p></td>
+<td><p>多层决策空间景观</p></td>
+</tr>
+<tr class="row-odd"><td><p>多模态</p></td>
+<td><p>IDMP</p></td>
+<td class="text-right"><p>基础与扩展变体</p></td>
+<td><p>决策空间等价解</p></td>
+</tr>
+<tr class="row-even"><td><p>多模态</p></td>
+<td><p>SYM-PART、Omni、poly</p></td>
+<td class="text-right"><p>多个变体</p></td>
+<td><p>对称、周期和多项式结构</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="id4">
+<h2>实际与组合问题<a class="headerlink" href="#id4" title="链接到此标题。">#</a></h2>
+<p>实际问题包括 RWMOP1 至 RWMOP10，以及 MONRP、MOTSP、MPDMP、RLP、UECLP、
+application、mQAP、map 等任务。稀疏实际问题包括 <code class="docutils literal notranslate"><span class="pre">Sparse_KP</span></code>、<code class="docutils literal notranslate"><span class="pre">Sparse_PM</span></code>、
+<code class="docutils literal notranslate"><span class="pre">Sparse_PO</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Sparse_SR</span></code>。</p>
+<p>这类问题可能具有以下特点：</p>
+<ul class="simple">
+<li><p>构造函数从包资源读取 MAT 数据；</p></li>
+<li><p>决策变量可能是整数、标签、二进制或排列编码；</p></li>
+<li><p>可用的维数和目标数受数据实例限制；</p></li>
+<li><p>单次评价可能包含距离矩阵、图结构或组合约束。</p></li>
+</ul>
+<p>使用前应读取具体类的 docstring 和构造参数，不要把解析函数的 <code class="docutils literal notranslate"><span class="pre">d</span></code> 参数规则直接套用到
+实际问题。</p>
+</section>
+<section id="id5">
+<h2>直接导入与注册名构造<a class="headerlink" href="#id5" title="链接到此标题。">#</a></h2>
+<p>合法 Python 标识符会在 <code class="docutils literal notranslate"><span class="pre">ascendmoea.problems</span></code> 中直接导出：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.problems</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTLZ2</span><span class="p">,</span> <span class="n">LIRCMOP5</span><span class="p">,</span> <span class="n">RWMOP3</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">p1</span> <span class="o">=</span> <span class="n">DTLZ2</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">p2</span> <span class="o">=</span> <span class="n">LIRCMOP5</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">p3</span> <span class="o">=</span> <span class="n">RWMOP3</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>任何注册名都可通过统一接口构造：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_problem</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">problem</span> <span class="o">=</span> <span class="n">create_problem</span><span class="p">(</span><span class="s2">&quot;SYM_PART_simple&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>对于含空格、连字符或其他非标识符的名称，必须使用统一构造接口。</p>
+</section>
+<section id="id6">
+<h2>编码约定<a class="headerlink" href="#id6" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Problem.encoding</span></code> 中每个变量的编码值为：</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>值</p></th>
+<th class="head"><p>编码</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>1</p></td>
+<td><p>实数</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td><p>整数</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td><p>标签</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td><p>二进制</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td><p>排列</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>基础初始化器会按编码批量生成决策，并对整数、标签和二进制执行与参考语义一致的舍入与
+边界修复。用户算法调用变异算子时，应选择支持对应编码的入口。</p>
+</section>
+<section id="id7">
+<h2>参考数据与指标<a class="headerlink" href="#id7" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">problem.optimum</span></code> 是延迟生成并缓存的目标空间参考点，<code class="docutils literal notranslate"><span class="pre">problem.pf</span></code> 是可选的绘图表示。
+内置多模态问题还通过 <code class="docutils literal notranslate"><span class="pre">problem.ps</span></code> 提供决策空间参考 Pareto 集；其他问题不保证存在
+该属性。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">reference_objectives</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimum</span>
+</span><span data-line="2"><span class="n">drawable_front</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">pf</span>
+</span><span data-line="3"><span class="n">reference_decisions</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ps</span>  <span class="c1"># Multimodal problems only.</span>
+</span></pre></div>
+</div>
+<p>三者用途不同：目标指标使用 <code class="docutils literal notranslate"><span class="pre">optimum</span></code>，决策指标使用 <code class="docutils literal notranslate"><span class="pre">ps</span></code>，而 <code class="docutils literal notranslate"><span class="pre">pf</span></code> 可能只是曲线、网格
+或 <code class="docutils literal notranslate"><span class="pre">None</span></code>。自定义多模态问题若不提供 <code class="docutils literal notranslate"><span class="pre">ps</span></code>，应独立生成参考集并随实验数据固化。</p>
+</section>
+<section id="id8">
+<h2>包资源访问<a class="headerlink" href="#id8" title="链接到此标题。">#</a></h2>
+<p>数据文件位于安装包的 <code class="docutils literal notranslate"><span class="pre">ascendmoea/vendor</span></code> 资源树，由问题类按包位置解析。安装 wheel
+后可用标准库查看其中的数据文件：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+</span><span data-line="2"><span class="s">from importlib.resources import files</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="s">root = files(&quot;ascendmoea&quot;).joinpath(&quot;vendor&quot;)</span>
+</span><span data-line="5"><span class="s">print(root)</span>
+</span><span data-line="6"><span class="s">PY</span>
+</span></pre></div>
+</div>
+<p>自定义问题不要使用依赖当前目录的相对路径，也不要把服务器绝对路径写入资源定位逻辑。</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">算法目录与选择</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">张量算子手册</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=34088549"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/translations.js?v=540d3cec"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script src="_static/site.js?v=5d939ab5"></script></body>
+</html>

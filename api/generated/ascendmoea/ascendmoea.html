@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../../../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ascendmoea - AscendMOEA Documentation</title><link rel="shortcut icon" href="../../../_static/favicon.svg"/><link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="搜索" href="../../../search.html" /><link rel="next" title="ascendmoea.algorithms" href="ascendmoea.algorithms.html" /><link rel="prev" title="Python API Reference" href="../index.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="ascendmoea"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../../index.html">
+      <img class="light-logo" src="../../../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../../../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="../../../index.html">首页</a></li>
+  <li class="link"><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="./ascendmoea.html">中文</a></li>
+      <li><a lang="en" href="./ascendmoea.html?lang=en">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="../../../01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="../../../02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="../../../03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="../../../04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="../../../05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="../../../06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+    <li><a href="../../../07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="../../../08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="../../../09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+    <li><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="../../../10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+    <li><a href="../../../11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+    <li><a href="../../../12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="../../../13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="../../../16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="../../../17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="../../../18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="../../../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+<li><a class="reference internal" href="#data">Data</a></li>
+<li><a class="reference internal" href="#api">API</a><ul>
+<li><a class="reference internal" href="#ascendmoea.ALGORITHMS"><code class="docutils literal notranslate"><span class="pre">ALGORITHMS</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.PROBLEMS"><code class="docutils literal notranslate"><span class="pre">PROBLEMS</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Algorithm"><code class="docutils literal notranslate"><span class="pre">Algorithm</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.Algorithm.name"><code class="docutils literal notranslate"><span class="pre">Algorithm.name</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Algorithm.history_requires_snapshot"><code class="docutils literal notranslate"><span class="pre">Algorithm.history_requires_snapshot</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Algorithm.solve"><code class="docutils literal notranslate"><span class="pre">Algorithm.solve()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Algorithm.not_terminated"><code class="docutils literal notranslate"><span class="pre">Algorithm.not_terminated()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Algorithm.final_population"><code class="docutils literal notranslate"><span class="pre">Algorithm.final_population</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.ComponentRegistry"><code class="docutils literal notranslate"><span class="pre">ComponentRegistry</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.ComponentRegistry.register"><code class="docutils literal notranslate"><span class="pre">ComponentRegistry.register()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.ComponentRegistry.create"><code class="docutils literal notranslate"><span class="pre">ComponentRegistry.create()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.ComponentRegistry.names"><code class="docutils literal notranslate"><span class="pre">ComponentRegistry.names()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.GenerationRecord"><code class="docutils literal notranslate"><span class="pre">GenerationRecord</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.GenerationRecord.evaluations"><code class="docutils literal notranslate"><span class="pre">GenerationRecord.evaluations</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.GenerationRecord.population"><code class="docutils literal notranslate"><span class="pre">GenerationRecord.population</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.HistoryMonitor"><code class="docutils literal notranslate"><span class="pre">HistoryMonitor</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.HistoryMonitor.on_start"><code class="docutils literal notranslate"><span class="pre">HistoryMonitor.on_start()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.HistoryMonitor.on_generation"><code class="docutils literal notranslate"><span class="pre">HistoryMonitor.on_generation()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.Monitor"><code class="docutils literal notranslate"><span class="pre">Monitor</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.Monitor.on_start"><code class="docutils literal notranslate"><span class="pre">Monitor.on_start()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Monitor.on_generation"><code class="docutils literal notranslate"><span class="pre">Monitor.on_generation()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Monitor.on_finish"><code class="docutils literal notranslate"><span class="pre">Monitor.on_finish()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Monitor.on_error"><code class="docutils literal notranslate"><span class="pre">Monitor.on_error()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult"><code class="docutils literal notranslate"><span class="pre">OptimizationResult</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.algorithm"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.algorithm</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.problem"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.problem</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.device"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.device</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.elapsed_seconds"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.elapsed_seconds</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.population"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.population</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.OptimizationResult.evaluations"><code class="docutils literal notranslate"><span class="pre">OptimizationResult.evaluations</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.Population"><code class="docutils literal notranslate"><span class="pre">Population</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.Population.decs"><code class="docutils literal notranslate"><span class="pre">Population.decs</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.objs"><code class="docutils literal notranslate"><span class="pre">Population.objs</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.cons"><code class="docutils literal notranslate"><span class="pre">Population.cons</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.feasible"><code class="docutils literal notranslate"><span class="pre">Population.feasible</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.best"><code class="docutils literal notranslate"><span class="pre">Population.best()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.clone"><code class="docutils literal notranslate"><span class="pre">Population.clone()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.detach"><code class="docutils literal notranslate"><span class="pre">Population.detach()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Population.to"><code class="docutils literal notranslate"><span class="pre">Population.to()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.Problem"><code class="docutils literal notranslate"><span class="pre">Problem</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.Problem.name"><code class="docutils literal notranslate"><span class="pre">Problem.name</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.device"><code class="docutils literal notranslate"><span class="pre">Problem.device</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.setting"><code class="docutils literal notranslate"><span class="pre">Problem.setting()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.initialization"><code class="docutils literal notranslate"><span class="pre">Problem.initialization()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.evaluation"><code class="docutils literal notranslate"><span class="pre">Problem.evaluation()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.evaluate"><code class="docutils literal notranslate"><span class="pre">Problem.evaluate()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.cal_obj"><code class="docutils literal notranslate"><span class="pre">Problem.cal_obj()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.cal_con"><code class="docutils literal notranslate"><span class="pre">Problem.cal_con()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.cal_dec"><code class="docutils literal notranslate"><span class="pre">Problem.cal_dec()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.get_optimum"><code class="docutils literal notranslate"><span class="pre">Problem.get_optimum()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.get_pf"><code class="docutils literal notranslate"><span class="pre">Problem.get_pf()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.pf"><code class="docutils literal notranslate"><span class="pre">Problem.pf</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.optimum"><code class="docutils literal notranslate"><span class="pre">Problem.optimum</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.Problem.estimate_feasible_obj"><code class="docutils literal notranslate"><span class="pre">Problem.estimate_feasible_obj()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.RunConfig"><code class="docutils literal notranslate"><span class="pre">RunConfig</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.RunConfig.device"><code class="docutils literal notranslate"><span class="pre">RunConfig.device</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.RunConfig.seed"><code class="docutils literal notranslate"><span class="pre">RunConfig.seed</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.RunConfig.cpu_threads"><code class="docutils literal notranslate"><span class="pre">RunConfig.cpu_threads</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.RunConfig.synchronize_timing"><code class="docutils literal notranslate"><span class="pre">RunConfig.synchronize_timing</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a><ul>
+<li><a class="reference internal" href="#ascendmoea.Workflow.run"><code class="docutils literal notranslate"><span class="pre">Workflow.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ascendmoea.configure_torch"><code class="docutils literal notranslate"><span class="pre">configure_torch()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.create_algorithm"><code class="docutils literal notranslate"><span class="pre">create_algorithm()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.create_problem"><code class="docutils literal notranslate"><span class="pre">create_problem()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.get_algorithm"><code class="docutils literal notranslate"><span class="pre">get_algorithm()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.get_problem"><code class="docutils literal notranslate"><span class="pre">get_problem()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.list_algorithms"><code class="docutils literal notranslate"><span class="pre">list_algorithms()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.list_problems"><code class="docutils literal notranslate"><span class="pre">list_problems()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.npu_is_available"><code class="docutils literal notranslate"><span class="pre">npu_is_available()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.optimize"><code class="docutils literal notranslate"><span class="pre">optimize()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.register_algorithm"><code class="docutils literal notranslate"><span class="pre">register_algorithm</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.register_problem"><code class="docutils literal notranslate"><span class="pre">register_problem</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.seed_everything"><code class="docutils literal notranslate"><span class="pre">seed_everything()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.select_device"><code class="docutils literal notranslate"><span class="pre">select_device()</span></code></a></li>
+<li><a class="reference internal" href="#ascendmoea.synchronize"><code class="docutils literal notranslate"><span class="pre">synchronize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../../en/index.html"><span itemprop="name">AscendMOEA Documentation</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Python API 参考</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="3" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">Python API Reference</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="4" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea</span></code></strong>
+        <meta itemprop="position" content="5" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="../../../_sources/api/generated/ascendmoea/ascendmoea.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="module-ascendmoea">
+<span id="ascendmoea"></span><h1><a class="reference internal" href="#module-ascendmoea" title="ascendmoea"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea</span></code></a><a class="headerlink" href="#module-ascendmoea" title="链接到此标题。">#</a></h1>
+<p>Ascend-native tensorized multi-objective evolutionary optimization.</p>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="链接到此标题。">#</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Algorithm</span></code></a></p></td>
+<td><p>Base class for evolutionary algorithms.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentRegistry" title="ascendmoea.registry.ComponentRegistry"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ComponentRegistry</span></code></a></p></td>
+<td><p>Store constructible component classes under stable public names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.GenerationRecord" title="ascendmoea.workflow.GenerationRecord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GenerationRecord</span></code></a></p></td>
+<td><p>Represent one monitored population snapshot.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.HistoryMonitor" title="ascendmoea.workflow.HistoryMonitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HistoryMonitor</span></code></a></p></td>
+<td><p>Collect complete generation snapshots independently of history slots.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Monitor</span></code></a></p></td>
+<td><p>Base class for workflow lifecycle monitors.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.OptimizationResult" title="ascendmoea.workflow.OptimizationResult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OptimizationResult</span></code></a></p></td>
+<td><p>Contain the completed run, final population, and synchronized runtime.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Population</span></code></a></p></td>
+<td><p>Hold batched decisions, objectives, and inequality constraints.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Problem</span></code></a></p></td>
+<td><p>Base class for vectorized optimization problems.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.RunConfig" title="ascendmoea.workflow.RunConfig"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RunConfig</span></code></a></p></td>
+<td><p>Define reproducible execution settings for one optimization run.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Workflow" title="ascendmoea.workflow.Workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workflow</span></code></a></p></td>
+<td><p>Bind an algorithm, a problem, execution settings, and monitors.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.device.html#ascendmoea.device.configure_torch" title="ascendmoea.device.configure_torch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">configure_torch</span></code></a></p></td>
+<td><p>Configure precision, CPU threading, and the active accelerator.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.html#ascendmoea.algorithms.create_algorithm" title="ascendmoea.algorithms.create_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_algorithm</span></code></a></p></td>
+<td><p>Construct a registered algorithm with the supplied keyword arguments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.problems.html#ascendmoea.problems.create_problem" title="ascendmoea.problems.create_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_problem</span></code></a></p></td>
+<td><p>Construct a registered problem with the supplied keyword arguments.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.html#ascendmoea.algorithms.get_algorithm" title="ascendmoea.algorithms.get_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_algorithm</span></code></a></p></td>
+<td><p>Return an algorithm class by its registered name.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.problems.html#ascendmoea.problems.get_problem" title="ascendmoea.problems.get_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_problem</span></code></a></p></td>
+<td><p>Return a problem class by its registered name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.algorithms.html#ascendmoea.algorithms.list_algorithms" title="ascendmoea.algorithms.list_algorithms"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_algorithms</span></code></a></p></td>
+<td><p>Return all built-in and user-registered algorithm names.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.problems.html#ascendmoea.problems.list_problems" title="ascendmoea.problems.list_problems"><code class="xref py py-obj docutils literal notranslate"><span class="pre">list_problems</span></code></a></p></td>
+<td><p>Return all built-in and user-registered problem names.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.device.html#ascendmoea.device.npu_is_available" title="ascendmoea.device.npu_is_available"><code class="xref py py-obj docutils literal notranslate"><span class="pre">npu_is_available</span></code></a></p></td>
+<td><p>Return whether the Ascend PyTorch backend can use an NPU.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.optimize" title="ascendmoea.workflow.optimize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">optimize</span></code></a></p></td>
+<td><p>Run one algorithm/problem pair through the standard workflow.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.device.html#ascendmoea.device.seed_everything" title="ascendmoea.device.seed_everything"><code class="xref py py-obj docutils literal notranslate"><span class="pre">seed_everything</span></code></a></p></td>
+<td><p>Seed Python, NumPy, PyTorch, and the selected accelerator backend.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.device.html#ascendmoea.device.select_device" title="ascendmoea.device.select_device"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select_device</span></code></a></p></td>
+<td><p>Resolve an explicit or environment-configured execution device.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.device.html#ascendmoea.device.synchronize" title="ascendmoea.device.synchronize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">synchronize</span></code></a></p></td>
+<td><p>Wait for queued accelerator work to finish for accurate measurements.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="data">
+<h3>Data<a class="headerlink" href="#data" title="链接到此标题。">#</a></h3>
+<div class="table-wrapper autosummary longtable docutils container">
+<table class="autosummary longtable docutils align-left">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.html#ascendmoea.algorithms.ALGORITHMS" title="ascendmoea.algorithms.ALGORITHMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALGORITHMS</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.problems.html#ascendmoea.problems.PROBLEMS" title="ascendmoea.problems.PROBLEMS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PROBLEMS</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="ascendmoea.algorithms.html#ascendmoea.algorithms.register_algorithm" title="ascendmoea.algorithms.register_algorithm"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_algorithm</span></code></a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="ascendmoea.problems.html#ascendmoea.problems.register_problem" title="ascendmoea.problems.register_problem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">register_problem</span></code></a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="api">
+<h3>API<a class="headerlink" href="#api" title="链接到此标题。">#</a></h3>
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.ALGORITHMS">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">ALGORITHMS</span></span><a class="headerlink" href="#ascendmoea.ALGORITHMS" title="链接到此定义。">#</a></dt>
+<dd><p>'ComponentRegistry(...)'</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.PROBLEMS">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">PROBLEMS</span></span><a class="headerlink" href="#ascendmoea.PROBLEMS" title="链接到此定义。">#</a></dt>
+<dd><p>'ComponentRegistry(...)'</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">Algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">-10</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Base class for evolutionary algorithms.</p>
+<p>Custom algorithms implement :meth:<code class="docutils literal notranslate"><span class="pre">_solve</span></code> and retain the evolutionary
+loop inside that method. Calling :meth:<code class="docutils literal notranslate"><span class="pre">not_terminated</span></code> records history,
+dispatches callbacks, and enforces the function-evaluation budget.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize history storage.</p>
+<p>The absolute value of <code class="docutils literal notranslate"><span class="pre">save</span></code> selects the maximum number of evenly
+distributed history slots. Zero and one both retain the latest slot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.Algorithm.name" title="链接到此定义。">#</a></dt>
+<dd><p>'Algorithm'</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm.history_requires_snapshot">
+<span class="sig-name descname"><span class="pre">history_requires_snapshot</span></span><a class="headerlink" href="#ascendmoea.Algorithm.history_requires_snapshot" title="链接到此定义。">#</a></dt>
+<dd><p>False</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_pause</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="仅关键字参数分隔符 (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></span><a class="headerlink" href="#ascendmoea.Algorithm.solve" title="链接到此定义。">#</a></dt>
+<dd><p>Run the algorithm on a problem until its evaluation budget is spent.</p>
+<p>Args:
+problem: Vectorized optimization problem.
+output: Callback invoked after each recorded generation.
+should_stop: Optional cooperative cancellation predicate.
+should_pause: Optional cooperative pause predicate.
+device: Explicit execution device. Environment selection is used
+when omitted.
+cpu_threads: Intra-op CPU thread count for this process.
+seed: Optional seed for Python, NumPy, PyTorch, and the accelerator.</p>
+<p>Returns:
+This algorithm instance after execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm.not_terminated">
+<span class="sig-name descname"><span class="pre">not_terminated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">population</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_pause</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(位于 Python v3.14)"><span class="pre">Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ascendmoea.Algorithm.not_terminated" title="链接到此定义。">#</a></dt>
+<dd><p>Record progress, invoke controls, and test the evaluation budget.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.Algorithm.final_population">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">final_population</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span><a class="headerlink" href="#ascendmoea.Algorithm.final_population" title="链接到此定义。">#</a></dt>
+<dd><p>Return the last recorded population.</p>
+<p>Raises:
+RuntimeError: If the algorithm has not recorded any generation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.ComponentRegistry">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">ComponentRegistry</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterator" title="(位于 Python v3.14)"><span class="pre">collections.abc.Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(位于 Python v3.14)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><span class="pre">ascendmoea.registry.ComponentT</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(位于 Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(位于 Python v3.14)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><span class="pre">ascendmoea.registry.ComponentT</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.ComponentRegistry" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.MutableMapping" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collections.abc.MutableMapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">type</span></code></a>[<a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.registry.ComponentT</span></code></a>]], <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typing.Generic</span></code></a>[<a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.registry.ComponentT</span></code></a>]</p>
+<p>Store constructible component classes under stable public names.</p>
+<p>The registry implements <code class="docutils literal notranslate"><span class="pre">MutableMapping</span></code> so existing dictionary-style
+lookup remains available. The :meth:<code class="docutils literal notranslate"><span class="pre">register</span></code> method can also be used as
+a decorator for third-party extensions.</p>
+<p>Args:
+kind: Human-readable component kind used in validation errors.
+components: Optional component classes to register immediately.</p>
+<p class="rubric">Initialization</p>
+<p>Create a registry and register the supplied component classes.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.ComponentRegistry.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#type" title="(位于 Python v3.14)"><span class="pre">type</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><span class="pre">ascendmoea.registry.ComponentT</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="仅关键字参数分隔符 (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.ComponentRegistry.register" title="链接到此定义。">#</a></dt>
+<dd><p>Register a component class or return a registration decorator.</p>
+<p>Args:
+component: Class to register. Omit it when using decorator syntax.
+name: Public registry name. Defaults to <code class="docutils literal notranslate"><span class="pre">component.name</span></code> and then
+to the class name.
+replace: Allow replacement of an existing entry with the same name.</p>
+<p>Returns:
+The registered class, or a decorator that registers a class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.ComponentRegistry.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="仅位置参数分隔符 (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.registry.html#ascendmoea.registry.ComponentT" title="ascendmoea.registry.ComponentT"><span class="pre">ascendmoea.registry.ComponentT</span></a></span></span><a class="headerlink" href="#ascendmoea.ComponentRegistry.create" title="链接到此定义。">#</a></dt>
+<dd><p>Instantiate a registered component by name.</p>
+<p>Args:
+name: Registry key.
+**kwargs: Keyword arguments forwarded to the component constructor.</p>
+<p>Returns:
+A new component instance.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.ComponentRegistry.names">
+<span class="sig-name descname"><span class="pre">names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(位于 Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ascendmoea.ComponentRegistry.names" title="链接到此定义。">#</a></dt>
+<dd><p>Return registered names sorted for deterministic presentation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.GenerationRecord">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">GenerationRecord</span></span><a class="headerlink" href="#ascendmoea.GenerationRecord" title="链接到此定义。">#</a></dt>
+<dd><p>Represent one monitored population snapshot.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.GenerationRecord.evaluations">
+<span class="sig-name descname"><span class="pre">evaluations</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#ascendmoea.GenerationRecord.evaluations" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.GenerationRecord.population">
+<span class="sig-name descname"><span class="pre">population</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span><a class="headerlink" href="#ascendmoea.GenerationRecord.population" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.HistoryMonitor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">HistoryMonitor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy_to_cpu</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.HistoryMonitor" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ascendmoea.workflow.Monitor</span></code></a></p>
+<p>Collect complete generation snapshots independently of history slots.</p>
+<p>Args:
+copy_to_cpu: Move snapshots to CPU to avoid retaining accelerator memory.</p>
+<p class="rubric">Initialization</p>
+<p>Create an empty in-memory generation history.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.HistoryMonitor.on_start">
+<span class="sig-name descname"><span class="pre">on_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.HistoryMonitor.on_start" title="链接到此定义。">#</a></dt>
+<dd><p>Clear records before a new workflow run.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.HistoryMonitor.on_generation">
+<span class="sig-name descname"><span class="pre">on_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.HistoryMonitor.on_generation" title="链接到此定义。">#</a></dt>
+<dd><p>Clone the current population into the monitor history.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.Monitor">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">Monitor</span></span><a class="headerlink" href="#ascendmoea.Monitor" title="链接到此定义。">#</a></dt>
+<dd><p>Base class for workflow lifecycle monitors.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Monitor.on_start">
+<span class="sig-name descname"><span class="pre">on_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.Monitor.on_start" title="链接到此定义。">#</a></dt>
+<dd><p>Handle workflow initialization before timed execution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Monitor.on_generation">
+<span class="sig-name descname"><span class="pre">on_generation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.Monitor.on_generation" title="链接到此定义。">#</a></dt>
+<dd><p>Handle a newly recorded generation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Monitor.on_finish">
+<span class="sig-name descname"><span class="pre">on_finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.OptimizationResult" title="ascendmoea.workflow.OptimizationResult"><span class="pre">ascendmoea.workflow.OptimizationResult</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.Monitor.on_finish" title="链接到此定义。">#</a></dt>
+<dd><p>Handle successful workflow completion.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Monitor.on_error">
+<span class="sig-name descname"><span class="pre">on_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#BaseException" title="(位于 Python v3.14)"><span class="pre">BaseException</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.Monitor.on_error" title="链接到此定义。">#</a></dt>
+<dd><p>Handle an exception before it is propagated to the caller.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">OptimizationResult</span></span><a class="headerlink" href="#ascendmoea.OptimizationResult" title="链接到此定义。">#</a></dt>
+<dd><p>Contain the completed run, final population, and synchronized runtime.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.algorithm">
+<span class="sig-name descname"><span class="pre">algorithm</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.problem">
+<span class="sig-name descname"><span class="pre">problem</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.problem" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.device">
+<span class="sig-name descname"><span class="pre">device</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.device" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.elapsed_seconds">
+<span class="sig-name descname"><span class="pre">elapsed_seconds</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(位于 Python v3.14)"><span class="pre">float</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.elapsed_seconds" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.population">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">population</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.population" title="链接到此定义。">#</a></dt>
+<dd><p>Return the final recorded population.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.OptimizationResult.evaluations">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">evaluations</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><a class="headerlink" href="#ascendmoea.OptimizationResult.evaluations" title="链接到此定义。">#</a></dt>
+<dd><p>Return the number of completed function evaluations.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.Population">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">Population</span></span><a class="headerlink" href="#ascendmoea.Population" title="链接到此定义。">#</a></dt>
+<dd><p>Hold batched decisions, objectives, and inequality constraints.</p>
+<p>Constraint values follow the convention <code class="docutils literal notranslate"><span class="pre">cons</span> <span class="pre">&lt;=</span> <span class="pre">0</span></code> for feasibility.
+Every tensor uses its first dimension as the population dimension.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Population.decs">
+<span class="sig-name descname"><span class="pre">decs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span><a class="headerlink" href="#ascendmoea.Population.decs" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Population.objs">
+<span class="sig-name descname"><span class="pre">objs</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span><a class="headerlink" href="#ascendmoea.Population.objs" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Population.cons">
+<span class="sig-name descname"><span class="pre">cons</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span><a class="headerlink" href="#ascendmoea.Population.cons" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.Population.feasible">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">feasible</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span><a class="headerlink" href="#ascendmoea.Population.feasible" title="链接到此定义。">#</a></dt>
+<dd><p>Return a Boolean feasibility mask for all individuals.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Population.best">
+<span class="sig-name descname"><span class="pre">best</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Population.best" title="链接到此定义。">#</a></dt>
+<dd><p>Return the best feasible individual or nondominated subset.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Population.clone">
+<span class="sig-name descname"><span class="pre">clone</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Population.clone" title="链接到此定义。">#</a></dt>
+<dd><p>Return a deep tensor clone of the population.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Population.detach">
+<span class="sig-name descname"><span class="pre">detach</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Population.detach" title="链接到此定义。">#</a></dt>
+<dd><p>Return a population detached from all autograd graphs.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Population.to">
+<span class="sig-name descname"><span class="pre">to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dtype</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.dtype" title="(位于 PyTorch v2.13)"><span class="pre">torch.dtype</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Population.to" title="链接到此定义。">#</a></dt>
+<dd><p>Move all population tensors to a device and optional real dtype.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.Problem">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">Problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_fe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">10000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Problem" title="链接到此定义。">#</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/abc.html#abc.ABC" title="(位于 Python v3.14)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">abc.ABC</span></code></a></p>
+<p>Base class for vectorized optimization problems.</p>
+<p>Subclasses normally implement :meth:<code class="docutils literal notranslate"><span class="pre">setting</span></code> and :meth:<code class="docutils literal notranslate"><span class="pre">cal_obj</span></code>; they
+may also implement :meth:<code class="docutils literal notranslate"><span class="pre">cal_con</span></code>, :meth:<code class="docutils literal notranslate"><span class="pre">get_optimum</span></code>, and :meth:<code class="docutils literal notranslate"><span class="pre">get_pf</span></code>.
+Objective and constraint functions must accept an <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">D)</span></code> tensor and
+evaluate the complete batch without per-individual Python loops.</p>
+<p class="rubric">Initialization</p>
+<p>Initialize dimensions, evaluation budget, and CPU-resident state.</p>
+<p>Args:
+n: Requested population size.
+m: Number of objectives. <code class="docutils literal notranslate"><span class="pre">None</span></code> lets :meth:<code class="docutils literal notranslate"><span class="pre">setting</span></code> choose it.
+d: Number of decision variables. <code class="docutils literal notranslate"><span class="pre">None</span></code> lets :meth:<code class="docutils literal notranslate"><span class="pre">setting</span></code> choose it.
+max_fe: Maximum number of objective-function evaluations.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.Problem.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#ascendmoea.Problem.name" title="链接到此定义。">#</a></dt>
+<dd><p>'Problem'</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.Problem.device">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">device</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a></span><a class="headerlink" href="#ascendmoea.Problem.device" title="链接到此定义。">#</a></dt>
+<dd><p>Return the device that owns problem data and evaluations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.setting">
+<span class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">setting</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.setting" title="链接到此定义。">#</a></dt>
+<dd><p>Configure dimensions, bounds, encoding, and static problem data.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.initialization">
+<span class="sig-name descname"><span class="pre">initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.initialization" title="链接到此定义。">#</a></dt>
+<dd><p>Sample and evaluate an initial population.</p>
+<p>Args:
+n: Number of individuals. Defaults to the configured population size.</p>
+<p>Returns:
+The initialized and evaluated population.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.evaluation">
+<span class="sig-name descname"><span class="pre">evaluation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dec</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.evaluation" title="链接到此定义。">#</a></dt>
+<dd><p>Repair and evaluate a batch of decision vectors.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dec</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Population" title="ascendmoea.core.Population"><span class="pre">ascendmoea.core.Population</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.evaluate" title="链接到此定义。">#</a></dt>
+<dd><p>Evaluate decisions using the public batch-oriented problem interface.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.cal_obj">
+<span class="sig-name descname"><span class="pre">cal_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.cal_obj" title="链接到此定义。">#</a></dt>
+<dd><p>Return an <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">M)</span></code> objective tensor for an <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">D)</span></code> batch.</p>
+<p>A problem may instead override :meth:<code class="docutils literal notranslate"><span class="pre">evaluation</span></code> when objectives and
+constraints must be computed together.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.cal_con">
+<span class="sig-name descname"><span class="pre">cal_con</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.cal_con" title="链接到此定义。">#</a></dt>
+<dd><p>Compute inequality constraints for a decision batch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.cal_dec">
+<span class="sig-name descname"><span class="pre">cal_dec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(位于 PyTorch v2.13)"><span class="pre">torch.Tensor</span></a></span></span><a class="headerlink" href="#ascendmoea.Problem.cal_dec" title="链接到此定义。">#</a></dt>
+<dd><p>Apply optional problem-specific repair to a decision batch.</p>
+<p>The generic evaluator has already enforced bounds and discrete-variable
+rounding before this hook is called. Subclasses may override the method
+for additional vectorized repair while preserving the <code class="docutils literal notranslate"><span class="pre">(N,</span> <span class="pre">D)</span></code> shape.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.get_optimum">
+<span class="sig-name descname"><span class="pre">get_optimum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Problem.get_optimum" title="链接到此定义。">#</a></dt>
+<dd><p>Return reference objective vectors for metric computation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.get_pf">
+<span class="sig-name descname"><span class="pre">get_pf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Problem.get_pf" title="链接到此定义。">#</a></dt>
+<dd><p>Return a drawable Pareto-front representation when available.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.Problem.pf">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">pf</span></span><a class="headerlink" href="#ascendmoea.Problem.pf" title="链接到此定义。">#</a></dt>
+<dd><p>Lazily return and cache the drawable Pareto front.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="ascendmoea.Problem.optimum">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">optimum</span></span><a class="headerlink" href="#ascendmoea.Problem.optimum" title="链接到此定义。">#</a></dt>
+<dd><p>Lazily return and cache objective-space reference points.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Problem.estimate_feasible_obj">
+<span class="sig-name descname"><span class="pre">estimate_feasible_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Problem.estimate_feasible_obj" title="链接到此定义。">#</a></dt>
+<dd><p>Estimate feasible objective samples for two-objective diagnostics.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.RunConfig">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">RunConfig</span></span><a class="headerlink" href="#ascendmoea.RunConfig" title="链接到此定义。">#</a></dt>
+<dd><p>Define reproducible execution settings for one optimization run.</p>
+<p>Args:
+device: Device string or PyTorch device. <code class="docutils literal notranslate"><span class="pre">None</span></code> uses environment-based
+automatic selection.
+seed: Optional random seed shared by all supported random generators.
+cpu_threads: Intra-op CPU thread count for this process.
+synchronize_timing: Synchronize accelerator queues around wall timing.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.RunConfig.device">
+<span class="sig-name descname"><span class="pre">device</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#ascendmoea.RunConfig.device" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.RunConfig.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#ascendmoea.RunConfig.seed" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.RunConfig.cpu_threads">
+<span class="sig-name descname"><span class="pre">cpu_threads</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><a class="headerlink" href="#ascendmoea.RunConfig.cpu_threads" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="ascendmoea.RunConfig.synchronize_timing">
+<span class="sig-name descname"><span class="pre">synchronize_timing</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#ascendmoea.RunConfig.synchronize_timing" title="链接到此定义。">#</a></dt>
+<dd><p>True</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="ascendmoea.Workflow">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">Workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">monitors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><span class="pre">ascendmoea.workflow.Monitor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(位于 Python v3.14)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><span class="pre">ascendmoea.workflow.Monitor</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.RunConfig" title="ascendmoea.workflow.RunConfig"><span class="pre">ascendmoea.workflow.RunConfig</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.Workflow" title="链接到此定义。">#</a></dt>
+<dd><p>Bind an algorithm, a problem, execution settings, and monitors.</p>
+<p>Args:
+algorithm: Algorithm instance to execute.
+problem: Problem instance to optimize.
+monitors: Optional monitor or sequence of monitors.
+config: Reproducible run configuration.</p>
+<p class="rubric">Initialization</p>
+<p>Create a reusable workflow from one algorithm/problem pair.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ascendmoea.Workflow.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(位于 Python v3.14)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_stop</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(位于 Python v3.14)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">should_pause</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(位于 Python v3.14)"><span class="pre">collections.abc.Callable</span></a><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.OptimizationResult" title="ascendmoea.workflow.OptimizationResult"><span class="pre">ascendmoea.workflow.OptimizationResult</span></a></span></span><a class="headerlink" href="#ascendmoea.Workflow.run" title="链接到此定义。">#</a></dt>
+<dd><p>Execute the configured optimization and return its result.</p>
+<p>Accelerator timing excludes outstanding work from earlier operations
+and includes all work submitted by the algorithm.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.configure_torch">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">configure_torch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.dtype" title="(位于 PyTorch v2.13)"><span class="pre">torch.dtype</span></a></span></span><a class="headerlink" href="#ascendmoea.configure_torch" title="链接到此定义。">#</a></dt>
+<dd><p>Configure precision, CPU threading, and the active accelerator.</p>
+<p>Args:
+device: Target execution device.
+cpu_threads: Intra-op CPU thread count. When omitted, the value comes
+from <code class="docutils literal notranslate"><span class="pre">ASCENDMOEA_CPU_THREADS</span></code> and defaults to one.</p>
+<p>Returns:
+The real dtype selected for the device.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.create_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">create_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="仅位置参数分隔符 (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.create_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>Construct a registered algorithm with the supplied keyword arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.create_problem">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">create_problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="positional-only-separator o"><abbr title="仅位置参数分隔符 (PEP 570)"><span class="pre">/</span></abbr></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.create_problem" title="链接到此定义。">#</a></dt>
+<dd><p>Construct a registered problem with the supplied keyword arguments.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.get_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">get_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.get_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>Return an algorithm class by its registered name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.get_problem">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">get_problem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ascendmoea.get_problem" title="链接到此定义。">#</a></dt>
+<dd><p>Return a problem class by its registered name.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.list_algorithms">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">list_algorithms</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(位于 Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ascendmoea.list_algorithms" title="链接到此定义。">#</a></dt>
+<dd><p>Return all built-in and user-registered algorithm names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.list_problems">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">list_problems</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(位于 Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#ascendmoea.list_problems" title="链接到此定义。">#</a></dt>
+<dd><p>Return all built-in and user-registered problem names.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.npu_is_available">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">npu_is_available</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#ascendmoea.npu_is_available" title="链接到此定义。">#</a></dt>
+<dd><p>Return whether the Ascend PyTorch backend can use an NPU.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.optimize">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">algorithm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Algorithm" title="ascendmoea.core.Algorithm"><span class="pre">ascendmoea.core.Algorithm</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">problem</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.core.html#ascendmoea.core.Problem" title="ascendmoea.core.Problem"><span class="pre">ascendmoea.core.Problem</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="仅关键字参数分隔符 (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cpu_threads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">monitors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><span class="pre">ascendmoea.workflow.Monitor</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence" title="(位于 Python v3.14)"><span class="pre">collections.abc.Sequence</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.Monitor" title="ascendmoea.workflow.Monitor"><span class="pre">ascendmoea.workflow.Monitor</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synchronize_timing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(位于 Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="ascendmoea.workflow.html#ascendmoea.workflow.OptimizationResult" title="ascendmoea.workflow.OptimizationResult"><span class="pre">ascendmoea.workflow.OptimizationResult</span></a></span></span><a class="headerlink" href="#ascendmoea.optimize" title="链接到此定义。">#</a></dt>
+<dd><p>Run one algorithm/problem pair through the standard workflow.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.register_algorithm">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">register_algorithm</span></span><a class="headerlink" href="#ascendmoea.register_algorithm" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="ascendmoea.register_problem">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">register_problem</span></span><a class="headerlink" href="#ascendmoea.register_problem" title="链接到此定义。">#</a></dt>
+<dd><p>None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.seed_everything">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">seed_everything</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(位于 Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.seed_everything" title="链接到此定义。">#</a></dt>
+<dd><p>Seed Python, NumPy, PyTorch, and the selected accelerator backend.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.select_device">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">select_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">requested</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a></span></span><a class="headerlink" href="#ascendmoea.select_device" title="链接到此定义。">#</a></dt>
+<dd><p>Resolve an explicit or environment-configured execution device.</p>
+<p>Args:
+requested: Device string such as <code class="docutils literal notranslate"><span class="pre">&quot;cpu&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;npu:0&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;cuda:0&quot;</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>. When omitted, <code class="docutils literal notranslate"><span class="pre">ASCENDMOEA_DEVICE</span></code> is used.</p>
+<p>Returns:
+The validated PyTorch device.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ascendmoea.synchronize">
+<span class="sig-prename descclassname"><span class="pre">ascendmoea.</span></span><span class="sig-name descname"><span class="pre">synchronize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(位于 PyTorch v2.13)"><span class="pre">torch.device</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(位于 Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(位于 Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#ascendmoea.synchronize" title="链接到此定义。">#</a></dt>
+<dd><p>Wait for queued accelerator work to finish for accurate measurements.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="../index.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">Python API Reference</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="ascendmoea.algorithms.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.algorithms</span></code></div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../../../_static/documentation_options.js?v=34088549"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../../../_static/translations.js?v=540d3cec"></script>
+      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../../../_static/shibuya.js?v=50760d75"></script>
+      <script src="../../../_static/site.js?v=5d939ab5"></script></body>
+</html>

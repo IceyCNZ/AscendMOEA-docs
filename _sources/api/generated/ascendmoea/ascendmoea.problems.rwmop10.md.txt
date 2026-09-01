@@ -1,0 +1,84 @@
+# {py:mod}`ascendmoea.problems.rwmop10`
+
+```{py:module} ascendmoea.problems.rwmop10
+```
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10
+:allowtitles:
+```
+
+## Module Contents
+
+### Classes
+
+````{list-table}
+:class: autosummary longtable
+:align: left
+
+* - {py:obj}`RWMOP10 <ascendmoea.problems.rwmop10.RWMOP10>`
+  - ```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10
+    :summary:
+    ```
+````
+
+### API
+
+`````{py:class} RWMOP10(n=100, max_fe=10000)
+:canonical: ascendmoea.problems.rwmop10.RWMOP10
+
+Bases: {py:obj}`ascendmoea.problems.rwmop_base.RWMOPBase`
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10
+```
+
+```{rubric} Initialization
+```
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.__init__
+```
+
+````{py:attribute} name
+:canonical: ascendmoea.problems.rwmop10.RWMOP10.name
+:value: >
+   'RWMOP10'
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.name
+```
+
+````
+
+````{py:attribute} reference_point
+:canonical: ascendmoea.problems.rwmop10.RWMOP10.reference_point
+:value: >
+   (187.04862, 6.7710178e-05)
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.reference_point
+```
+
+````
+
+````{py:method} setting()
+:canonical: ascendmoea.problems.rwmop10.RWMOP10.setting
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.setting
+```
+
+````
+
+````{py:method} cal_obj(x)
+:canonical: ascendmoea.problems.rwmop10.RWMOP10.cal_obj
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.cal_obj
+```
+
+````
+
+````{py:method} cal_con(x)
+:canonical: ascendmoea.problems.rwmop10.RWMOP10.cal_con
+
+```{autodoc2-docstring} ascendmoea.problems.rwmop10.RWMOP10.cal_con
+```
+
+````
+
+`````

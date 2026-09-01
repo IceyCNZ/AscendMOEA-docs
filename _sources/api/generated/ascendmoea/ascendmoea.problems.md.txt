@@ -1,0 +1,233 @@
+# {py:mod}`ascendmoea.problems`
+
+```{py:module} ascendmoea.problems
+```
+
+```{autodoc2-docstring} ascendmoea.problems
+:allowtitles:
+```
+
+## Submodules
+
+```{toctree}
+:titlesonly:
+:maxdepth: 1
+
+ascendmoea.problems.mmmop5c
+ascendmoea.problems.mmf11
+ascendmoea.problems.rwmop7
+ascendmoea.problems.real_world_base
+ascendmoea.problems.smop2
+ascendmoea.problems.idmpm4t4
+ascendmoea.problems.lsmop3
+ascendmoea.problems.mmmop4c
+ascendmoea.problems.mmmop1b
+ascendmoea.problems.mmmop3b
+ascendmoea.problems.mmmop6c
+ascendmoea.problems.mmf15
+ascendmoea.problems.zdt3
+ascendmoea.problems.rwmop3
+ascendmoea.problems.smop_base
+ascendmoea.problems.smop6
+ascendmoea.problems.standard_registry
+ascendmoea.problems.idmpm2t4_e
+ascendmoea.problems.lsmop7
+ascendmoea.problems.poly_8
+ascendmoea.problems.mmf8
+ascendmoea.problems.mmmop2b
+ascendmoea.problems.mmmop3c
+ascendmoea.problems.mmmop6b
+ascendmoea.problems.mmf14
+ascendmoea.problems.poly_12
+ascendmoea.problems.zdt2
+ascendmoea.problems.omni_test
+ascendmoea.problems.rwmop2
+ascendmoea.problems.idmpm3t1_e
+ascendmoea.problems.smop7
+ascendmoea.problems.idmpm4t1
+ascendmoea.problems.lsmop6
+ascendmoea.problems.mmf9
+ascendmoea.problems.cf
+ascendmoea.problems.mmmop5b
+ascendmoea.problems.dtlz_base
+ascendmoea.problems.mmo_base
+ascendmoea.problems.mmf10
+ascendmoea.problems.rwmop6
+ascendmoea.problems.smop3
+ascendmoea.problems.rlp
+ascendmoea.problems.zdt6
+ascendmoea.problems.lsmop2
+ascendmoea.problems.mmmop4b
+ascendmoea.problems.motsp
+ascendmoea.problems.mmf1_z
+ascendmoea.problems.smop8
+ascendmoea.problems.sym_part_simple
+ascendmoea.problems.idmpm3t1
+ascendmoea.problems.mmf6
+ascendmoea.problems.poly_6
+ascendmoea.problems.lsmop9
+ascendmoea.problems.idmpm2t2_e
+ascendmoea.problems.rwmop9
+ascendmoea.problems.idmpm2t4
+ascendmoea.problems.map_problem
+ascendmoea.problems.poly_2
+ascendmoea.problems.mmf2
+ascendmoea.problems.sparse_pm
+ascendmoea.problems.dtlz4
+ascendmoea.problems.sym_part_rotated
+ascendmoea.problems.rwmop8
+ascendmoea.problems.idmpm3t4
+ascendmoea.problems.mpdmp
+ascendmoea.problems.poly_3
+ascendmoea.problems.mmf3
+ascendmoea.problems.dtlz5
+ascendmoea.problems.idmpm2t3_e
+ascendmoea.problems.sparse_registry
+ascendmoea.problems.mmf7
+ascendmoea.problems.lsmop8
+ascendmoea.problems.mqap
+ascendmoea.problems.idmpm2t1
+ascendmoea.problems.dtlz1
+ascendmoea.problems.sparse_kp
+ascendmoea.problems.idmpm3t4_e
+ascendmoea.problems.application
+ascendmoea.problems.mmf14_a
+ascendmoea.problems.dtlz6
+ascendmoea.problems.sparse_po
+ascendmoea.problems.idmpm3t3
+ascendmoea.problems.poly_4
+ascendmoea.problems.mmf4
+ascendmoea.problems.idmpm2t2
+ascendmoea.problems.zdt_base
+ascendmoea.problems.dtlz2
+ascendmoea.problems.rwmop10
+ascendmoea.problems.idmpm3t2
+ascendmoea.problems.poly_5
+ascendmoea.problems.mmf5
+ascendmoea.problems.idmpm2t3
+ascendmoea.problems.dtlz3
+ascendmoea.problems.sparse_sr
+ascendmoea.problems.mmf15_a
+ascendmoea.problems.mmf1
+ascendmoea.problems.mmo_registry
+ascendmoea.problems.idmpm2t1_e
+ascendmoea.problems.dtlz7
+ascendmoea.problems.mmf1_e
+ascendmoea.problems.mmmop6a
+ascendmoea.problems.zdt1
+ascendmoea.problems.smop4
+ascendmoea.problems.rwmop1
+ascendmoea.problems.lsmop_base
+ascendmoea.problems.idmpm4t2
+ascendmoea.problems.lsmop5
+ascendmoea.problems.mmmop5a
+ascendmoea.problems.mmf13
+ascendmoea.problems.mmmop3d
+ascendmoea.problems.rwmop5
+ascendmoea.problems.real_world_registry
+ascendmoea.problems.zdt5
+ascendmoea.problems.idmpm3t2_e
+ascendmoea.problems.monrp
+ascendmoea.problems.lsmop1
+ascendmoea.problems.mmmop4a
+ascendmoea.problems.mmf12
+ascendmoea.problems.mmmop6d
+ascendmoea.problems.ueclp
+ascendmoea.problems.smop1
+ascendmoea.problems.rwmop4
+ascendmoea.problems.zdt4
+ascendmoea.problems.idmpm3t3_e
+ascendmoea.problems.rwmop_base
+ascendmoea.problems.dascmop
+ascendmoea.problems.mmmop1a
+ascendmoea.problems.lircmop
+ascendmoea.problems.mmmop3a
+ascendmoea.problems.mmmop5d
+ascendmoea.problems.poly_10
+ascendmoea.problems.smop5
+ascendmoea.problems.idmpm4t3
+ascendmoea.problems.lsmop4
+ascendmoea.problems.mmmop4d
+ascendmoea.problems.mmmop2a
+```
+
+## Package Contents
+
+### Functions
+
+````{list-table}
+:class: autosummary longtable
+:align: left
+
+* - {py:obj}`get_problem <ascendmoea.problems.get_problem>`
+  - ```{autodoc2-docstring} ascendmoea.problems.get_problem
+    :summary:
+    ```
+* - {py:obj}`create_problem <ascendmoea.problems.create_problem>`
+  - ```{autodoc2-docstring} ascendmoea.problems.create_problem
+    :summary:
+    ```
+* - {py:obj}`list_problems <ascendmoea.problems.list_problems>`
+  - ```{autodoc2-docstring} ascendmoea.problems.list_problems
+    :summary:
+    ```
+````
+
+### Data
+
+````{list-table}
+:class: autosummary longtable
+:align: left
+
+* - {py:obj}`PROBLEMS <ascendmoea.problems.PROBLEMS>`
+  - ```{autodoc2-docstring} ascendmoea.problems.PROBLEMS
+    :summary:
+    ```
+* - {py:obj}`register_problem <ascendmoea.problems.register_problem>`
+  - ```{autodoc2-docstring} ascendmoea.problems.register_problem
+    :summary:
+    ```
+````
+
+### API
+
+````{py:data} PROBLEMS
+:canonical: ascendmoea.problems.PROBLEMS
+:value: >
+   'ComponentRegistry(...)'
+
+```{autodoc2-docstring} ascendmoea.problems.PROBLEMS
+```
+
+````
+
+````{py:data} register_problem
+:canonical: ascendmoea.problems.register_problem
+:value: >
+   None
+
+```{autodoc2-docstring} ascendmoea.problems.register_problem
+```
+
+````
+
+````{py:function} get_problem(name: str)
+:canonical: ascendmoea.problems.get_problem
+
+```{autodoc2-docstring} ascendmoea.problems.get_problem
+```
+````
+
+````{py:function} create_problem(name: str, /, **kwargs)
+:canonical: ascendmoea.problems.create_problem
+
+```{autodoc2-docstring} ascendmoea.problems.create_problem
+```
+````
+
+````{py:function} list_problems() -> tuple[str, ...]
+:canonical: ascendmoea.problems.list_problems
+
+```{autodoc2-docstring} ascendmoea.problems.list_problems
+```
+````

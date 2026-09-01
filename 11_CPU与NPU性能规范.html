@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CPU 与 NPU 性能规范 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="多 NPU 批量调度" href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html" /><link rel="prev" title="指标实验与监控" href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="CPU 与 NPU 性能规范"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">首页</a></li>
+  <li class="link"><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="#">中文</a></li>
+      <li><a lang="en" href="en/11_performance.html">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+    <li><a href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+    <li><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+    <li><a href="#">CPU 与 NPU 性能规范</a></li>
+    <li><a href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#id1">&#20004;&#31867;&#24615;&#33021;&#32467;&#35770;</a><ul>
+<li><a class="reference internal" href="#id2">&#21333;&#20219;&#21153;&#24310;&#36831;</a></li>
+<li><a class="reference internal" href="#id3">&#31995;&#32479;&#21534;&#21520;</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">&#26631;&#20934;&#35745;&#26102;&#27969;&#31243;</a></li>
+<li><a class="reference internal" href="#cpu">CPU &#32447;&#31243;&#32426;&#24459;</a></li>
+<li><a class="reference internal" href="#cpu-worker-npu">&#38450;&#27490; CPU worker &#27745;&#26579; NPU</a></li>
+<li><a class="reference internal" href="#npu">NPU &#21516;&#27493;&#19982;&#25968;&#25454;&#20256;&#36755;</a></li>
+<li><a class="reference internal" href="#n-max-fe">&#22914;&#20309;&#36873;&#25321; N &#21644; max_fe</a></li>
+<li><a class="reference internal" href="#id5">NPU &#22810;&#20219;&#21153;&#23481;&#37327;</a></li>
+<li><a class="reference internal" href="#id6">&#25968;&#20540;&#31934;&#24230;&#32422;&#23450;</a></li>
+<li><a class="reference internal" href="#id7">&#24517;&#25253;&#25968;&#25454;</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">CPU 与 NPU 性能规范</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="_sources/11_CPU与NPU性能规范.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="_sources/11_CPU与NPU性能规范.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="_sources/11_CPU与NPU性能规范.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20_sources/11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20_sources/11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="cpu-npu">
+<h1>CPU 与 NPU 性能规范<a class="headerlink" href="#cpu-npu" title="链接到此标题。">#</a></h1>
+<section id="id1">
+<h2>两类性能结论<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h2>
+<section id="id2">
+<h3>单任务延迟<a class="headerlink" href="#id2" title="链接到此标题。">#</a></h3>
+<p>一次算法或算子独占规定资源时的完成时间。CPU 固定 8 线程，NPU 每卡只放一个被测
+worker，其他任务不得共享同一设备。单任务加速比应基于这一口径：</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">speedup = median_cpu8_seconds / median_npu_seconds
+</span></pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>系统吞吐<a class="headerlink" href="#id3" title="链接到此标题。">#</a></h3>
+<p>服务器在并发运行多个独立重复时，每小时完成多少任务。CPU 可用 joblib 并行多个 8 线程
+进程，NPU 可在每卡运行一个或经过容量筛选的多个进程。吞吐提升不能替代单任务加速比。</p>
+</section>
+</section>
+<section id="id4">
+<h2>标准计时流程<a class="headerlink" href="#id4" title="链接到此标题。">#</a></h2>
+<ol class="arabic simple">
+<li><p>固定算法、问题、<code class="docutils literal notranslate"><span class="pre">N</span></code>、<code class="docutils literal notranslate"><span class="pre">max_fe</span></code>、seed 和 dtype 策略。</p></li>
+<li><p>完成一次同形状预热，不把首次编译时间混入稳态时间。</p></li>
+<li><p>清理或记录缓存状态，但不要在某一设备上额外受益。</p></li>
+<li><p>在计时前同步 NPU。</p></li>
+<li><p>只计入算法求解，不计入导入、环境激活和结果压缩。</p></li>
+<li><p>在计时后再次同步 NPU。</p></li>
+<li><p>记录完整种群、指标、主机内存和设备内存。</p></li>
+<li><p>至少 20 次独立重复，使用中位数报告。</p></li>
+</ol>
+<p>标准工作流已经实现第 4 和第 6 步：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span>
+</span><span data-line="2">    <span class="n">algorithm</span><span class="p">,</span>
+</span><span data-line="3">    <span class="n">problem</span><span class="p">,</span>
+</span><span data-line="4">    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;npu:0&quot;</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">synchronize_timing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+</span><span data-line="7"><span class="p">)</span>
+</span></pre></div>
+</div>
+</section>
+<section id="cpu">
+<h2>CPU 线程纪律<a class="headerlink" href="#cpu" title="链接到此标题。">#</a></h2>
+<p>CPU 基准应显式设置 8 个 intra-op 线程，并限制相关数学库：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">export</span><span class="w"> </span><span class="nv">ASCENDMOEA_CPU_THREADS</span><span class="o">=</span><span class="m">8</span>
+</span><span data-line="2"><span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+</span><span data-line="3"><span class="nb">export</span><span class="w"> </span><span class="nv">MKL_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+</span><span data-line="4"><span class="nb">export</span><span class="w"> </span><span class="nv">OPENBLAS_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+</span><span data-line="5"><span class="nb">export</span><span class="w"> </span><span class="nv">NUMEXPR_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+</span></pre></div>
+</div>
+<p>线程越多并不必然越快。小张量上的线程启动、同步和缓存竞争可能让单线程更快。因此应先
+做 1、2、4、8、16 线程筛选；若基准协议选择 CPU8，则固定使用 8 线程，同时报告线程
+缩放曲线和选择依据。</p>
+</section>
+<section id="cpu-worker-npu">
+<h2>防止 CPU worker 污染 NPU<a class="headerlink" href="#cpu-worker-npu" title="链接到此标题。">#</a></h2>
+<p>CPU 进程必须在任何 PyTorch 后端自动发现之前设置：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="nb">export</span><span class="w"> </span><span class="nv">TORCH_DEVICE_BACKEND_AUTOLOAD</span><span class="o">=</span><span class="m">0</span>
+</span><span data-line="2"><span class="nb">export</span><span class="w"> </span><span class="nv">ASCENDMOEA_DEVICE</span><span class="o">=</span>cpu
+</span></pre></div>
+</div>
+<p>运行后检查 <code class="docutils literal notranslate"><span class="pre">npu-smi</span></code>：CPU worker 不应出现在任何卡上。否则 CPU 时间会混入 NPU 后端
+初始化和 CANN 编译开销，主机内存也会因编译进程池显著增大。</p>
+</section>
+<section id="npu">
+<h2>NPU 同步与数据传输<a class="headerlink" href="#npu" title="链接到此标题。">#</a></h2>
+<p>算子压力测试应先把输入传到 NPU，再同步，然后开始计时。只测试目标算子时，不把
+CPU 到 NPU 的传输算入内核时间；端到端算法测试则包含算法内部真实发生的传输。两种口径
+必须分别命名：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">x_npu</span> <span class="o">=</span> <span class="n">x_cpu</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;npu:0&quot;</span><span class="p">)</span>
+</span><span data-line="2"><span class="n">synchronize</span><span class="p">(</span><span class="s2">&quot;npu:0&quot;</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">started</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+</span><span data-line="4"><span class="n">y</span> <span class="o">=</span> <span class="n">operator</span><span class="p">(</span><span class="n">x_npu</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">synchronize</span><span class="p">(</span><span class="s2">&quot;npu:0&quot;</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span> <span class="o">-</span> <span class="n">started</span>
+</span></pre></div>
+</div>
+<p>任何 <code class="docutils literal notranslate"><span class="pre">.item()</span></code>、<code class="docutils literal notranslate"><span class="pre">.cpu()</span></code>、<code class="docutils literal notranslate"><span class="pre">.numpy()</span></code> 都可能触发隐式同步。应在代际边界集中处理标量，
+避免代内反复阻塞设备队列。</p>
+</section>
+<section id="n-max-fe">
+<h2>如何选择 N 和 max_fe<a class="headerlink" href="#n-max-fe" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">N=100</span></code>、<code class="docutils literal notranslate"><span class="pre">max_fe=10_000</span></code> 适合质量对照和基础兼容性，但常常不足以体现 NPU。正式性能
+设置应先做规模筛选：</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>级别</p></th>
+<th class="head text-right"><p>建议 N</p></th>
+<th class="head text-right"><p>建议 max_fe</p></th>
+<th class="head"><p>目的</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>质量基线</p></td>
+<td class="text-right"><p>100</p></td>
+<td class="text-right"><p>10,000</p></td>
+<td><p>与参考实现对照</p></td>
+</tr>
+<tr class="row-odd"><td><p>中等压力</p></td>
+<td class="text-right"><p>500</p></td>
+<td class="text-right"><p>50,000</p></td>
+<td><p>判断并行拐点</p></td>
+</tr>
+<tr class="row-even"><td><p>高压力</p></td>
+<td class="text-right"><p>1,000</p></td>
+<td class="text-right"><p>100,000</p></td>
+<td><p>展示大批量吞吐</p></td>
+</tr>
+<tr class="row-odd"><td><p>算子压力</p></td>
+<td class="text-right"><p>2,000 至 10,000</p></td>
+<td class="text-right"><p>不适用</p></td>
+<td><p>测试 <code class="docutils literal notranslate"><span class="pre">O(N^2)</span></code> 算子和内存边界</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>具体设置必须由预实验决定。若 NPU 与 CPU8 差距不显著，依次检查：张量是否真的在 NPU、
+是否存在主机同步、批量是否过小、目标函数是否仍有循环、是否首次编译、是否共享卡、以及
+<code class="docutils literal notranslate"><span class="pre">O(N^2)</span></code> 内存是否导致退化。只有代码路径正确后才能提高规模。</p>
+</section>
+<section id="id5">
+<h2>NPU 多任务容量<a class="headerlink" href="#id5" title="链接到此标题。">#</a></h2>
+<p>每卡先用 1 个 worker 建立单任务基线，再测试 2、3、4 个并发。若单任务中位时间相对独占
+下降超过预设阈值（建议 5%），延迟基准仍用每卡 1 个；吞吐队列可选择使每小时完成量
+最大的并发数，但必须标注共享模式。</p>
+</section>
+<section id="id6">
+<h2>数值精度约定<a class="headerlink" href="#id6" title="链接到此标题。">#</a></h2>
+<p>CPU 默认 <code class="docutils literal notranslate"><span class="pre">float64</span></code>，NPU 默认 <code class="docutils literal notranslate"><span class="pre">float32</span></code>，因为部分昇腾算子不支持 <code class="docutils literal notranslate"><span class="pre">float64</span></code>。这意味着
+“忽略浮点误差的一致”必须通过以下方式判断：</p>
+<ul class="simple">
+<li><p>公式级输出使用 <code class="docutils literal notranslate"><span class="pre">atol</span> <span class="pre">+</span> <span class="pre">rtol</span> <span class="pre">*</span> <span class="pre">abs(reference)</span></code>；</p></li>
+<li><p>排序和选择另行比较前沿号、索引集合和平局处理；</p></li>
+<li><p>算法级比较 20 次指标分布，而不是要求相同 seed 得到逐点相同轨迹；</p></li>
+<li><p>对约束边界附近样本单独做容差敏感性分析。</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>必报数据<a class="headerlink" href="#id7" title="链接到此标题。">#</a></h2>
+<ul class="simple">
+<li><p>CPU8 与 NPU 每次原始墙钟时间；</p></li>
+<li><p>预热时间和是否计入；</p></li>
+<li><p>单次延迟加速比与系统吞吐比；</p></li>
+<li><p>CPU/NPU 峰值主机 PSS、RSS；</p></li>
+<li><p>NPU 峰值 HBM；</p></li>
+<li><p>每代 FE、种群和指标；</p></li>
+<li><p>失败、超时、重跑和异常原因；</p></li>
+<li><p>硬件利用率时间序列。</p></li>
+</ul>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">指标实验与监控</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">多 NPU 批量调度</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=34088549"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/translations.js?v=540d3cec"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script src="_static/site.js?v=5d939ab5"></script></body>
+</html>

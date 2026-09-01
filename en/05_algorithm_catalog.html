@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Algorithm Directory and Selection - AscendMOEA Documentation</title><link rel="shortcut icon" href="../_static/favicon.svg"/><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Problem Suites and Data Resources" href="06_problem_library.html" /><link rel="prev" title="Core Objects and Execution Flow" href="04_core_workflow.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Algorithm Directory and Selection"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">Home</a></li>
+  <li class="link"><a href="00_reading_guide.html">Guide</a></li>
+  <li class="link"><a href="15_api_index.html">API Reference</a></li>
+  <li class="link"><a href="14_examples.html">Examples</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" required />
+  <button type="submit" aria-label="Search"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="Switch language">
+    <span class="md:hidden">Language</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="../05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">中文</a></li>
+      <li><a lang="en" href="#">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="Documentation">
+  <details class="nav-section">
+  <summary class="caption">Getting started</summary>
+  <ul>
+  
+    <li><a href="00_reading_guide.html">Documentation guide</a></li>
+    <li><a href="01_platform_scope.html">Platform scope</a></li>
+    <li><a href="02_installation.html">Installation and Ascend environment</a></li>
+    <li><a href="03_first_optimization.html">Your first optimization</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Core components</summary>
+  <ul>
+  
+    <li><a href="04_core_workflow.html">Core objects and workflow</a></li>
+    <li><a href="#">Algorithm catalog</a></li>
+    <li><a href="06_problem_library.html">Problem library</a></li>
+    <li><a href="07_tensor_operators.html">Tensor operators</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Development</summary>
+  <ul>
+  
+    <li><a href="08_custom_problems.html">Custom problems</a></li>
+    <li><a href="09_custom_algorithms.html">Custom algorithms</a></li>
+    <li><a href="14_examples.html">Runnable examples</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Experiments and performance</summary>
+  <ul>
+  
+    <li><a href="10_experiments.html">Metrics, experiments, and monitoring</a></li>
+    <li><a href="11_performance.html">CPU and NPU performance</a></li>
+    <li><a href="12_multi_npu.html">Multi-NPU scheduling</a></li>
+    <li><a href="13_troubleshooting.html">Troubleshooting</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API reference</summary>
+  <ul>
+  
+    <li><a href="15_api_index.html">Public API index</a></li>
+    <li><a href="16_core_api.html">Core and workflow API</a></li>
+    <li><a href="17_algorithm_api.html">Algorithm API</a></li>
+    <li><a href="18_problem_api.html">Problem API</a></li>
+    <li><a href="19_analysis_api.html">Operators and analysis API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>Discussions</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#built-in-algorithms-overview">Built-in Algorithms Overview</a></li>
+<li><a class="reference internal" href="#algorithm-selection-guidelines">Algorithm Selection Guidelines</a><ul>
+<li><a class="reference internal" href="#selection-by-problem-characteristics">Selection by Problem Characteristics</a></li>
+<li><a class="reference internal" href="#selection-by-computational-structure">Selection by Computational Structure</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-save-parameter">The <code class="docutils literal notranslate"><span class="pre">save</span></code> Parameter</a></li>
+<li><a class="reference internal" href="#compatibility-checklist">Compatibility Checklist</a></li>
+<li><a class="reference internal" href="#component-inspection-and-configuration-driven-execution">Component Inspection and Configuration-Driven Execution</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA Documentation</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Algorithm Directory and Selection</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="../_sources/en/05_algorithm_catalog.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="../_sources/en/05_algorithm_catalog.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="../_sources/en/05_algorithm_catalog.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../_sources/en/05_algorithm_catalog.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../_sources/en/05_algorithm_catalog.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="algorithm-directory-and-selection">
+<h1>Algorithm Directory and Selection<a class="headerlink" href="#algorithm-directory-and-selection" title="链接到此标题。">#</a></h1>
+<section id="built-in-algorithms-overview">
+<h2>Built-in Algorithms Overview<a class="headerlink" href="#built-in-algorithms-overview" title="链接到此标题。">#</a></h2>
+<p>The release includes 18 built-in algorithms. The registered name is used in <code class="docutils literal notranslate"><span class="pre">create_algorithm</span></code>, while the Python class is used for direct imports.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Registered Name</p></th>
+<th class="head"><p>Python Class</p></th>
+<th class="head"><p>Primary Application</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>General</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NSGAII</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NSGAII</span></code></p></td>
+<td><p>Non-dominated sorting and crowding distance</p></td>
+</tr>
+<tr class="row-odd"><td><p>General</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOEAD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOEAD</span></code></p></td>
+<td><p>Decomposition-based multi-objective optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>General</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPEA2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SPEA2</span></code></p></td>
+<td><p>Strength fitness assignment and $k$-NN truncation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BiCo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">BiCo</span></code></p></td>
+<td><p>Bi-population co-evolutionary constrained search</p></td>
+</tr>
+<tr class="row-even"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEAD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEAD</span></code></p></td>
+<td><p>Constrained decomposition-based optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CCMO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CCMO</span></code></p></td>
+<td><p>Co-evolutionary constrained multi-objective optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMEGL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMEGL</span></code></p></td>
+<td><p>Global and local guidance integration</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEACD</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEACD</span></code></p></td>
+<td><p>Decomposition and constraint dominance</p></td>
+</tr>
+<tr class="row-even"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEAMS</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMOEAMS</span></code></p></td>
+<td><p>Multi-stage constraint handling</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constrained</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMCMO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">EMCMO</span></code></p></td>
+<td><p>Enhanced environmental selection for constraints</p></td>
+</tr>
+<tr class="row-even"><td><p>Multimodal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HREA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">HREA</span></code></p></td>
+<td><p>Joint decision- and objective-space diversity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multimodal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMMO</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CMMO</span></code></p></td>
+<td><p>Collaborative multimodal multi-objective search</p></td>
+</tr>
+<tr class="row-even"><td><p>Multimodal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CoMMEA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CoMMEA</span></code></p></td>
+<td><p>Multi-population cooperative multimodal optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sparse</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SparseEA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SparseEA</span></code></p></td>
+<td><p>Sparse decision variable mask evolution</p></td>
+</tr>
+<tr class="row-even"><td><p>Sparse</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SparseEA2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">SparseEA2</span></code></p></td>
+<td><p>Enhanced sparse evolutionary search</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sparse</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TS-SparseEA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TSSparseEA</span></code></p></td>
+<td><p>Two-stage sparse evolutionary optimization</p></td>
+</tr>
+<tr class="row-even"><td><p>Sparse/Large-scale</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LMEA</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LMEA</span></code></p></td>
+<td><p>Large-scale variable clustering and optimization</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sparse/Generative</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOEA-PSL</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">MOEAPSL</span></code></p></td>
+<td><p>Pareto set learning-assisted search</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Direct import:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">CMMO</span><span class="p">,</span> <span class="n">MOEAPSL</span><span class="p">,</span> <span class="n">NSGAII</span>
+</span><span data-line="2">
+</span></pre></div>
+</div>
+<p>Registry instantiation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_algorithm</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">algorithm</span> <span class="o">=</span> <span class="n">create_algorithm</span><span class="p">(</span><span class="s2">&quot;MOEA-PSL&quot;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</span><span data-line="4">
+</span></pre></div>
+</div>
+</section>
+<section id="algorithm-selection-guidelines">
+<h2>Algorithm Selection Guidelines<a class="headerlink" href="#algorithm-selection-guidelines" title="链接到此标题。">#</a></h2>
+<section id="selection-by-problem-characteristics">
+<h3>Selection by Problem Characteristics<a class="headerlink" href="#selection-by-problem-characteristics" title="链接到此标题。">#</a></h3>
+<ul class="simple">
+<li><p><strong>Unconstrained / Zero Constraints</strong>: Establish performance baselines using <code class="docutils literal notranslate"><span class="pre">NSGAII</span></code>, <code class="docutils literal notranslate"><span class="pre">MOEAD</span></code>, or <code class="docutils literal notranslate"><span class="pre">SPEA2</span></code>.</p></li>
+<li><p><strong>Constrained / Narrow Feasible Regions</strong>: Use constrained algorithms and report feasible ratio trajectories.</p></li>
+<li><p><strong>Multimodal (Multiple Pareto-optimal solutions per objective vector)</strong>: Use multimodal algorithms and evaluate using IGDX or PSP metrics.</p></li>
+<li><p><strong>Sparse / High-Dimensional (Few active non-zero variables)</strong>: Use sparse optimization algorithms and track variable mask densities.</p></li>
+</ul>
+</section>
+<section id="selection-by-computational-structure">
+<h3>Selection by Computational Structure<a class="headerlink" href="#selection-by-computational-structure" title="链接到此标题。">#</a></h3>
+<p>NPUs achieve optimal efficiency on large-scale matrix operations, pairwise distance computations, and batched objective evaluations. If an algorithm operates on minimal population sizes or relies heavily on data-dependent Python branching, dispatch overhead may surpass vectorized execution gains. Hardware throughput and solution quality should be evaluated concurrently.</p>
+</section>
+</section>
+<section id="the-save-parameter">
+<h2>The <code class="docutils literal notranslate"><span class="pre">save</span></code> Parameter<a class="headerlink" href="#the-save-parameter" title="链接到此标题。">#</a></h2>
+<p>All algorithms inherit <code class="docutils literal notranslate"><span class="pre">Algorithm(save=...)</span></code>. The value <code class="docutils literal notranslate"><span class="pre">abs(save)</span></code> defines the maximum number of uniformly spaced generational snapshot slots retained in <code class="docutils literal notranslate"><span class="pre">result</span></code>. Both <code class="docutils literal notranslate"><span class="pre">save=0</span></code> and <code class="docutils literal notranslate"><span class="pre">save=1</span></code> preserve only the final population state; they do not retain every single generation:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">save=1</span></code>: Retains only the terminal state.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save=20</span></code> or <code class="docutils literal notranslate"><span class="pre">save=-20</span></code>: Retains at most 20 evenly spaced generation snapshots across the evaluation budget.</p></li>
+<li><p>To capture full generational populations: Use <code class="docutils literal notranslate"><span class="pre">HistoryMonitor</span></code> or a custom streaming monitor.</p></li>
+</ul>
+<p>Do not rely on the internal <code class="docutils literal notranslate"><span class="pre">result</span></code> slots when exact, full-history trajectories are required.</p>
+</section>
+<section id="compatibility-checklist">
+<h2>Compatibility Checklist<a class="headerlink" href="#compatibility-checklist" title="链接到此标题。">#</a></h2>
+<p>Ensure each algorithm-problem configuration satisfies the following:</p>
+<ol class="arabic simple">
+<li><p>Problem encoding matches the representation supported by algorithm operators.</p></li>
+<li><p>Objective count $M$ meets reference vector and environmental selection constraints.</p></li>
+<li><p>Population size $N$ is sufficient to construct required reference vectors or mating partitions.</p></li>
+<li><p>Evaluation budget <code class="docutils literal notranslate"><span class="pre">max_fe</span></code> covers initialization plus at least one complete offspring batch.</p></li>
+<li><p>Constrained algorithms receive consistently shaped <code class="docutils literal notranslate"><span class="pre">[N,</span> <span class="pre">C]</span></code> constraint tensors.</p></li>
+</ol>
+<p>Quick sanity checks can use smaller budgets. For rigorous performance benchmarking, configure realistic budgets (e.g., $N=100$, $\text{max_fe}=10,000$ or higher) evaluated over multiple random seeds.</p>
+</section>
+<section id="component-inspection-and-configuration-driven-execution">
+<h2>Component Inspection and Configuration-Driven Execution<a class="headerlink" href="#component-inspection-and-configuration-driven-execution" title="链接到此标题。">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_algorithm</span><span class="p">,</span> <span class="n">list_algorithms</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">list_algorithms</span><span class="p">():</span>
+</span><span data-line="4">    <span class="bp">cls</span> <span class="o">=</span> <span class="n">get_algorithm</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span data-line="5">    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__module__</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span data-line="6">
+</span></pre></div>
+</div>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="04_core_workflow.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">Core Objects and Execution Flow</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="06_problem_library.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">Problem Suites and Data Resources</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=34088549"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/site.js?v=5d939ab5"></script></body>
+</html>

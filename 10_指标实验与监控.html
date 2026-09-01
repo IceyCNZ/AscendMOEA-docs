@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="./">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>指标实验与监控 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="CPU 与 NPU 性能规范" href="11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html" /><link rel="prev" title="自定义算法开发" href="09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="指标实验与监控"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="index.html">
+      <img class="light-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">首页</a></li>
+  <li class="link"><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
+  <li class="link"><a href="15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
+  <li class="link"><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
+  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="切换语言">
+    <span class="md:hidden">语言</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="#">中文</a></li>
+      <li><a lang="en" href="en/10_experiments.html">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="文档导航">
+  <details class="nav-section">
+  <summary class="caption">入门</summary>
+  <ul>
+  
+    <li><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+    <li><a href="01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+    <li><a href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+    <li><a href="03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">第一个优化任务</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">核心组件</summary>
+  <ul>
+  
+    <li><a href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+    <li><a href="05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+    <li><a href="06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+    <li><a href="07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">开发与扩展</summary>
+  <ul>
+  
+    <li><a href="08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+    <li><a href="09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+    <li><a href="14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">实验、性能与排错</summary>
+  <ul>
+  
+    <li><a href="#">指标、实验与监控</a></li>
+    <li><a href="11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+    <li><a href="12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+    <li><a href="13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API 参考</summary>
+  <ul>
+  
+    <li><a href="15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+    <li><a href="16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+    <li><a href="17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+    <li><a href="18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+    <li><a href="19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>讨论</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#id2">&#25351;&#26631;&#20837;&#21475;</a></li>
+<li><a class="reference internal" href="#id3">&#27599;&#20195;&#25351;&#26631;</a></li>
+<li><a class="reference internal" href="#id4">&#25512;&#33616;&#32467;&#26524;&#30446;&#24405;</a></li>
+<li><a class="reference internal" href="#summary-json"><code class="docutils literal notranslate"><span class="pre">summary.json</span></code> &#26368;&#23567;&#23383;&#27573;</a></li>
+<li><a class="reference internal" href="#id5">&#20869;&#23384;&#35760;&#24405;</a><ul>
+<li><a class="reference internal" href="#id6">&#20027;&#26426;&#20869;&#23384;</a></li>
+<li><a class="reference internal" href="#npu">NPU &#20869;&#23384;</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">&#37325;&#22797;&#23454;&#39564;&#19982;&#32479;&#35745;</a></li>
+<li><a class="reference internal" href="#id8">&#21487;&#35270;&#21270;&#36755;&#20986;</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">指标实验与监控</strong>
+        <meta itemprop="position" content="2" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="_sources/10_指标实验与监控.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="_sources/10_指标实验与监控.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="_sources/10_指标实验与监控.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20_sources/10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20_sources/10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="id1">
+<h1>指标实验与监控<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h1>
+<section id="id2">
+<h2>指标入口<a class="headerlink" href="#id2" title="链接到此标题。">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+</span><span data-line="2">    <span class="n">coverage_rate</span><span class="p">,</span>
+</span><span data-line="3">    <span class="n">cpf</span><span class="p">,</span>
+</span><span data-line="4">    <span class="n">delta_p</span><span class="p">,</span>
+</span><span data-line="5">    <span class="n">dm</span><span class="p">,</span>
+</span><span data-line="6">    <span class="n">feasible_rate</span><span class="p">,</span>
+</span><span data-line="7">    <span class="n">gd</span><span class="p">,</span>
+</span><span data-line="8">    <span class="n">hv</span><span class="p">,</span>
+</span><span data-line="9">    <span class="n">igd</span><span class="p">,</span>
+</span><span data-line="10">    <span class="n">igdp</span><span class="p">,</span>
+</span><span data-line="11">    <span class="n">igdx</span><span class="p">,</span>
+</span><span data-line="12">    <span class="n">psp</span><span class="p">,</span>
+</span><span data-line="13"><span class="p">)</span>
+</span></pre></div>
+</div>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>指标</p></th>
+<th class="head"><p>优化方向</p></th>
+<th class="head"><p>所需参考数据</p></th>
+<th class="head"><p>适用重点</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HV</p></td>
+<td><p>越大越好</p></td>
+<td><p>目标空间参考前沿/归一化范围</p></td>
+<td><p>收敛与分布综合表现</p></td>
+</tr>
+<tr class="row-odd"><td><p>IGD</p></td>
+<td><p>越小越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>参考前沿覆盖</p></td>
+</tr>
+<tr class="row-even"><td><p>IGD+</p></td>
+<td><p>越小越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>支配感知距离</p></td>
+</tr>
+<tr class="row-odd"><td><p>GD</p></td>
+<td><p>越小越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>解集到前沿距离</p></td>
+</tr>
+<tr class="row-even"><td><p>DeltaP</p></td>
+<td><p>越小越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>双向距离平衡</p></td>
+</tr>
+<tr class="row-odd"><td><p>DM</p></td>
+<td><p>越大越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>网格多样性</p></td>
+</tr>
+<tr class="row-even"><td><p>CPF</p></td>
+<td><p>越大越好</p></td>
+<td><p>目标空间参考点</p></td>
+<td><p>前沿流形覆盖</p></td>
+</tr>
+<tr class="row-odd"><td><p>IGDX</p></td>
+<td><p>越小越好</p></td>
+<td><p>决策空间参考 Pareto 集</p></td>
+<td><p>多模态决策解质量</p></td>
+</tr>
+<tr class="row-even"><td><p>CR</p></td>
+<td><p>越大越好</p></td>
+<td><p>决策空间参考 Pareto 集</p></td>
+<td><p>决策范围覆盖</p></td>
+</tr>
+<tr class="row-odd"><td><p>PSP</p></td>
+<td><p>越小越好</p></td>
+<td><p>决策空间参考 Pareto 集</p></td>
+<td><p>距离与覆盖综合评价</p></td>
+</tr>
+<tr class="row-even"><td><p>Feasible rate</p></td>
+<td><p>越大越好</p></td>
+<td><p>无</p></td>
+<td><p>约束可行率</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>高于三目标的 HV 使用蒙特卡洛估计。正式统计必须固定随机种子、样本数和归一化规则；
+若需要完全确定的高维 HV，应在实验外接入确定性实现并记录其版本。</p>
+</section>
+<section id="id3">
+<h2>每代指标<a class="headerlink" href="#id3" title="链接到此标题。">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistoryMonitor</span><span class="p">,</span> <span class="n">optimize</span>
+</span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">hv</span><span class="p">,</span> <span class="n">igd</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="n">history</span> <span class="o">=</span> <span class="n">HistoryMonitor</span><span class="p">(</span><span class="n">copy_to_cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">monitors</span><span class="o">=</span><span class="n">history</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">reference</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimum</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+</span><span data-line="7">
+</span><span data-line="8"><span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span data-line="9"><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">history</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
+</span><span data-line="10">    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+</span><span data-line="11">        <span class="p">{</span>
+</span><span data-line="12">            <span class="s2">&quot;fe&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span>
+</span><span data-line="13">            <span class="s2">&quot;hv&quot;</span><span class="p">:</span> <span class="n">hv</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
+</span><span data-line="14">            <span class="s2">&quot;igd&quot;</span><span class="p">:</span> <span class="n">igd</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
+</span><span data-line="15">        <span class="p">}</span>
+</span><span data-line="16">    <span class="p">)</span>
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">HistoryMonitor</span></code> 会把所有种群留在内存中，只适合调试或中小规模任务。正式全量实验应
+编写流式 <code class="docutils literal notranslate"><span class="pre">Monitor</span></code>：每次回调将 <code class="docutils literal notranslate"><span class="pre">decs</span></code>、<code class="docutils literal notranslate"><span class="pre">objs</span></code>、<code class="docutils literal notranslate"><span class="pre">cons</span></code>、FE 和时间戳写入单独文件，
+先写临时文件，再原子重命名，最后更新进度 JSON。</p>
+</section>
+<section id="id4">
+<h2>推荐结果目录<a class="headerlink" href="#id4" title="链接到此标题。">#</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span><span data-line="1">results/
+</span><span data-line="2">  &lt;stage&gt;/&lt;device&gt;/&lt;algorithm&gt;/&lt;problem&gt;/seed_&lt;seed&gt;/
+</span><span data-line="3">    config.json
+</span><span data-line="4">    environment.json
+</span><span data-line="5">    progress.json
+</span><span data-line="6">    generations/
+</span><span data-line="7">      fe_00000100.npz
+</span><span data-line="8">      fe_00000200.npz
+</span><span data-line="9">    metrics.csv
+</span><span data-line="10">    summary.json
+</span><span data-line="11">    resource_samples.csv
+</span><span data-line="12">    COMPLETE
+</span></pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">COMPLETE</span></code> 只能在所有数据成功落盘、摘要可读取且校验完成后创建。失败任务保留错误日志，
+重跑时写入新版本目录，不覆盖可追溯的旧结果。</p>
+</section>
+<section id="summary-json">
+<h2><code class="docutils literal notranslate"><span class="pre">summary.json</span></code> 最小字段<a class="headerlink" href="#summary-json" title="链接到此标题。">#</a></h2>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="p">{</span>
+</span><span data-line="2"><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span data-line="3"><span class="w">  </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSGAII&quot;</span><span class="p">,</span>
+</span><span data-line="4"><span class="w">  </span><span class="nt">&quot;problem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DTLZ2&quot;</span><span class="p">,</span>
+</span><span data-line="5"><span class="w">  </span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npu:0&quot;</span><span class="p">,</span>
+</span><span data-line="6"><span class="w">  </span><span class="nt">&quot;population_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+</span><span data-line="7"><span class="w">  </span><span class="nt">&quot;max_fe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+</span><span data-line="8"><span class="w">  </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span>
+</span><span data-line="9"><span class="w">  </span><span class="nt">&quot;elapsed_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.345</span><span class="p">,</span>
+</span><span data-line="10"><span class="w">  </span><span class="nt">&quot;peak_host_rss_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span>
+</span><span data-line="11"><span class="w">  </span><span class="nt">&quot;peak_host_pss_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120000000</span><span class="p">,</span>
+</span><span data-line="12"><span class="w">  </span><span class="nt">&quot;peak_device_memory_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">987654321</span><span class="p">,</span>
+</span><span data-line="13"><span class="w">  </span><span class="nt">&quot;metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;HV&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;IGD&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">},</span>
+</span><span data-line="14"><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span>
+</span><span data-line="15"><span class="p">}</span>
+</span></pre></div>
+</div>
+<p>还应保存源码哈希、包版本、CANN/PyTorch/<code class="docutils literal notranslate"><span class="pre">torch_npu</span></code> 版本、CPU 型号、NPU 型号、线程数、
+worker 并发、预热次数和同步策略。</p>
+</section>
+<section id="id5">
+<h2>内存记录<a class="headerlink" href="#id5" title="链接到此标题。">#</a></h2>
+<section id="id6">
+<h3>主机内存<a class="headerlink" href="#id6" title="链接到此标题。">#</a></h3>
+<p>建议每 0.2 至 1 秒采样一次进程树的 RSS 和 PSS：</p>
+<ul class="simple">
+<li><p>RSS 易获得，但共享库会在多进程求和时重复统计；</p></li>
+<li><p>PSS 按共享比例分摊，更适合报告多 worker 总占用；</p></li>
+<li><p>同时记录整机 available memory、swap 和 OOM 事件。</p></li>
+</ul>
+<p>Linux 可从 <code class="docutils literal notranslate"><span class="pre">/proc/&lt;pid&gt;/smaps_rollup</span></code> 读取 PSS。一个 worker 的资源统计必须包含其子进程，
+否则模型编译、数据加载或作业库子进程会被漏掉。</p>
+</section>
+<section id="npu">
+<h3>NPU 内存<a class="headerlink" href="#npu" title="链接到此标题。">#</a></h3>
+<p>周期性读取 <code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code>，按物理卡和 PID 保存 HBM 使用。报告：</p>
+<ul class="simple">
+<li><p>单个正式 worker 峰值；</p></li>
+<li><p>单卡所有正式 worker 峰值总和；</p></li>
+<li><p>整个实验阶段的设备峰值；</p></li>
+<li><p>是否存在 CPU worker 意外初始化 NPU 上下文。</p></li>
+</ul>
+<p>计时区内采样器应独立运行，且采样频率在 CPU/NPU 间一致。先测量采样器自身开销，避免
+高频系统调用扭曲短算子测试。</p>
+</section>
+</section>
+<section id="id7">
+<h2>重复实验与统计<a class="headerlink" href="#id7" title="链接到此标题。">#</a></h2>
+<p>每个算法/问题/设备/代码阶段至少运行 20 个独立种子。保存每次原始结果，再报告中位数、
+均值、标准差、四分位距和 95% 置信区间。质量比较可使用配对非参数检验并进行多重比较
+校正；时间比较同时报告单次延迟和单位 FE 吞吐。</p>
+<p>不能只保留聚合均值，因为异常种子、退化可行率和长尾运行时间只有原始重复数据才能定位。</p>
+</section>
+<section id="id8">
+<h2>可视化输出<a class="headerlink" href="#id8" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ascendmoea.plotting</span></code> 提供目标空间、决策空间和指标曲线的 Plotly 图对象。出版级输出应遵守：</p>
+<ul class="simple">
+<li><p>每个文件只包含一张图，不组合多个子图；</p></li>
+<li><p>字体使用 Times New Roman；</p></li>
+<li><p>PNG 至少 300 PPI；</p></li>
+<li><p>PDF 通过支持矢量输出的渲染器生成，并检查 PDF 内元素不是整页位图；</p></li>
+<li><p>每张图保留生成脚本、数据哈希和图注元数据。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">draw_metric_curve</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">figure</span> <span class="o">=</span> <span class="n">draw_metric_curve</span><span class="p">(</span><span class="n">fes</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s2">&quot;IGD&quot;</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">figure</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;igd_curve.html&quot;</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;igd_curve.pdf&quot;</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;igd_curve.png&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span></pre></div>
+</div>
+<p>静态 <code class="docutils literal notranslate"><span class="pre">write_image</span></code> 需要安装兼容的 Kaleido。导出后应逐张打开检查字体、坐标范围、图例、
+遮挡和空白内容。</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">自定义算法开发</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">CPU 与 NPU 性能规范</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="_static/documentation_options.js?v=34088549"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=fd10adb8"></script>
+      <script src="_static/translations.js?v=540d3cec"></script>
+      <script src="_static/design-tabs.js?v=f930bc37"></script>
+      <script src="_static/shibuya.js?v=50760d75"></script>
+      <script src="_static/site.js?v=5d939ab5"></script></body>
+</html>

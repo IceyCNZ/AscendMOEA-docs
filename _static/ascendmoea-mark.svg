@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 440" role="img" aria-labelledby="title desc">
+  <title id="title">AscendMOEA optimization mark</title>
+  <desc id="desc">An abstract Ascend letterform intersected by a rising Pareto front</desc>
+  <defs>
+    <linearGradient id="brand" x1="65" y1="368" x2="365" y2="68" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563eb"/><stop offset="1" stop-color="#14b8a6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5">
+      <stop stop-color="#60a5fa" stop-opacity=".18"/><stop offset="1" stop-color="#60a5fa" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="220" cy="220" r="198" fill="url(#glow)"/>
+  <circle cx="220" cy="220" r="174" fill="none" stroke="url(#brand)" stroke-width="2" opacity=".2"/>
+  <circle cx="220" cy="220" r="132" fill="none" stroke="url(#brand)" stroke-width="2" opacity=".28"/>
+  <path d="M88 335 188 105h65l103 230h-69l-20-49H172l-20 49H88Zm107-106h49l-24-61-25 61Z" fill="url(#brand)" opacity=".9"/>
+  <path d="M115 306c49-3 94-21 135-55 37-31 65-73 80-124" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".78"/>
+  <g fill="#fff" stroke="url(#brand)" stroke-width="4">
+    <circle cx="119" cy="305" r="10"/><circle cx="189" cy="283" r="10"/><circle cx="250" cy="251" r="10"/><circle cx="298" cy="200" r="10"/><circle cx="330" cy="127" r="10"/>
+  </g>
+</svg>

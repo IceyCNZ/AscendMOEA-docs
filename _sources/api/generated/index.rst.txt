@@ -1,0 +1,11 @@
+Python API Reference
+====================
+
+These pages are generated from the current source tree and Python docstrings.
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+   :glob:
+
+   ascendmoea/*

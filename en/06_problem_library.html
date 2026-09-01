@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-accent-color="blue" data-content_root="../">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Problem Suites and Data Resources - AscendMOEA Documentation</title><link rel="shortcut icon" href="../_static/favicon.svg"/><link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="Tensorized Operators Manual" href="07_tensor_operators.html" /><link rel="prev" title="Algorithm Directory and Selection" href="05_algorithm_catalog.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d88b86f9" />
+    <link rel="stylesheet" type="text/css" href="../_static/shibuya.css?v=2ceb65ce" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    
+  <meta property="og:type" content="website"/><meta property="og:title" content="Problem Suites and Data Resources"/>
+    <meta name="twitter:card" content="summary"/>
+  
+</head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../index.html">
+      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <strong>AscendMOEA</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"><ul>
+  
+  <li class="link"><a href="index.html">Home</a></li>
+  <li class="link"><a href="00_reading_guide.html">Guide</a></li>
+  <li class="link"><a href="15_api_index.html">API Reference</a></li>
+  <li class="link"><a href="14_examples.html">Examples</a></li>
+  
+</ul></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../search.html" method="get" role="search">
+  <input type="search" name="q" placeholder="Search documentation" aria-label="Search documentation" required />
+  <button type="submit" aria-label="Search"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form><div class="nav-languages">
+  <button type="button" aria-label="Switch language">
+    <span class="md:hidden">Language</span>
+    <iconify-icon icon="lucide:languages"></iconify-icon>
+  </button>
+  <div class="nav-languages-choices">
+    <ul>
+      
+      <li><a lang="zh-CN" href="../06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">中文</a></li>
+      <li><a lang="en" href="#">English</a></li>
+      
+    </ul>
+  </div>
+</div><div class="sy-head-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="切换到亮色模式"
+data-aria-light="切换到暗色模式"
+data-aria-dark="切换到自动模式">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <nav class="docs-nav globaltoc" aria-label="Documentation">
+  <details class="nav-section">
+  <summary class="caption">Getting started</summary>
+  <ul>
+  
+    <li><a href="00_reading_guide.html">Documentation guide</a></li>
+    <li><a href="01_platform_scope.html">Platform scope</a></li>
+    <li><a href="02_installation.html">Installation and Ascend environment</a></li>
+    <li><a href="03_first_optimization.html">Your first optimization</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Core components</summary>
+  <ul>
+  
+    <li><a href="04_core_workflow.html">Core objects and workflow</a></li>
+    <li><a href="05_algorithm_catalog.html">Algorithm catalog</a></li>
+    <li><a href="#">Problem library</a></li>
+    <li><a href="07_tensor_operators.html">Tensor operators</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Development</summary>
+  <ul>
+  
+    <li><a href="08_custom_problems.html">Custom problems</a></li>
+    <li><a href="09_custom_algorithms.html">Custom algorithms</a></li>
+    <li><a href="14_examples.html">Runnable examples</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">Experiments and performance</summary>
+  <ul>
+  
+    <li><a href="10_experiments.html">Metrics, experiments, and monitoring</a></li>
+    <li><a href="11_performance.html">CPU and NPU performance</a></li>
+    <li><a href="12_multi_npu.html">Multi-NPU scheduling</a></li>
+    <li><a href="13_troubleshooting.html">Troubleshooting</a></li>
+  
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">API reference</summary>
+  <ul>
+  
+    <li><a href="15_api_index.html">Public API index</a></li>
+    <li><a href="16_core_api.html">Core and workflow API</a></li>
+    <li><a href="17_algorithm_api.html">Algorithm API</a></li>
+    <li><a href="18_problem_api.html">Problem API</a></li>
+    <li><a href="19_analysis_api.html">Operators and analysis API</a></li>
+  
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>Discussions</span>
+    </a></li></ul>
+  </div>
+</nav>
+      </div>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+<li><a class="reference internal" href="#problem-system-architecture">Problem System Architecture</a></li>
+<li><a class="reference internal" href="#major-benchmark-suites">Major Benchmark Suites</a></li>
+<li><a class="reference internal" href="#real-world-and-combinatorial-problems">Real-World and Combinatorial Problems</a></li>
+<li><a class="reference internal" href="#direct-imports-and-registry-instantiation">Direct Imports and Registry Instantiation</a></li>
+<li><a class="reference internal" href="#variable-encoding-conventions">Variable Encoding Conventions</a></li>
+<li><a class="reference internal" href="#reference-data-and-quality-indicators">Reference Data and Quality Indicators</a></li>
+<li><a class="reference internal" href="#package-resource-access">Package Resource Access</a></li>
+</ul>
+</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
+  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
+  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </span>
+  <span class="flex-grow px-2 break-all">
+    
+    
+      <span>dqlme/AscendMOEA</span>
+    
+    <span class="flex text-sm repo-stats-count">
+      <span class="flex items-center pr-3">
+        <iconify-icon icon="lucide:star"></iconify-icon>
+        <strong class="js-repo-stars ml-1">0</strong>
+      </span>
+      <span class="flex items-center">
+        <iconify-icon icon="lucide:git-fork"></iconify-icon>
+        <strong class="js-repo-forks ml-1">0</strong>
+      </span>
+    </span>
+  </span>
+</a></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../index.html"><span itemprop="name">AscendMOEA</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">AscendMOEA Documentation</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Problem Suites and Data Resources</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+  
+  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
+  <div id="copy-page-trigger">
+    <button
+      type="button"
+      class="js-copy px-3 py-1 inline-flex items-center gap-1"
+      data-url="../_sources/en/06_problem_library.md.txt"
+    >
+      <i class="i-lucide" data-icon="copy"></i>
+      <span>复制页面</span>
+    </button>
+    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
+      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
+      <i class="i-lucide chevron-down"></i>
+    </button>
+  </div>
+  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
+    <div role="presentation">
+      <div class="flex flex-col" role="group">
+        <button class="js-copy" type="button" role="menuitem"
+          data-url="../_sources/en/06_problem_library.md.txt">
+          <span class="iconify-icon">
+            <i class="i-lucide" data-icon="copy"></i>
+          </span>
+          <span>复制页面</span>
+        </button>
+        <a role="menuitem" href="../_sources/en/06_problem_library.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
+            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../_sources/en/06_problem_library.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:openai"></iconify-icon>
+          <span>在 ChatGPT 中打开</span>
+        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../_sources/en/06_problem_library.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
+          <iconify-icon icon="bi:claude"></iconify-icon>
+          <span>在 Claude 中打开</span>
+        </a></div>
+    </div>
+  </div>
+</div><article class="yue" role="main">
+          <section id="problem-suites-and-data-resources">
+<h1>Problem Suites and Data Resources<a class="headerlink" href="#problem-suites-and-data-resources" title="链接到此标题。">#</a></h1>
+<section id="problem-system-architecture">
+<h2>Problem System Architecture<a class="headerlink" href="#problem-system-architecture" title="链接到此标题。">#</a></h2>
+<p>The release version registers 155 test problems, spanning analytical benchmarks, constrained optimization, multimodal optimization, sparse large-scale optimization, and real-world application suites. The exact catalog of registered problem names should be inspected dynamically via the installed package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">list_problems</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">list_problems</span><span class="p">():</span>
+</span><span data-line="4">    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+</span><span data-line="5">
+</span></pre></div>
+</div>
+</section>
+<section id="major-benchmark-suites">
+<h2>Major Benchmark Suites<a class="headerlink" href="#major-benchmark-suites" title="链接到此标题。">#</a></h2>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Category</p></th>
+<th class="head"><p>Problem Suite</p></th>
+<th class="head"><p>Count / Scope</p></th>
+<th class="head"><p>Key Characteristics</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>General</p></td>
+<td><p>ZDT</p></td>
+<td><p>ZDT1 to ZDT6</p></td>
+<td><p>Bi-objective Pareto fronts; non-convex and disconnected geometries</p></td>
+</tr>
+<tr class="row-odd"><td><p>General</p></td>
+<td><p>DTLZ</p></td>
+<td><p>DTLZ1 to DTLZ7</p></td>
+<td><p>Scalable objective dimensions and degenerate Pareto fronts</p></td>
+</tr>
+<tr class="row-even"><td><p>Large-Scale</p></td>
+<td><p>LSMOP</p></td>
+<td><p>LSMOP1 to LSMOP9</p></td>
+<td><p>Decision variable grouping and high-dimensional search spaces</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sparse</p></td>
+<td><p>SMOP</p></td>
+<td><p>SMOP1 to SMOP8</p></td>
+<td><p>Sparse Pareto-optimal decision vectors</p></td>
+</tr>
+<tr class="row-even"><td><p>Constrained</p></td>
+<td><p>CF</p></td>
+<td><p>CF1 to CF10</p></td>
+<td><p>Nonlinear constraints and fragmented feasible regions</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constrained</p></td>
+<td><p>DASCMOP</p></td>
+<td><p>DASCMOP1 to DASCMOP9</p></td>
+<td><p>Adjustable constraint difficulty profiles</p></td>
+</tr>
+<tr class="row-even"><td><p>Constrained</p></td>
+<td><p>LIRCMOP</p></td>
+<td><p>LIRCMOP1 to LIRCMOP14</p></td>
+<td><p>Large infeasible regions and complex constraint landscapes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multimodal</p></td>
+<td><p>MMF</p></td>
+<td><p>Multiple MMF variants</p></td>
+<td><p>Multiple Pareto sets and nonlinear mapping topographies</p></td>
+</tr>
+<tr class="row-even"><td><p>Multimodal</p></td>
+<td><p>MMMOP</p></td>
+<td><p>MMMOP1A to MMMOP6D</p></td>
+<td><p>Multi-layered decision space landscapes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Multimodal</p></td>
+<td><p>IDMP</p></td>
+<td><p>Base and extended variants</p></td>
+<td><p>Decision-space equivalent optimal solutions</p></td>
+</tr>
+<tr class="row-even"><td><p>Multimodal</p></td>
+<td><p>SYM-PART, Omni, poly</p></td>
+<td><p>Multiple variants</p></td>
+<td><p>Symmetrical, periodic, and polynomial structural mappings</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="real-world-and-combinatorial-problems">
+<h2>Real-World and Combinatorial Problems<a class="headerlink" href="#real-world-and-combinatorial-problems" title="链接到此标题。">#</a></h2>
+<p>Real-world problems include the RWMOP1 to RWMOP10 suites, alongside MONRP, MOTSP, MPDMP, RLP, UECLP, application benchmarks, mQAP, and map routing tasks. Sparse engineering suites include <code class="docutils literal notranslate"><span class="pre">Sparse_KP</span></code>, <code class="docutils literal notranslate"><span class="pre">Sparse_PM</span></code>, <code class="docutils literal notranslate"><span class="pre">Sparse_PO</span></code>, and <code class="docutils literal notranslate"><span class="pre">Sparse_SR</span></code>.</p>
+<p>These problems typically feature the following operational characteristics:</p>
+<ul class="simple">
+<li><p>Constructors load external MATLAB <code class="docutils literal notranslate"><span class="pre">.mat</span></code> data matrices packaged as package resources.</p></li>
+<li><p>Decision variables may follow integer, categorical label, binary, or permutation encodings.</p></li>
+<li><p>Configurable decision dimensions ($D$) and objective dimensions ($M$) are restricted by specific data instance files.</p></li>
+<li><p>A single evaluation call may require evaluating distance matrices, graph topologies, or combinatorial constraint sets.</p></li>
+</ul>
+<p>Inspect class docstrings and constructor signatures prior to initialization; do not directly apply variable dimension sizing rules ($D$) from analytical functions to data-driven problems.</p>
+</section>
+<section id="direct-imports-and-registry-instantiation">
+<h2>Direct Imports and Registry Instantiation<a class="headerlink" href="#direct-imports-and-registry-instantiation" title="链接到此标题。">#</a></h2>
+<p>Classes with valid Python identifiers are exported directly through <code class="docutils literal notranslate"><span class="pre">ascendmoea.problems</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.problems</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTLZ2</span><span class="p">,</span> <span class="n">LIRCMOP5</span><span class="p">,</span> <span class="n">RWMOP3</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">p1</span> <span class="o">=</span> <span class="n">DTLZ2</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">m</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">p2</span> <span class="o">=</span> <span class="n">LIRCMOP5</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">p3</span> <span class="o">=</span> <span class="n">RWMOP3</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="6">
+</span></pre></div>
+</div>
+<p>All registered problem identifiers can be constructed via the factory API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_problem</span>
+</span><span data-line="2">
+</span><span data-line="3"><span class="n">problem</span> <span class="o">=</span> <span class="n">create_problem</span><span class="p">(</span><span class="s2">&quot;SYM_PART_simple&quot;</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_fe</span><span class="o">=</span><span class="mi">10_000</span><span class="p">)</span>
+</span><span data-line="4">
+</span></pre></div>
+</div>
+<p>Identifiers containing spaces, hyphens, or non-standard characters must be instantiated using <code class="docutils literal notranslate"><span class="pre">create_problem</span></code>.</p>
+</section>
+<section id="variable-encoding-conventions">
+<h2>Variable Encoding Conventions<a class="headerlink" href="#variable-encoding-conventions" title="链接到此标题。">#</a></h2>
+<p>Each decision variable in <code class="docutils literal notranslate"><span class="pre">Problem.encoding</span></code> is assigned an integer code:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Encoding Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Real / Continuous</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Integer</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Categorical Label</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Binary</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Permutation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Base initializers batch-generate candidate decision variables according to <code class="docutils literal notranslate"><span class="pre">encoding</span></code>, applying bound repair and rounding schemes aligned with reference problem definitions for integer, label, and binary representations. Genetic and mutation operators invoked within custom algorithms must support the target encoding configuration.</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="reference-data-and-quality-indicators">
+<h2>Reference Data and Quality Indicators<a class="headerlink" href="#reference-data-and-quality-indicators" title="链接到此标题。">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">problem.optimum</span></code> provides a lazily generated and cached tensor of reference points in objective space; <code class="docutils literal notranslate"><span class="pre">problem.pf</span></code> provides an optional representation suitable for plotting. Built-in multimodal problems provide decision-space reference Pareto sets via <code class="docutils literal notranslate"><span class="pre">problem.ps</span></code>; this attribute is not guaranteed for arbitrary problem formulations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">reference_objectives</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimum</span>
+</span><span data-line="2"><span class="n">drawable_front</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">pf</span>
+</span><span data-line="3"><span class="n">reference_decisions</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">ps</span>  <span class="c1"># Multimodal problems only.</span>
+</span><span data-line="4">
+</span></pre></div>
+</div>
+<p>These properties serve distinct analytical purposes: objective-space indicators consume <code class="docutils literal notranslate"><span class="pre">optimum</span></code>, decision-space indicators consume <code class="docutils literal notranslate"><span class="pre">ps</span></code>, whereas <code class="docutils literal notranslate"><span class="pre">pf</span></code> serves exclusively as a visual curve, meshgrid, or <code class="docutils literal notranslate"><span class="pre">None</span></code>. If a custom multimodal problem does not define <code class="docutils literal notranslate"><span class="pre">ps</span></code>, generate an independent reference set and persist it alongside experimental artifacts.</p>
+</section>
+<section id="package-resource-access">
+<h2>Package Resource Access<a class="headerlink" href="#package-resource-access" title="链接到此标题。">#</a></h2>
+<p>Underlying benchmark dataset files reside in the <code class="docutils literal notranslate"><span class="pre">ascendmoea/vendor</span></code> resource directory and are resolved internally relative to the installed package path. Inspect packaged data assets using the Python standard library:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">python<span class="w"> </span>-<span class="w"> </span><span class="s">&lt;&lt;&#39;PY&#39;</span>
+</span><span data-line="2"><span class="s">from importlib.resources import files</span>
+</span><span data-line="3">
+</span><span data-line="4"><span class="s">root = files(&quot;ascendmoea&quot;).joinpath(&quot;vendor&quot;)</span>
+</span><span data-line="5"><span class="s">print(root)</span>
+</span><span data-line="6"><span class="s">PY</span>
+</span></pre></div>
+</div>
+<p>Custom problem implementations must not rely on working-directory-relative paths or hardcode absolute filesystem paths into data-loading logic.</p>
+</section>
+</section>
+
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>回到顶部</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="05_algorithm_catalog.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>上一章</span><div class="title">Algorithm Directory and Selection</div></div>
+    </a>
+  </div><div class="navigation-next">
+    <a href="07_tensor_operators.html">
+      <div class="page-info">
+        <span>下一章</span>
+        <div class="title">Tensorized Operators Manual</div>
+      </div>
+      <i class="i-lucide chevron-right"></i>
+    </a>
+  </div></div></div>
+    </div>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials">
+  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
+    <iconify-icon icon="simple-icons:github"></iconify-icon>
+  </a></div>
+    </div>
+  </div>
+</footer>
+      <script src="../_static/documentation_options.js?v=34088549"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=fd10adb8"></script>
+      <script src="../_static/translations.js?v=540d3cec"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+      <script src="../_static/shibuya.js?v=50760d75"></script>
+      <script src="../_static/site.js?v=5d939ab5"></script></body>
+</html>
