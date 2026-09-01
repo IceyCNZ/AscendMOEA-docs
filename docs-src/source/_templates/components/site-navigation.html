@@ -1,0 +1,94 @@
+{%- set is_en = pagename.startswith('en/') -%}
+<nav class="docs-nav globaltoc" aria-label="{{ 'Documentation' if is_en else '文档导航' }}">
+  <details class="nav-section">
+  <summary class="caption">{{ 'Getting started' if is_en else '入门' }}</summary>
+  <ul>
+  {% if is_en %}
+    <li><a href="{{ pathto('en/00_reading_guide') }}">Documentation guide</a></li>
+    <li><a href="{{ pathto('en/01_platform_scope') }}">Platform scope</a></li>
+    <li><a href="{{ pathto('en/02_installation') }}">Installation and Ascend environment</a></li>
+    <li><a href="{{ pathto('en/03_first_optimization') }}">Your first optimization</a></li>
+  {% else %}
+    <li><a href="{{ pathto('00_阅读路线') }}">阅读路线</a></li>
+    <li><a href="{{ pathto('01_平台定位与边界') }}">平台定位与边界</a></li>
+    <li><a href="{{ pathto('02_安装与昇腾环境') }}">安装与昇腾环境</a></li>
+    <li><a href="{{ pathto('03_第一个优化任务') }}">第一个优化任务</a></li>
+  {% endif %}
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">{{ 'Core components' if is_en else '核心组件' }}</summary>
+  <ul>
+  {% if is_en %}
+    <li><a href="{{ pathto('en/04_core_workflow') }}">Core objects and workflow</a></li>
+    <li><a href="{{ pathto('en/05_algorithm_catalog') }}">Algorithm catalog</a></li>
+    <li><a href="{{ pathto('en/06_problem_library') }}">Problem library</a></li>
+    <li><a href="{{ pathto('en/07_tensor_operators') }}">Tensor operators</a></li>
+  {% else %}
+    <li><a href="{{ pathto('04_核心对象与执行流') }}">核心对象与执行流</a></li>
+    <li><a href="{{ pathto('05_算法目录与选择') }}">算法目录与选择</a></li>
+    <li><a href="{{ pathto('06_问题库与数据资源') }}">问题库与数据资源</a></li>
+    <li><a href="{{ pathto('07_张量算子手册') }}">张量算子手册</a></li>
+  {% endif %}
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">{{ 'Development' if is_en else '开发与扩展' }}</summary>
+  <ul>
+  {% if is_en %}
+    <li><a href="{{ pathto('en/08_custom_problems') }}">Custom problems</a></li>
+    <li><a href="{{ pathto('en/09_custom_algorithms') }}">Custom algorithms</a></li>
+    <li><a href="{{ pathto('en/14_examples') }}">Runnable examples</a></li>
+  {% else %}
+    <li><a href="{{ pathto('08_自定义问题开发') }}">自定义问题开发</a></li>
+    <li><a href="{{ pathto('09_自定义算法开发') }}">自定义算法开发</a></li>
+    <li><a href="{{ pathto('14_可运行案例集') }}">可运行案例集</a></li>
+  {% endif %}
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">{{ 'Experiments and performance' if is_en else '实验、性能与排错' }}</summary>
+  <ul>
+  {% if is_en %}
+    <li><a href="{{ pathto('en/10_experiments') }}">Metrics, experiments, and monitoring</a></li>
+    <li><a href="{{ pathto('en/11_performance') }}">CPU and NPU performance</a></li>
+    <li><a href="{{ pathto('en/12_multi_npu') }}">Multi-NPU scheduling</a></li>
+    <li><a href="{{ pathto('en/13_troubleshooting') }}">Troubleshooting</a></li>
+  {% else %}
+    <li><a href="{{ pathto('10_指标实验与监控') }}">指标、实验与监控</a></li>
+    <li><a href="{{ pathto('11_CPU与NPU性能规范') }}">CPU 与 NPU 性能规范</a></li>
+    <li><a href="{{ pathto('12_多NPU批量调度') }}">多 NPU 批量调度</a></li>
+    <li><a href="{{ pathto('13_故障定位手册') }}">故障定位</a></li>
+  {% endif %}
+  </ul>
+  </details>
+
+  <details class="nav-section">
+  <summary class="caption">{{ 'API reference' if is_en else 'API 参考' }}</summary>
+  <ul>
+  {% if is_en %}
+    <li><a href="{{ pathto('en/15_api_index') }}">Public API index</a></li>
+    <li><a href="{{ pathto('en/16_core_api') }}">Core and workflow API</a></li>
+    <li><a href="{{ pathto('en/17_algorithm_api') }}">Algorithm API</a></li>
+    <li><a href="{{ pathto('en/18_problem_api') }}">Problem API</a></li>
+    <li><a href="{{ pathto('en/19_analysis_api') }}">Operators and analysis API</a></li>
+  {% else %}
+    <li><a href="{{ pathto('15_API速查') }}">公共 API 索引</a></li>
+    <li><a href="{{ pathto('16_API核心与工作流') }}">核心与工作流 API</a></li>
+    <li><a href="{{ pathto('17_API算法') }}">算法 API</a></li>
+    <li><a href="{{ pathto('18_API问题') }}">问题 API</a></li>
+    <li><a href="{{ pathto('19_API算子指标实验绘图') }}">算子与分析 API</a></li>
+  {% endif %}
+  </ul>
+  </details>
+
+  <div class="sidebar-links discussion-last">
+    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
+      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
+      <span>{{ 'Discussions' if is_en else '讨论' }}</span>
+    </a></li></ul>
+  </div>
+</nav>

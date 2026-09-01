@@ -1,0 +1,7 @@
+{%- set is_en = pagename.startswith('en/') -%}
+{%- if pathto('search') != '#' -%}
+<form class="searchbox flex items-center" action="{{ pathto('search') }}" method="get" role="search">
+  <input type="search" name="q" placeholder="{{ 'Search documentation' if is_en else '搜索文档' }}" aria-label="{{ 'Search documentation' if is_en else '搜索文档' }}" required />
+  <button type="submit" aria-label="{{ 'Search' if is_en else '搜索' }}"><iconify-icon icon="lucide:search"></iconify-icon></button>
+</form>
+{%- endif -%}

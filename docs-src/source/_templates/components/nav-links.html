@@ -1,0 +1,14 @@
+{%- set is_en = pagename.startswith('en/') -%}
+<ul>
+  {% if is_en %}
+  <li class="link"><a href="{{ pathto('en/index') }}">Home</a></li>
+  <li class="link"><a href="{{ pathto('en/00_reading_guide') }}">Guide</a></li>
+  <li class="link"><a href="{{ pathto('en/15_api_index') }}">API Reference</a></li>
+  <li class="link"><a href="{{ pathto('en/14_examples') }}">Examples</a></li>
+  {% else %}
+  <li class="link"><a href="{{ pathto('index') }}">首页</a></li>
+  <li class="link"><a href="{{ pathto('00_阅读路线') }}">中文教程</a></li>
+  <li class="link"><a href="{{ pathto('15_API速查') }}">API 参考</a></li>
+  <li class="link"><a href="{{ pathto('14_可运行案例集') }}">示例</a></li>
+  {% endif %}
+</ul>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b9c3616a" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="../index.html">
-      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -361,16 +361,16 @@ data-aria-dark="切换到自动模式">
 </span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">hv</span><span class="p">,</span> <span class="n">igd</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="n">history</span> <span class="o">=</span> <span class="n">HistoryMonitor</span><span class="p">(</span><span class="n">copy_to_cpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span data-line="5"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">monitors</span><span class="o">=</span><span class="n">history</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">monitors</span><span class="o">=</span><span class="n">history</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span><span data-line="6"><span class="n">reference</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">optimum</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
 </span><span data-line="7">
 </span><span data-line="8"><span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span data-line="9"><span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">history</span><span class="o">.</span><span class="n">records</span><span class="p">:</span>
 </span><span data-line="10">    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
 </span><span data-line="11">        <span class="p">{</span>
-</span><span data-line="12">            <span class="s2">&quot;fe&quot;</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span>
-</span><span data-line="13">            <span class="s2">&quot;hv&quot;</span><span class="p">:</span> <span class="n">hv</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
-</span><span data-line="14">            <span class="s2">&quot;igd&quot;</span><span class="p">:</span> <span class="n">igd</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
+</span><span data-line="12">            <span class="s2">"fe"</span><span class="p">:</span> <span class="n">record</span><span class="o">.</span><span class="n">evaluations</span><span class="p">,</span>
+</span><span data-line="13">            <span class="s2">"hv"</span><span class="p">:</span> <span class="n">hv</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
+</span><span data-line="14">            <span class="s2">"igd"</span><span class="p">:</span> <span class="n">igd</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">population</span><span class="p">,</span> <span class="n">reference</span><span class="p">),</span>
 </span><span data-line="15">        <span class="p">}</span>
 </span><span data-line="16">    <span class="p">)</span>
 </span><span data-line="17">
@@ -399,19 +399,19 @@ data-aria-dark="切换到自动模式">
 <section id="minimal-schema-for-summary-json">
 <h2>Minimal Schema for <code class="docutils literal notranslate"><span class="pre">summary.json</span></code><a class="headerlink" href="#minimal-schema-for-summary-json" title="链接到此标题。">#</a></h2>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="p">{</span>
-</span><span data-line="2"><span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span data-line="3"><span class="w">  </span><span class="nt">&quot;algorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;NSGAII&quot;</span><span class="p">,</span>
-</span><span data-line="4"><span class="w">  </span><span class="nt">&quot;problem&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DTLZ2&quot;</span><span class="p">,</span>
-</span><span data-line="5"><span class="w">  </span><span class="nt">&quot;device&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;npu:0&quot;</span><span class="p">,</span>
-</span><span data-line="6"><span class="w">  </span><span class="nt">&quot;population_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
-</span><span data-line="7"><span class="w">  </span><span class="nt">&quot;max_fe&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
-</span><span data-line="8"><span class="w">  </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span>
-</span><span data-line="9"><span class="w">  </span><span class="nt">&quot;elapsed_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">12.345</span><span class="p">,</span>
-</span><span data-line="10"><span class="w">  </span><span class="nt">&quot;peak_host_rss_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span>
-</span><span data-line="11"><span class="w">  </span><span class="nt">&quot;peak_host_pss_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120000000</span><span class="p">,</span>
-</span><span data-line="12"><span class="w">  </span><span class="nt">&quot;peak_device_memory_bytes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">987654321</span><span class="p">,</span>
-</span><span data-line="13"><span class="w">  </span><span class="nt">&quot;metrics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;HV&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;IGD&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">},</span>
-</span><span data-line="14"><span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;complete&quot;</span>
+</span><span data-line="2"><span class="w">  </span><span class="nt">"schema_version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span data-line="3"><span class="w">  </span><span class="nt">"algorithm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NSGAII"</span><span class="p">,</span>
+</span><span data-line="4"><span class="w">  </span><span class="nt">"problem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DTLZ2"</span><span class="p">,</span>
+</span><span data-line="5"><span class="w">  </span><span class="nt">"device"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npu:0"</span><span class="p">,</span>
+</span><span data-line="6"><span class="w">  </span><span class="nt">"population_size"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+</span><span data-line="7"><span class="w">  </span><span class="nt">"max_fe"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span>
+</span><span data-line="8"><span class="w">  </span><span class="nt">"seed"</span><span class="p">:</span><span class="w"> </span><span class="mi">1001</span><span class="p">,</span>
+</span><span data-line="9"><span class="w">  </span><span class="nt">"elapsed_seconds"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.345</span><span class="p">,</span>
+</span><span data-line="10"><span class="w">  </span><span class="nt">"peak_host_rss_bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456789</span><span class="p">,</span>
+</span><span data-line="11"><span class="w">  </span><span class="nt">"peak_host_pss_bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">120000000</span><span class="p">,</span>
+</span><span data-line="12"><span class="w">  </span><span class="nt">"peak_device_memory_bytes"</span><span class="p">:</span><span class="w"> </span><span class="mi">987654321</span><span class="p">,</span>
+</span><span data-line="13"><span class="w">  </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"HV"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="nt">"IGD"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">},</span>
+</span><span data-line="14"><span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span>
 </span><span data-line="15"><span class="p">}</span>
 </span></pre></div>
 </div>
@@ -458,10 +458,10 @@ data-aria-dark="切换到自动模式">
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">draw_metric_curve</span>
 </span><span data-line="2">
-</span><span data-line="3"><span class="n">figure</span> <span class="o">=</span> <span class="n">draw_metric_curve</span><span class="p">(</span><span class="n">fes</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s2">&quot;IGD&quot;</span><span class="p">)</span>
-</span><span data-line="4"><span class="n">figure</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">&quot;igd_curve.html&quot;</span><span class="p">)</span>
-</span><span data-line="5"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;igd_curve.pdf&quot;</span><span class="p">)</span>
-</span><span data-line="6"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">&quot;igd_curve.png&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">figure</span> <span class="o">=</span> <span class="n">draw_metric_curve</span><span class="p">(</span><span class="n">fes</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="s2">"IGD"</span><span class="p">)</span>
+</span><span data-line="4"><span class="n">figure</span><span class="o">.</span><span class="n">write_html</span><span class="p">(</span><span class="s2">"igd_curve.html"</span><span class="p">)</span>
+</span><span data-line="5"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">"igd_curve.pdf"</span><span class="p">)</span>
+</span><span data-line="6"><span class="n">figure</span><span class="o">.</span><span class="n">write_image</span><span class="p">(</span><span class="s2">"igd_curve.png"</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </span><span data-line="7">
 </span></pre></div>
 </div>
@@ -519,5 +519,5 @@ data-aria-dark="切换到自动模式">
       <script src="../_static/translations.js?v=540d3cec"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
-      <script src="../_static/site.js?v=5d939ab5"></script></body>
+      <script src="../_static/site.js?v=f542fdaf"></script></body>
 </html>

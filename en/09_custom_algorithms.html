@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b9c3616a" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="../index.html">
-      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -279,11 +279,11 @@ data-aria-dark="切换到自动模式">
 </span><span data-line="16">        <span class="n">selected</span><span class="p">[</span><span class="n">candidates</span><span class="p">[</span><span class="n">order</span><span class="p">[:</span><span class="n">remaining</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">True</span>
 </span><span data-line="17">    <span class="k">return</span> <span class="n">population</span><span class="p">[</span><span class="n">selected</span><span class="p">]</span>
 </span><span data-line="18">
-</span><span data-line="19"><span class="nd">@register_algorithm</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;BatchGA&quot;</span><span class="p">)</span>
+</span><span data-line="19"><span class="nd">@register_algorithm</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"BatchGA"</span><span class="p">)</span>
 </span><span data-line="20"><span class="k">class</span><span class="w"> </span><span class="nc">BatchGA</span><span class="p">(</span><span class="n">Algorithm</span><span class="p">):</span>
-</span><span data-line="21"><span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple batch-oriented multi-objective genetic algorithm.&quot;&quot;&quot;</span>
+</span><span data-line="21"><span class="w">    </span><span class="sd">"""Simple batch-oriented multi-objective genetic algorithm."""</span>
 </span><span data-line="22">
-</span><span data-line="23">    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;BatchGA&quot;</span>
+</span><span data-line="23">    <span class="n">name</span> <span class="o">=</span> <span class="s2">"BatchGA"</span>
 </span><span data-line="24">
 </span><span data-line="25">    <span class="k">def</span><span class="w"> </span><span class="nf">_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">should_stop</span><span class="p">,</span> <span class="n">should_pause</span><span class="p">):</span>
 </span><span data-line="26">        <span class="n">population</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">initialization</span><span class="p">()</span>
@@ -354,7 +354,7 @@ data-aria-dark="切换到自动模式">
 <p>Use the decorator API for project-level extensions:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_algorithm</span>
 </span><span data-line="2">
-</span><span data-line="3"><span class="n">algorithm</span> <span class="o">=</span> <span class="n">create_algorithm</span><span class="p">(</span><span class="s2">&quot;BatchGA&quot;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">algorithm</span> <span class="o">=</span> <span class="n">create_algorithm</span><span class="p">(</span><span class="s2">"BatchGA"</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </span><span data-line="4">
 </span></pre></div>
 </div>
@@ -413,5 +413,5 @@ data-aria-dark="切换到自动模式">
       <script src="../_static/translations.js?v=540d3cec"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
-      <script src="../_static/site.js?v=5d939ab5"></script></body>
+      <script src="../_static/site.js?v=f542fdaf"></script></body>
 </html>

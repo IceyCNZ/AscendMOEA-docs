@@ -16,9 +16,13 @@ OUTPUT = Path(os.environ["READTHEDOCS_OUTPUT"]).resolve() / "html"
 EXCLUDED_ROOT_ENTRIES = {
     ".git",
     ".github",
+    ".gitattributes",
+    ".gitignore",
     ".readthedocs.yaml",
     "_readthedocs",
     "__pycache__",
+    "docs-src",
+    "README.md",
     "rtd_export.py",
 }
 

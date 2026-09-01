@@ -1,0 +1,7 @@
+{# Load the CJK-aware query matcher after Sphinx searchtools and language data. #}
+{% extends "!search.html" %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ pathto('_static/chinese-search.js', 1) }}"></script>
+{% endblock %}

@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b9c3616a" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="../index.html">
-      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -290,7 +290,7 @@ data-aria-dark="切换到自动模式">
 <p>Run the following checks:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">which<span class="w"> </span>python
 </span><span data-line="2">python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>show<span class="w"> </span>AscendMOEA
-</span><span data-line="3">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import ascendmoea; print(ascendmoea.__file__)&quot;</span>
+</span><span data-line="3">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import ascendmoea; print(ascendmoea.__file__)"</span>
 </span></pre></div>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">show</span></code> returns no output, reinstall the package from the repository root:</p>
@@ -315,7 +315,7 @@ data-aria-dark="切换到自动模式">
 <h2>NPU Hardware Unavailable<a class="headerlink" href="#npu-hardware-unavailable" title="链接到此标题。">#</a></h2>
 <p>Check hardware status and framework bindings:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span data-line="1">npu-smi<span class="w"> </span>info
-</span><span data-line="2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import torch, torch_npu; print(torch.npu.is_available())&quot;</span>
+</span><span data-line="2">python<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import torch, torch_npu; print(torch.npu.is_available())"</span>
 </span></pre></div>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">npu-smi</span> <span class="pre">info</span></code> fails to detect accelerators, verify kernel drivers and device firmware. If the device appears in <code class="docutils literal notranslate"><span class="pre">npu-smi</span></code> but <code class="docutils literal notranslate"><span class="pre">torch.npu.is_available()</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, check the following in order:</p>
@@ -336,7 +336,7 @@ data-aria-dark="切换到自动模式">
 </span></pre></div>
 </div>
 <p>Ensure the optimization workflow explicitly selects the CPU target:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 </span><span data-line="2">
 </span></pre></div>
 </div>
@@ -507,5 +507,5 @@ data-aria-dark="切换到自动模式">
       <script src="../_static/translations.js?v=540d3cec"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
-      <script src="../_static/site.js?v=5d939ab5"></script></body>
+      <script src="../_static/site.js?v=f542fdaf"></script></body>
 </html>

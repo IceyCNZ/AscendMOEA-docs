@@ -1,0 +1,8 @@
+sphinx>=7
+jieba>=0.42
+shibuya>=2025.12.13
+myst-parser>=3
+sphinx-autodoc2>=0.5
+sphinx-copybutton>=0.5
+sphinx-design>=0.6
+sphinxcontrib-mermaid>=0.9

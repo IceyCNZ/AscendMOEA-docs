@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=39d1b2a2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b9c3616a" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="../index.html">
-      <img class="light-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -265,7 +265,7 @@ data-aria-dark="切换到自动模式">
 <p>Common operations:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">subset</span> <span class="o">=</span> <span class="n">population</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
 </span><span data-line="2"><span class="n">copy</span> <span class="o">=</span> <span class="n">population</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
-</span><span data-line="3"><span class="n">cpu_copy</span> <span class="o">=</span> <span class="n">population</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+</span><span data-line="3"><span class="n">cpu_copy</span> <span class="o">=</span> <span class="n">population</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span>
 </span><span data-line="4"><span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">population</span><span class="p">)</span>
 </span><span data-line="5">
 </span></pre></div>
@@ -343,7 +343,7 @@ data-aria-dark="切换到自动模式">
 <p>Monitors must not alter optimization states. <code class="docutils literal notranslate"><span class="pre">HistoryMonitor(copy_to_cpu=True)</span></code> clones and transfers full generational populations to the CPU, suitable for debugging and post-run analysis. For large-scale benchmarks, keeping complete population histories in memory will exhaust RAM; implement streaming monitors that write checkpoints to disk using atomic rename operations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="k">class</span><span class="w"> </span><span class="nc">JsonMonitor</span><span class="p">(</span><span class="n">Monitor</span><span class="p">):</span>
 </span><span data-line="2">    <span class="k">def</span><span class="w"> </span><span class="nf">on_generation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">problem</span><span class="p">):</span>
-</span><span data-line="3">        <span class="n">pop</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">final_population</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+</span><span data-line="3">        <span class="n">pop</span> <span class="o">=</span> <span class="n">algorithm</span><span class="o">.</span><span class="n">final_population</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">"cpu"</span><span class="p">)</span>
 </span><span data-line="4">        <span class="c1"># Write a generation record through an atomic storage helper.</span>
 </span><span data-line="5">
 </span></pre></div>
@@ -356,8 +356,8 @@ data-aria-dark="切换到自动模式">
 </span><span data-line="2"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea.problems</span><span class="w"> </span><span class="kn">import</span> <span class="n">DTLZ2</span>
 </span><span data-line="3">
 </span><span data-line="4"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_algorithm</span><span class="p">,</span> <span class="n">create_problem</span>
-</span><span data-line="5"><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">create_algorithm</span><span class="p">(</span><span class="s2">&quot;NSGAII&quot;</span><span class="p">),</span> <span class="n">NSGAII</span><span class="p">)</span>
-</span><span data-line="6"><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">create_problem</span><span class="p">(</span><span class="s2">&quot;DTLZ2&quot;</span><span class="p">),</span> <span class="n">DTLZ2</span><span class="p">)</span>
+</span><span data-line="5"><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">create_algorithm</span><span class="p">(</span><span class="s2">"NSGAII"</span><span class="p">),</span> <span class="n">NSGAII</span><span class="p">)</span>
+</span><span data-line="6"><span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">create_problem</span><span class="p">(</span><span class="s2">"DTLZ2"</span><span class="p">),</span> <span class="n">DTLZ2</span><span class="p">)</span>
 </span><span data-line="7">
 </span></pre></div>
 </div>
@@ -782,5 +782,5 @@ mermaid.initialize(
 
 window.addEventListener("load", load);
 window.runMermaid = runMermaid;</script>
-      <script src="../_static/site.js?v=5d939ab5"></script></body>
+      <script src="../_static/site.js?v=f542fdaf"></script></body>
 </html>

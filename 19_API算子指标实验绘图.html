@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=39d1b2a2" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=b9c3616a" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="index.html">
-      <img class="light-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="_static/ascendmoea-logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -452,7 +452,7 @@ seed。</p>
 </span><span data-line="9">    <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">RunRecord</span><span class="p">]</span>
 </span><span data-line="10">
 </span><span data-line="11"><span class="n">records_to_frame</span><span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>
-</span><span data-line="12"><span class="n">summarize</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;mean_std&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>
+</span><span data-line="12"><span class="n">summarize</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"mean_std"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pandas</span><span class="o">.</span><span class="n">DataFrame</span>
 </span><span data-line="13"><span class="n">significance_tests</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">baseline_alg</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span>
 </span></pre></div>
 </div>
@@ -470,11 +470,11 @@ Friedman 只使用所有算法都存在的配对行且至少需要三个算法�
 <h2>绘图<a class="headerlink" href="#id9" title="链接到此标题。">#</a></h2>
 <p>使用前安装 <code class="docutils literal notranslate"><span class="pre">AscendMOEA[plot]</span></code>。所有函数返回 <code class="docutils literal notranslate"><span class="pre">plotly.graph_objects.Figure</span></code>，并把输入
 张量分离后迁移到 CPU <code class="docutils literal notranslate"><span class="pre">float64</span></code>。默认字体为 Times New Roman。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">draw_obj</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Population (objectives)&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
-</span><span data-line="2"><span class="n">draw_problem_obj</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">pop_obj</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Population (objectives)&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">draw_obj</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">pf</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Population (objectives)"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
+</span><span data-line="2"><span class="n">draw_problem_obj</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">pop_obj</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Population (objectives)"</span><span class="p">,</span>
 </span><span data-line="3">                 <span class="n">include_pf</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
 </span><span data-line="4"><span class="n">update_population_trace</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">pop_obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
-</span><span data-line="5"><span class="n">draw_dec</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Population (variables)&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
+</span><span data-line="5"><span class="n">draw_dec</span><span class="p">(</span><span class="n">dec</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Population (variables)"</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
 </span><span data-line="6"><span class="n">draw_metric_curve</span><span class="p">(</span><span class="n">fes</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Figure</span>
 </span></pre></div>
 </div>
@@ -540,5 +540,5 @@ Friedman 只使用所有算法都存在的配对行且至少需要三个算法�
       <script src="_static/translations.js?v=540d3cec"></script>
       <script src="_static/design-tabs.js?v=f930bc37"></script>
       <script src="_static/shibuya.js?v=50760d75"></script>
-      <script src="_static/site.js?v=5d939ab5"></script></body>
+      <script src="_static/site.js?v=f542fdaf"></script></body>
 </html>
