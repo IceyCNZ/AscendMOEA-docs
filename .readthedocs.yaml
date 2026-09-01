@@ -7,10 +7,4 @@ build:
   jobs:
     build:
       html:
-        - mkdir -p "$READTHEDOCS_OUTPUT/html/"
-        - >-
-          find . -mindepth 1 -maxdepth 1
-          ! -name .git
-          ! -name .readthedocs.yaml
-          ! -name _readthedocs
-          -exec cp -a {} "$READTHEDOCS_OUTPUT/html/" \;
+        - python rtd_export.py

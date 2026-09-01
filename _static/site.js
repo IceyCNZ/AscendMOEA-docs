@@ -10,48 +10,56 @@
   }
 
   const params = new URLSearchParams(window.location.search);
-  const isEnglish = window.location.pathname.includes("/en/") || params.get("lang") === "en";
+  const splitLanguage = document.documentElement.dataset.rtdLanguageBuild || "";
+  const isSplitEnglish = splitLanguage === "en";
+  const isEnglish = isSplitEnglish
+    || (!splitLanguage && window.location.pathname.includes("/en/"))
+    || params.get("lang") === "en";
   const script = document.querySelector('script[src*="_static/site.js"]');
   const siteRoot = script ? new URL(script.src).pathname.split("/_static/")[0] : "";
   const url = (path) => `${siteRoot}/${path}`.replace(/\/{2,}/g, "/");
+  const englishUrl = (path) => url(`${isSplitEnglish ? "" : "en/"}${path}`);
   document.documentElement.lang = isEnglish ? "en" : "zh-CN";
   document.body.dataset.docsLanguage = isEnglish ? "en" : "zh";
 
-  if (isEnglish && !window.location.pathname.includes("/en/")) {
-    const topLinks = document.querySelector(".sy-head-links > ul");
+  const topLinks = document.querySelector(".sy-head-links > ul");
+  const hasEnglishTopLinks = [...(topLinks?.querySelectorAll("a") || [])]
+    .some((link) => link.getAttribute("href")?.includes("00_reading_guide"));
+
+  if (isEnglish && !hasEnglishTopLinks) {
     if (topLinks) topLinks.innerHTML = `
-      <li class="link"><a href="${url("en/index.html")}">Home</a></li>
-      <li class="link"><a href="${url("en/00_reading_guide.html")}">Guide</a></li>
-      <li class="link"><a href="${url("en/15_api_index.html")}">API Reference</a></li>
-      <li class="link"><a href="${url("en/14_examples.html")}">Examples</a></li>`;
+      <li class="link"><a href="${englishUrl("index.html")}">Home</a></li>
+      <li class="link"><a href="${englishUrl("00_reading_guide.html")}">Guide</a></li>
+      <li class="link"><a href="${englishUrl("15_api_index.html")}">API Reference</a></li>
+      <li class="link"><a href="${englishUrl("14_examples.html")}">Examples</a></li>`;
 
     const navigation = document.querySelector(".docs-nav");
     if (navigation) navigation.innerHTML = `
       <p class="caption">Getting started</p><ul>
-        <li><a href="${url("en/00_reading_guide.html")}">Documentation guide</a></li>
-        <li><a href="${url("en/01_platform_scope.html")}">Platform scope</a></li>
-        <li><a href="${url("en/02_installation.html")}">Installation and Ascend environment</a></li>
-        <li><a href="${url("en/03_first_optimization.html")}">Your first optimization</a></li></ul>
+        <li><a href="${englishUrl("00_reading_guide.html")}">Documentation guide</a></li>
+        <li><a href="${englishUrl("01_platform_scope.html")}">Platform scope</a></li>
+        <li><a href="${englishUrl("02_installation.html")}">Installation and Ascend environment</a></li>
+        <li><a href="${englishUrl("03_first_optimization.html")}">Your first optimization</a></li></ul>
       <p class="caption">Core components</p><ul>
-        <li><a href="${url("en/04_core_workflow.html")}">Core objects and workflow</a></li>
-        <li><a href="${url("en/05_algorithm_catalog.html")}">Algorithm catalog</a></li>
-        <li><a href="${url("en/06_problem_library.html")}">Problem library</a></li>
-        <li><a href="${url("en/07_tensor_operators.html")}">Tensor operators</a></li></ul>
+        <li><a href="${englishUrl("04_core_workflow.html")}">Core objects and workflow</a></li>
+        <li><a href="${englishUrl("05_algorithm_catalog.html")}">Algorithm catalog</a></li>
+        <li><a href="${englishUrl("06_problem_library.html")}">Problem library</a></li>
+        <li><a href="${englishUrl("07_tensor_operators.html")}">Tensor operators</a></li></ul>
       <p class="caption">Development</p><ul>
-        <li><a href="${url("en/08_custom_problems.html")}">Custom problems</a></li>
-        <li><a href="${url("en/09_custom_algorithms.html")}">Custom algorithms</a></li>
-        <li><a href="${url("en/14_examples.html")}">Runnable examples</a></li></ul>
+        <li><a href="${englishUrl("08_custom_problems.html")}">Custom problems</a></li>
+        <li><a href="${englishUrl("09_custom_algorithms.html")}">Custom algorithms</a></li>
+        <li><a href="${englishUrl("14_examples.html")}">Runnable examples</a></li></ul>
       <p class="caption">Experiments and performance</p><ul>
-        <li><a href="${url("en/10_experiments.html")}">Metrics, experiments, and monitoring</a></li>
-        <li><a href="${url("en/11_performance.html")}">CPU and NPU performance</a></li>
-        <li><a href="${url("en/12_multi_npu.html")}">Multi-NPU scheduling</a></li>
-        <li><a href="${url("en/13_troubleshooting.html")}">Troubleshooting</a></li></ul>
+        <li><a href="${englishUrl("10_experiments.html")}">Metrics, experiments, and monitoring</a></li>
+        <li><a href="${englishUrl("11_performance.html")}">CPU and NPU performance</a></li>
+        <li><a href="${englishUrl("12_multi_npu.html")}">Multi-NPU scheduling</a></li>
+        <li><a href="${englishUrl("13_troubleshooting.html")}">Troubleshooting</a></li></ul>
       <p class="caption">API reference</p><ul>
-        <li><a href="${url("en/15_api_index.html")}">Public API index</a></li>
-        <li><a href="${url("en/16_core_api.html")}">Core and workflow API</a></li>
-        <li><a href="${url("en/17_algorithm_api.html")}">Algorithm API</a></li>
-        <li><a href="${url("en/18_problem_api.html")}">Problem API</a></li>
-        <li><a href="${url("en/19_analysis_api.html")}">Operators and analysis API</a></li></ul>
+        <li><a href="${englishUrl("15_api_index.html")}">Public API index</a></li>
+        <li><a href="${englishUrl("16_core_api.html")}">Core and workflow API</a></li>
+        <li><a href="${englishUrl("17_algorithm_api.html")}">Algorithm API</a></li>
+        <li><a href="${englishUrl("18_problem_api.html")}">Problem API</a></li>
+        <li><a href="${englishUrl("19_analysis_api.html")}">Operators and analysis API</a></li></ul>
       <div class="sidebar-links discussion-last"><ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions"><span>Discussions</span></a></li></ul></div>`;
 
     navigation?.querySelectorAll(":scope > p.caption").forEach((caption) => {
@@ -106,6 +114,10 @@
       target.searchParams.set("lang", "en");
       link.href = target.href;
     });
+
+    if (isSplitEnglish && /\/en\/[^/]+\/?$/.test(window.location.pathname)) {
+      document.querySelector(".navigation-prev")?.remove();
+    }
   }
 
   const languageButton = document.querySelector(".nav-languages > button");
@@ -115,7 +127,7 @@
     if (label) label.textContent = "Language";
   }
 
-  if (window.location.pathname.endsWith("/search.html")) {
+  if (!splitLanguage && window.location.pathname.endsWith("/search.html")) {
     const chineseSearchUrl = new URL(window.location.href);
     chineseSearchUrl.searchParams.delete("lang");
     const englishSearchUrl = new URL(window.location.href);
@@ -149,10 +161,21 @@
       items.forEach((item) => {
         const href = item.querySelector("a")?.getAttribute("href") || "";
         const pathname = new URL(href, window.location.href).pathname;
-        const isEnglishDocument = /\/en\//.test(pathname);
+        const englishPageNames = new Set([
+          "index.html", "00_reading_guide.html", "01_platform_scope.html",
+          "02_installation.html", "03_first_optimization.html", "04_core_workflow.html",
+          "05_algorithm_catalog.html", "06_problem_library.html", "07_tensor_operators.html",
+          "08_custom_problems.html", "09_custom_algorithms.html", "10_experiments.html",
+          "11_performance.html", "12_multi_npu.html", "13_troubleshooting.html",
+          "14_examples.html", "15_api_index.html", "16_core_api.html",
+          "17_algorithm_api.html", "18_problem_api.html", "19_analysis_api.html",
+        ]);
+        const isEnglishDocument = isSplitEnglish
+          ? englishPageNames.has(pathname.split("/").pop())
+          : /\/en\//.test(pathname);
         const isGeneratedApiDocument = /\/api\//.test(pathname);
         const belongsToLanguage = isEnglish
-          ? isEnglishDocument
+          ? isEnglishDocument || isGeneratedApiDocument
           : !isEnglishDocument && !isGeneratedApiDocument;
         item.hidden = !belongsToLanguage;
       });
@@ -195,6 +218,8 @@
     ["回到顶部", "Back to top"],
     ["上一页", "Previous"],
     ["下一页", "Next"],
+    ["上一章", "Previous"],
+    ["下一章", "Next"],
     ["搜索", "Search"],
     ["搜索文档", "Search documentation"],
   ]);
