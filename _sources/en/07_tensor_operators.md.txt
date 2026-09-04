@@ -128,4 +128,3 @@ offspring_dec = operator_ga(problem, population.decs)
 offspring = problem.evaluate(offspring_dec)
 
 ```
-

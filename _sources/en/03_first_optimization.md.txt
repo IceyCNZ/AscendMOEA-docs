@@ -121,4 +121,3 @@ result = workflow.run(output=report, should_stop=stop_file.exists)
 ```
 
 The `should_stop` condition is evaluated at generation boundaries. For fault-tolerant long runs, orchestrate runs using external process managers (such as systemd or SLURM) and persist results atomically per repetition.
-

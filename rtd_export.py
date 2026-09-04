@@ -19,6 +19,7 @@ EXCLUDED_ROOT_ENTRIES = {
     ".gitattributes",
     ".gitignore",
     ".readthedocs.yaml",
+    ".doctrees",
     "_readthedocs",
     "__pycache__",
     "docs-src",

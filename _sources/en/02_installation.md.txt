@@ -123,4 +123,3 @@ If running 16 concurrent runs via `joblib`, total CPU thread demand reaches appr
 * PyTorch overwritten during package installation: Reinstall the device-specific PyTorch distribution and install AscendMOEA with `--no-deps`.
 * Missing MAT files for real-world benchmark problems: Ensure the package is installed as a wheel or standard editable package rather than executing detached `.py` script files.
 * CPU worker occupies `NPU0`: Ensure the library is initialized before any top-level `torch` imports, and verify no other module imported `torch_npu` prematurely.
-

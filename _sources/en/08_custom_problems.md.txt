@@ -131,4 +131,3 @@ print(problem.FE)
 ```
 
 Output tensor shapes correspond to `[8, 5]`, `[8, 2]`, and `[8, C]` (where $C$ is the constraint column dimension); `FE` evaluates to 8. The resulting problem instance can be passed directly to `optimize()`.
-

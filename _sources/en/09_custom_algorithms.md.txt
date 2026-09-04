@@ -119,4 +119,3 @@ algorithm = create_algorithm("BatchGA", save=10)
 ```
 
 External third-party packages should register components upon package import using distinct, non-conflicting naming keys. The component registry rejects duplicate identifiers by default; pass `replace=True` only during intentional compatibility migrations.
-

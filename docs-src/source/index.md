@@ -46,6 +46,17 @@ hide_ai_links: true
 
 ::::
 
+## 平台框架
+
+```{figure} _static/AscendMOEA_framework.svg
+:alt: AscendMOEA 平台框架
+:class: framework-figure
+:target: _static/AscendMOEA_framework.svg
+:width: 100%
+
+AscendMOEA 将运行环境、张量化算子、算法组合与问题扩展统一在一条可复现执行链路中。
+```
+
 ## 快速开始
 
 ::::{tab-set}

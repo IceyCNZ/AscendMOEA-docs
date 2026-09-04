@@ -158,4 +158,3 @@ figure.write_image("igd_curve.pdf")
 figure.write_image("igd_curve.png", scale=4)
 
 ```
-

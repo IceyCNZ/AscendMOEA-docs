@@ -65,4 +65,3 @@ NPU acceleration benefits large-scale, regular, and compute-intensive tensor ope
 ## Reproducibility Requirements
 
 A reproducible experiment must log at least: library version, source commit hash, algorithm and problem parameters, population size, maximum evaluation count, random seeds, device model, software stack versions, CPU thread count, NPU device index, warm-up strategy, synchronization method, wall-clock runtime, peak host memory, peak device memory, final metric values, and complete generational population snapshots. Refer to Chapters 10–12 for detailed experimentation protocols.
-

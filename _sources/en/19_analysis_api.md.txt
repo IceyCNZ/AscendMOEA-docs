@@ -175,4 +175,3 @@ draw_metric_curve(fes, values, name) -> Figure
 * `draw_dec` generates scatter plots for 1D, 2D, and 3D decisions, falling back to parallel coordinate plots for higher dimensions.
 
 * `draw_metric_curve` requires matching array lengths across evaluation counters (`FE`) and metric values.
-

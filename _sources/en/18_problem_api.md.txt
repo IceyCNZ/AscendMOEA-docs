@@ -129,4 +129,3 @@ The problem instance accumulates evaluated counts in `FE`. A problem instance mu
 | `problem.reference_point` | Built-in multimodal problems | Standard reference point defined in literature; may be `None`<br> |
 
 Reference data structures automatically migrate alongside the problem to the assigned target device. Datasets for real-world and multimodal suites are resolved from packaged MAT assets; install the library via standard wheel distributions rather than executing raw, unbundled scripts.
-

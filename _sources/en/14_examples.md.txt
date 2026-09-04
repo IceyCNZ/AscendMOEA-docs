@@ -153,4 +153,3 @@ class MetricMonitor(Monitor):
 ```
 
 For large-scale production experiments, stream data to disk and deallocate population copies within callbacks rather than unbounded in-memory list appending.
-

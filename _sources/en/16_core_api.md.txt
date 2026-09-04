@@ -208,4 +208,3 @@ list_problems() -> tuple[str, ...]
 | `synchronize(device)` | Blocks host execution until all queued operations on the device complete
 
 Supported environment variables include `ASCENDMOEA_DEVICE`, `ASCENDMOEA_NPU_INDEX`, `ASCENDMOEA_CPU_THREADS`, and `ASCENDMOEA_DTYPE`. NPU execution defaults to `float32`; requesting `float64` issues a warning and falls back to `float32`.
-

@@ -135,4 +135,3 @@ CPUs default to `float64`, whereas NPUs default to `float32` because certain Asc
 * Failure logs, timeouts, restart records, and exception traces
 
 * Time-series profiles of hardware utilization
-

@@ -136,4 +136,3 @@ Uses a generative latent variable model to learn sparse Pareto set manifolds, co
 ## Execution and Output Handling
 
 All algorithms are executed via `Algorithm.solve()`, `Workflow`, or `optimize()`, and the final population is retrieved through `OptimizationResult.population`. Algorithms may slightly exceed `max_fe` upon completing their final generation batch; use `result.evaluations` to record actual function evaluations rather than assuming exact budget alignment.
-

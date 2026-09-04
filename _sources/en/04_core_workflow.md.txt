@@ -121,4 +121,3 @@ assert isinstance(create_problem("DTLZ2"), DTLZ2)
 * Avoid recurring calls to `.cpu()`, `.numpy()`, or default CPU tensor initializations inside inner algorithm loops.
 * Derive new tensors from existing population tensors or initialize them explicitly using `dtype=problem.dtype, device=problem.device`.
 * Device mismatches must raise errors immediately rather than falling back to implicit transfers.
-
