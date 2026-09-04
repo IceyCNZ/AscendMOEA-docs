@@ -51,7 +51,7 @@ hide_ai_links: true
 ```{figure} _static/AscendMOEA_framework.svg
 :alt: AscendMOEA 平台框架
 :class: framework-figure
-:target: _static/AscendMOEA_framework.svg
+:target: 20_平台框架.html
 :width: 100%
 
 AscendMOEA 将运行环境、张量化算子、算法组合与问题扩展统一在一条可复现执行链路中。
@@ -121,6 +121,7 @@ result = optimize(
 17_API算法
 18_API问题
 19_API算子指标实验绘图
+20_平台框架
 en/index
 api/index
 ```

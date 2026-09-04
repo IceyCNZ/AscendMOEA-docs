@@ -2,6 +2,11 @@
 
 This index lists stable public modules; full signatures, parameters, return types, and exceptions are documented across four reference pages. Symbols omitted from these pages or module-level `__all__` definitions are internal implementation details and may change across versions without deprecation notices.
 
+```{admonition} sphinx-autodoc2 reference
+:class: tip
+[Open the generated Python API](../api/index.md). It statically analyzes the current source tree during every build and exposes complete signatures, type annotations, and docstrings.
+```
+
 ## Core and Execution
 
 [Core and Workflow API](16_core_api.md) covers:
