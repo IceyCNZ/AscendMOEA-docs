@@ -4,7 +4,7 @@ This index lists stable public modules; full signatures, parameters, return type
 
 ```{admonition} sphinx-autodoc2 reference
 :class: tip
-[Open the generated Python API](../api/index.md). It statically analyzes the current source tree during every build and exposes complete signatures, type annotations, and docstrings.
+[Open the generated Python API](api/index.md). It statically analyzes the current source tree during every build and exposes complete signatures, type annotations, and docstrings.
 ```
 
 ## Core and Execution

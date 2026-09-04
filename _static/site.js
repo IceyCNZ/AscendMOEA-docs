@@ -59,7 +59,8 @@
         <li><a href="${englishUrl("16_core_api.html")}">Core and workflow API</a></li>
         <li><a href="${englishUrl("17_algorithm_api.html")}">Algorithm API</a></li>
         <li><a href="${englishUrl("18_problem_api.html")}">Problem API</a></li>
-        <li><a href="${englishUrl("19_analysis_api.html")}">Operators and analysis API</a></li></ul>
+        <li><a href="${englishUrl("19_analysis_api.html")}">Operators and analysis API</a></li>
+        <li><a href="${englishUrl("api/index.html")}">Generated Python API</a></li></ul>
       <div class="sidebar-links discussion-last"><ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions"><span>Discussions</span></a></li></ul></div>`;
 
     navigation?.querySelectorAll(":scope > p.caption").forEach((caption) => {

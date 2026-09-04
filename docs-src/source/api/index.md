@@ -1,6 +1,6 @@
 # Python API 参考
 
-[返回中文文档](../index.md) · [English Guide](../en/15_api_index.md)
+[返回中文文档](../index.md) · [English](../en/api/index.md)
 
 API 页面在每次构建时都会对 `src/ascendmoea` 进行静态分析，因此函数签名、类型注解和文档字符串会随源码同步更新。
 

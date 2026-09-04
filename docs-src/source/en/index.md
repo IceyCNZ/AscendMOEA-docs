@@ -121,5 +121,5 @@ Source code, issue tracking, and contribution entry point: [dqlme/AscendMOEA](ht
 18_problem_api
 19_analysis_api
 20_platform_architecture
-../api/index
+api/index
 ```

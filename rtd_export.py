@@ -45,11 +45,18 @@ def without_language_query(query: str) -> str:
 
 
 class PageTransformer(HTMLParser):
-    def __init__(self, language: str, page: PurePosixPath, promoted: bool = False) -> None:
+    def __init__(
+        self,
+        language: str,
+        page: PurePosixPath,
+        promoted: bool = False,
+        source_page: PurePosixPath | None = None,
+    ) -> None:
         super().__init__(convert_charrefs=False)
         self.language = language
         self.page = page
         self.promoted = promoted
+        self.source_page = source_page or page
         self.output: list[str] = []
 
     def rewrite_url(self, tag: str, attributes: dict[str, str | None], value: str) -> str:
@@ -92,8 +99,15 @@ class PageTransformer(HTMLParser):
                 target = resolved.removeprefix("en/")
                 return urlunsplit(("", "", language_url("en", target), without_language_query(parsed.query), parsed.fragment))
 
-            if self.promoted and path.startswith("../"):
-                path = path[3:]
+            if self.promoted:
+                source_target = resolved_site_path(self.source_page, path)
+                if source_target.startswith("en/"):
+                    source_target = source_target.removeprefix("en/")
+                destination_parent = str(self.page.parent)
+                path = posixpath.relpath(
+                    source_target,
+                    start=destination_parent if destination_parent != "." else ".",
+                )
 
         return urlunsplit(("", "", path, parsed.query, parsed.fragment))
 
@@ -105,7 +119,8 @@ class PageTransformer(HTMLParser):
             if tag == "html" and key == "lang":
                 value = "en" if self.language == "en" else "zh-CN"
             elif tag == "html" and key == "data-content_root" and self.promoted:
-                value = "./"
+                depth = len(self.page.parent.parts) if str(self.page.parent) != "." else 0
+                value = "../" * depth or "./"
             elif key in {"href", "src", "action"} and value is not None:
                 value = self.rewrite_url(tag, attributes, value)
             rendered.append((key, value))
@@ -154,8 +169,14 @@ class PageTransformer(HTMLParser):
         return "".join(self.output)
 
 
-def transform_html(source: Path, destination: Path, page: PurePosixPath, promoted: bool = False) -> None:
-    parser = PageTransformer(LANGUAGE, page, promoted=promoted)
+def transform_html(
+    source: Path,
+    destination: Path,
+    page: PurePosixPath,
+    promoted: bool = False,
+    source_page: PurePosixPath | None = None,
+) -> None:
+    parser = PageTransformer(LANGUAGE, page, promoted=promoted, source_page=source_page)
     parser.feed(source.read_text(encoding="utf-8"))
     parser.close()
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -184,9 +205,15 @@ def build_language_site() -> None:
                 continue
             transform_html(page, page, relative)
 
-        for source in sorted((ROOT / "en").glob("*.html")):
-            relative = PurePosixPath(source.name)
-            transform_html(source, OUTPUT / source.name, relative, promoted=True)
+        for source in sorted((ROOT / "en").rglob("*.html")):
+            relative = PurePosixPath(source.relative_to(ROOT / "en").as_posix())
+            transform_html(
+                source,
+                OUTPUT / Path(relative.as_posix()),
+                relative,
+                promoted=True,
+                source_page=PurePosixPath("en") / relative,
+            )
     else:
         for page in OUTPUT.rglob("*.html"):
             relative = PurePosixPath(page.relative_to(OUTPUT).as_posix())
