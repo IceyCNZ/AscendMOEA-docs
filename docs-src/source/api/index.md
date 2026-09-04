@@ -1,8 +1,8 @@
-# Python API 参考
+# Python API 文档
 
 [返回中文文档](../index.md) · [English](../en/api/index.md)
 
-API 页面在每次构建时都会对 `src/ascendmoea` 进行静态分析，因此函数签名、类型注解和文档字符串会随源码同步更新。
+本页包含根据 AscendMOEA 当前源码自动生成的 API 参考文档[^1]。函数签名、类型注解和文档字符串会在每次构建时同步更新。
 
 ::::{grid} 1 2 2 3
 :gutter: 3
@@ -51,3 +51,5 @@ HV、IGD、GD、IGDX、PSP、CPF、DM 和可行性指标。
 
 generated/index
 ```
+
+[^1]: 使用 [sphinx-autodoc2](https://github.com/chrisjsewell/sphinx-autodoc2) 生成。

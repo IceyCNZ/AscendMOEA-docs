@@ -1,8 +1,8 @@
-# Python API Reference
+# Python API Documentation
 
 [Back to the English documentation](../index.md) · [中文](../../api/index.md)
 
-These pages statically analyze `src/ascendmoea` during every build, so function signatures, type annotations, and docstrings stay synchronized with the source code.
+This page contains API reference documentation generated from the current AscendMOEA source code[^1]. Function signatures, type annotations, and docstrings are synchronized during every build.
 
 ::::{grid} 1 2 2 3
 :gutter: 3
@@ -46,3 +46,5 @@ HV, IGD, GD, IGDX, PSP, CPF, DM, and feasibility metrics.
 ::::
 
 {doc}`Open the complete generated module index </api/generated/index>`.
+
+[^1]: Generated with [sphinx-autodoc2](https://github.com/chrisjsewell/sphinx-autodoc2).
