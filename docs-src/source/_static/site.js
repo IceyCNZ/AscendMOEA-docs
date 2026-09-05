@@ -39,7 +39,7 @@
         <li><a href="${englishUrl("00_reading_guide.html")}">Documentation guide</a></li>
         <li><a href="${englishUrl("01_platform_scope.html")}">Platform scope</a></li>
         <li><a href="${englishUrl("02_installation.html")}">Installation and Ascend environment</a></li>
-        <li><a href="${englishUrl("03_first_optimization.html")}">Your first optimization</a></li></ul>
+        <li><a href="${englishUrl("03_first_optimization.html")}">Simple end-to-end example</a></li></ul>
       <p class="caption">Core components</p><ul>
         <li><a href="${englishUrl("04_core_workflow.html")}">Core objects and workflow</a></li>
         <li><a href="${englishUrl("05_algorithm_catalog.html")}">Algorithm catalog</a></li>
@@ -216,7 +216,7 @@
   if (!isEnglish) return;
 
   const replacements = new Map([
-    ["该页内容", "On this page"],
+    ["导航栏", "Navigation"],
     ["复制页面", "Copy page"],
     ["查看 Markdown 源代码", "View Markdown source"],
     ["回到顶部", "Back to top"],

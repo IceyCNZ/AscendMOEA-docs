@@ -2,7 +2,7 @@
 <html lang="zh-CN" data-accent-color="blue" data-content_root="./">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>第一个优化任务 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="核心对象与执行流" href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html" /><link rel="prev" title="安装与昇腾环境" href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html" /><script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>全流程简单示例 - AscendMOEA Documentation</title><link rel="shortcut icon" href="_static/favicon.svg"/><link rel="index" title="索引" href="genindex.html" /><link rel="search" title="搜索" href="search.html" /><link rel="next" title="核心对象与执行流" href="04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html" /><link rel="prev" title="安装与昇腾环境" href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html" /><script>
     function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
     setColorMode(localStorage._theme||"auto");
   </script><link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d88b86f9" />
@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=274beaa4" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1032aa82" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
 }
 </style>
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="第一个优化任务"/>
+  <meta property="og:type" content="website"/><meta property="og:title" content="全流程简单示例"/>
     <meta name="twitter:card" content="summary"/>
   
 </head>
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="index.html">
-      <img class="light-logo" src="_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -48,7 +48,7 @@
 </form><div class="nav-languages">
   <button type="button" aria-label="切换语言">
     <span class="md:hidden">语言</span>
-    <iconify-icon icon="lucide:languages"></iconify-icon>
+    <iconify-icon icon="lucide:globe-2"></iconify-icon>
   </button>
   <div class="nav-languages-choices">
     <ul>
@@ -90,7 +90,7 @@ data-aria-dark="切换到自动模式">
     <li><a href="00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
     <li><a href="01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
     <li><a href="02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
-    <li><a href="#">第一个优化任务</a></li>
+    <li><a href="#">全流程简单示例</a></li>
   
   </ul>
   </details>
@@ -159,7 +159,7 @@ data-aria-dark="切换到自动模式">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>导航栏</h3><ul>
 <li><a class="reference internal" href="#nsga-ii-dtlz2">&#36816;&#34892; NSGA-II &#19982; DTLZ2</a></li>
 <li><a class="reference internal" href="#npu">&#20999;&#25442;&#21040;&#26119;&#33150; NPU</a></li>
 <li><a class="reference internal" href="#id2">&#25353;&#21517;&#31216;&#21019;&#24314;&#32452;&#20214;</a></li>
@@ -204,7 +204,7 @@ data-aria-dark="切换到自动模式">
         <span>/</span>
         <meta itemprop="position" content="1" />
       </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name">第一个优化任务</strong>
+        <strong itemprop="name">全流程简单示例</strong>
         <meta itemprop="position" content="2" />
       </li></ol>
     <div class="xl:hidden ml-1">
@@ -254,7 +254,7 @@ data-aria-dark="切换到自动模式">
   </div>
 </div><article class="yue" role="main">
           <section id="id1">
-<h1>第一个优化任务<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h1>
+<h1>全流程简单示例<a class="headerlink" href="#id1" title="链接到此标题。">#</a></h1>
 <section id="nsga-ii-dtlz2">
 <h2>运行 NSGA-II 与 DTLZ2<a class="headerlink" href="#nsga-ii-dtlz2" title="链接到此标题。">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="kn">from</span><span class="w"> </span><span class="nn">ascendmoea</span><span class="w"> </span><span class="kn">import</span> <span class="n">HistoryMonitor</span><span class="p">,</span> <span class="n">optimize</span>
@@ -409,15 +409,8 @@ data-aria-dark="切换到自动模式">
 <footer class="sy-foot">
   <div class="sy-foot-inner sy-container mx-auto">
     <div class="sy-foot-reserved md:flex justify-between items-center">
-      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
-  
-  <p>
-    Made with
-    
-    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
-    
-    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
-  </p>
+      <div class="sy-foot-copyright">
+  <p>© 2026, AscendMOEA Developers · AscendMOEA Documentation</p>
 </div>
       <div class="sy-foot-socials">
   <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
@@ -434,5 +427,5 @@ data-aria-dark="切换到自动模式">
       <script src="_static/translations.js?v=540d3cec"></script>
       <script src="_static/design-tabs.js?v=f930bc37"></script>
       <script src="_static/shibuya.js?v=50760d75"></script>
-      <script src="_static/site.js?v=7c711d88"></script></body>
+      <script src="_static/site.js?v=28a98c78"></script></body>
 </html>

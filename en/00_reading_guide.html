@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link media="print" rel="stylesheet" type="text/css" href="../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=274beaa4" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=1032aa82" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
   <div class="sy-head-blur"></div>
   <div class="sy-head-inner sy-container mx-auto">
     <a class="sy-head-brand" href="../index.html">
-      <img class="light-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../_static/AscendMOEA_logo.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="light-logo" src="../_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
+      <img class="dark-logo" src="../_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
       <strong>AscendMOEA</strong>
     </a>
     <div class="sy-head-nav" id="head-nav">
@@ -48,7 +48,7 @@
 </form><div class="nav-languages">
   <button type="button" aria-label="Switch language">
     <span class="md:hidden">Language</span>
-    <iconify-icon icon="lucide:languages"></iconify-icon>
+    <iconify-icon icon="lucide:globe-2"></iconify-icon>
   </button>
   <div class="nav-languages-choices">
     <ul>
@@ -90,7 +90,7 @@ data-aria-dark="切换到自动模式">
     <li><a href="#">Documentation guide</a></li>
     <li><a href="01_platform_scope.html">Platform scope</a></li>
     <li><a href="02_installation.html">Installation and Ascend environment</a></li>
-    <li><a href="03_first_optimization.html">Your first optimization</a></li>
+    <li><a href="03_first_optimization.html">Simple end-to-end example</a></li>
   
   </ul>
   </details>
@@ -159,11 +159,11 @@ data-aria-dark="切换到自动模式">
     <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
       <i class="i-lucide close"></i>
     </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>该页内容</h3><ul>
-<li><a class="reference internal" href="#entry-points-by-task">Entry Points by Task</a></li>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>导航栏</h3><ul>
+<li><a class="reference internal" href="#choose-an-entry-point">Choose an Entry Point</a></li>
 <li><a class="reference internal" href="#documentation-perspectives">Documentation Perspectives</a></li>
 <li><a class="reference internal" href="#documentation-structure">Documentation Structure</a></li>
-<li><a class="reference internal" href="#versioning-conventions">Versioning Conventions</a></li>
+<li><a class="reference internal" href="#current-version">Current Version</a></li>
 </ul>
 </div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
   data-type="github" data-user="dqlme" data-repo="AscendMOEA">
@@ -257,8 +257,8 @@ data-aria-dark="切换到自动模式">
 </div><article class="yue" role="main">
           <section id="ascendmoea-documentation-reading-roadmap">
 <h1>AscendMOEA Documentation Reading Roadmap<a class="headerlink" href="#ascendmoea-documentation-reading-roadmap" title="链接到此标题。">#</a></h1>
-<section id="entry-points-by-task">
-<h2>Entry Points by Task<a class="headerlink" href="#entry-points-by-task" title="链接到此标题。">#</a></h2>
+<section id="choose-an-entry-point">
+<h2>Choose an Entry Point<a class="headerlink" href="#choose-an-entry-point" title="链接到此标题。">#</a></h2>
 <div class="table-wrapper colwidths-auto docutils container">
 <table class="docutils align-default">
 <thead>
@@ -268,7 +268,7 @@ data-aria-dark="切换到自动模式">
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Run algorithms on CPU or Ascend NPU</p></td>
-<td><p><a class="reference internal" href="02_installation.html"><span class="std std-doc">Installation and Ascend Environment</span></a>, <a class="reference internal" href="03_first_optimization.html"><span class="std std-doc">First Optimization Task</span></a></p></td>
+<td><p><a class="reference internal" href="02_installation.html"><span class="std std-doc">Installation and Ascend Environment</span></a>, <a class="reference internal" href="03_first_optimization.html"><span class="std std-doc">Simple End-to-End Example</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Select built-in algorithms and test problems</p></td>
 <td><p><a class="reference internal" href="05_algorithm_catalog.html"><span class="std std-doc">Algorithm Directory and Selection</span></a>, <a class="reference internal" href="06_problem_library.html"><span class="std std-doc">Problem Suite and Data Resources</span></a></p></td>
@@ -347,8 +347,8 @@ data-aria-dark="切换到自动模式">
 </table>
 </div>
 </section>
-<section id="versioning-conventions">
-<h2>Versioning Conventions<a class="headerlink" href="#versioning-conventions" title="链接到此标题。">#</a></h2>
+<section id="current-version">
+<h2>Current Version<a class="headerlink" href="#current-version" title="链接到此标题。">#</a></h2>
 <p>This documentation corresponds to AscendMOEA <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>. Code snippets assume Python 3.9+. All objectives are formulated as minimization problems, and constraints follow the standard convention $g(x) \le 0$. When drawing formal performance conclusions, adhere strictly to the synchronization, warm-up, threading, and replication protocols specified in Chapter 11; single interactive runs must not be used as baseline benchmarks.</p>
 </section>
 </section>
@@ -379,15 +379,8 @@ data-aria-dark="切换到自动模式">
 <footer class="sy-foot">
   <div class="sy-foot-inner sy-container mx-auto">
     <div class="sy-foot-reserved md:flex justify-between items-center">
-      <div class="sy-foot-copyright"><p>2026, AscendMOEA Developers</p>
-  
-  <p>
-    Made with
-    
-    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
-    
-    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
-  </p>
+      <div class="sy-foot-copyright">
+  <p>© 2026, AscendMOEA Developers · AscendMOEA Documentation</p>
 </div>
       <div class="sy-foot-socials">
   <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
@@ -404,5 +397,5 @@ data-aria-dark="切换到自动模式">
       <script src="../_static/translations.js?v=540d3cec"></script>
       <script src="../_static/design-tabs.js?v=f930bc37"></script>
       <script src="../_static/shibuya.js?v=50760d75"></script>
-      <script src="../_static/site.js?v=7c711d88"></script></body>
+      <script src="../_static/site.js?v=28a98c78"></script></body>
 </html>
