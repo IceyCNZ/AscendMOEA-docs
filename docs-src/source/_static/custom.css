@@ -253,6 +253,11 @@ article table { display: table; width: 100%; }
   background: transparent;
 }
 
+/* The site header already provides language navigation. */
+readthedocs-flyout {
+  display: none !important;
+}
+
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; min-height: auto; padding: 2.25rem 1.35rem; }
   .hero-copy { min-height: 0; }
