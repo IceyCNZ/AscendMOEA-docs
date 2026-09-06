@@ -255,7 +255,7 @@
     });
 
     if (isEnglish && !isRtdBuild) {
-      document.querySelectorAll('a[href*="/api/generated/"]').forEach((link) => {
+      document.querySelectorAll('a[href*="/api/generated/"]:not([data-language-link])').forEach((link) => {
         const target = new URL(link.href, window.location.href);
         target.searchParams.set("lang", "en");
         link.href = target.href;
