@@ -1,0 +1,12 @@
+{%- set is_en = pagename.startswith('en/') -%}
+<div class="book-language-switcher">
+  <button class="btn btn-sm nav-link pst-navbar-icon book-language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="{{ 'Switch language' if is_en else '切换语言' }}">
+    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+    <span data-language-label>{{ 'EN' if is_en else '中' }}</span>
+  </button>
+  <div class="book-language-menu" role="menu">
+    <a href="{{ pathto('index') }}" data-language-link="zh" lang="zh-CN" role="menuitem">中文</a>
+    <a href="{{ pathto('en/index') }}" data-language-link="en" lang="en" role="menuitem">English</a>
+  </div>
+</div>
+

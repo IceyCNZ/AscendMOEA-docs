@@ -1,170 +1,440 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN" data-accent-color="blue" data-content_root="../../../">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>ascendmoea.problems.mmmop2b - AscendMOEA Documentation</title><link rel="shortcut icon" href="../../../_static/favicon.svg"/><link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="搜索" href="../../../search.html" /><link rel="next" title="ascendmoea.problems.mmmop3a" href="ascendmoea.problems.mmmop3a.html" /><link rel="prev" title="ascendmoea.problems.mmmop2a" href="ascendmoea.problems.mmmop2a.html" /><script>
-    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
-    setColorMode(localStorage._theme||"auto");
-  </script><link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d88b86f9" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/shibuya.css?v=2ceb65ce" />
+
+
+<html lang="zh-CN" data-content_root="../../../" data-theme="auto">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ascendmoea.problems.mmmop2b &#8212; AscendMOEA Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "auto";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "auto";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=d75fae25" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=4418a689" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link media="print" rel="stylesheet" type="text/css" href="../../../_static/print.css?v=20ff2c19" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=dfbff799" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
-}
-</style>
+    <link rel="stylesheet" type="text/css" href="../../../_static/book.css?v=2156ffed" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=509a98c5"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/generated/ascendmoea/ascendmoea.problems.mmmop2b';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../../../_static/site.js?v=77fdf69c"></script>
+    <link rel="icon" href="../../../_static/favicon.svg"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="ascendmoea.problems.mmmop3a" href="ascendmoea.problems.mmmop3a.html" />
+    <link rel="prev" title="ascendmoea.problems.mmmop2a" href="ascendmoea.problems.mmmop2a.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="1.0.0" />
+    <meta name="docbuild:last-update" content="2026-09-06"/>
+  
     
-  <meta property="og:type" content="website"/><meta property="og:title" content="ascendmoea.problems.mmmop2b"/>
-    <meta name="twitter:card" content="summary"/>
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
   
-</head>
-<body><div class="sy-head">
-  <div class="sy-head-blur"></div>
-  <div class="sy-head-inner sy-container mx-auto">
-    <a class="sy-head-brand" href="../../../index.html">
-      <img class="light-logo" src="../../../_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <img class="dark-logo" src="../../../_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA" height="28" loading="lazy" />
-      <strong>AscendMOEA</strong>
-    </a>
-    <div class="sy-head-nav" id="head-nav">
-      <nav class="sy-head-links"><ul>
+  </head>
+  <body data-default-mode="auto">
   
-  <li class="link"><a href="../../../index.html">首页</a></li>
-  <li class="link"><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">中文教程</a></li>
-  <li class="link"><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">API 参考</a></li>
-  <li class="link"><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">示例</a></li>
   
-</ul></nav>
-      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../../search.html" method="get" role="search">
-  <input type="search" name="q" placeholder="搜索文档" aria-label="搜索文档" required />
-  <button type="submit" aria-label="搜索"><iconify-icon icon="lucide:search"></iconify-icon></button>
-</form><div class="nav-languages">
-  <button type="button" aria-label="切换语言">
-    <span class="md:hidden">语言</span>
-    <iconify-icon icon="lucide:globe-2"></iconify-icon>
-  </button>
-  <div class="nav-languages-choices">
-    <ul>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-      <li><a lang="zh-CN" href="./ascendmoea.problems.mmmop2b.html">中文</a></li>
-      <li><a lang="en" href="./ascendmoea.problems.mmmop2b.html?lang=en">English</a></li>
       
-    </ul>
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
   </div>
-</div><div class="sy-head-socials">
-  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
-    <iconify-icon icon="simple-icons:github"></iconify-icon>
-  </a></div></div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/AscendMOEA_logo_with_name.svg" class="logo__image only-light" alt="AscendMOEA Documentation - Home"/>
+    <img src="../../../_static/AscendMOEA_logo_with_name.svg" class="logo__image only-dark pst-js-only" alt="AscendMOEA Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="book-sidebar-navigation" aria-label="Main">
+  <div class="book-site-navigation" data-lang-view="zh">
+  <details class="book-nav-section" open>
+    <summary>入门</summary>
+    <ul>
+      <li><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
+      <li><a href="../../../01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
+      <li><a href="../../../02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
+      <li><a href="../../../03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">全流程简单示例</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>核心组件</summary>
+    <ul>
+      <li><a href="../../../04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
+      <li><a href="../../../05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
+      <li><a href="../../../06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
+      <li><a href="../../../07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>开发与扩展</summary>
+    <ul>
+      <li><a href="../../../08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
+      <li><a href="../../../09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
+      <li><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>实验、性能与排错</summary>
+    <ul>
+      <li><a href="../../../10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
+      <li><a href="../../../11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
+      <li><a href="../../../12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
+      <li><a href="../../../13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>API 参考</summary>
+    <ul>
+      <li><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
+      <li><a href="../../../16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
+      <li><a href="../../../17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
+      <li><a href="../../../18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
+      <li><a href="../../../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
+      <li><a href="../../index.html">Python API 文档</a></li>
+    </ul>
+  </details>
+</div>
+
+<div class="book-site-navigation" data-lang-view="en" hidden>
+  <details class="book-nav-section" open>
+    <summary>Getting started</summary>
+    <ul>
+      <li><a href="../../../en/00_reading_guide.html">Documentation guide</a></li>
+      <li><a href="../../../en/01_platform_scope.html">Platform scope</a></li>
+      <li><a href="../../../en/02_installation.html">Installation and Ascend environment</a></li>
+      <li><a href="../../../en/03_first_optimization.html">Simple end-to-end example</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>Core components</summary>
+    <ul>
+      <li><a href="../../../en/04_core_workflow.html">Core objects and workflow</a></li>
+      <li><a href="../../../en/05_algorithm_catalog.html">Algorithm catalog</a></li>
+      <li><a href="../../../en/06_problem_library.html">Problem library</a></li>
+      <li><a href="../../../en/07_tensor_operators.html">Tensor operators</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>Development</summary>
+    <ul>
+      <li><a href="../../../en/08_custom_problems.html">Custom problems</a></li>
+      <li><a href="../../../en/09_custom_algorithms.html">Custom algorithms</a></li>
+      <li><a href="../../../en/14_examples.html">Runnable examples</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>Experiments and performance</summary>
+    <ul>
+      <li><a href="../../../en/10_experiments.html">Metrics, experiments, and monitoring</a></li>
+      <li><a href="../../../en/11_performance.html">CPU and NPU performance</a></li>
+      <li><a href="../../../en/12_multi_npu.html">Multi-NPU scheduling</a></li>
+      <li><a href="../../../en/13_troubleshooting.html">Troubleshooting</a></li>
+    </ul>
+  </details>
+  <details class="book-nav-section">
+    <summary>API reference</summary>
+    <ul>
+      <li><a href="../../../en/15_api_index.html">Public API index</a></li>
+      <li><a href="../../../en/16_core_api.html">Core and workflow API</a></li>
+      <li><a href="../../../en/17_algorithm_api.html">Algorithm API</a></li>
+      <li><a href="../../../en/18_problem_api.html">Problem API</a></li>
+      <li><a href="../../../en/19_analysis_api.html">Operators and analysis API</a></li>
+      <li><a href="../../../en/api/index.html">Python API Documentation</a></li>
+    </ul>
+  </details>
+</div>
+
+</nav>
+</div>
+        <div class="sidebar-primary-item"><div class="book-sidebar-meta">
+  <span class="book-status-dot" aria-hidden="true"></span>
+  <strong>AscendMOEA 1.0.0</strong>
+  <a href="https://github.com/dqlme/AscendMOEA/discussions">讨论区</a>
+</div>
+</div>
     </div>
-    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
-data-aria-auto="切换到亮色模式"
-data-aria-light="切换到暗色模式"
-data-aria-dark="切换到自动模式">
-<i class="i-lucide theme-icon"></i>
-</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
-        <div class="hamburger">
-          <span class="hamburger_1"></span>
-          <span class="hamburger_2"></span>
-          <span class="hamburger_3"></span>
-        </div>
-      </button>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><div class="book-article-start">
+  <button class="sidebar-toggle primary-toggle btn btn-sm" title="打开文档导航" data-bs-placement="bottom" data-bs-toggle="tooltip" aria-label="文档导航">
+    <span class="fa-solid fa-bars" aria-hidden="true"></span>
+  </button>
+  <a class="book-article-brand" href="../../../index.html" aria-label="AscendMOEA">
+    <img src="../../../_static/AscendMOEA_logo_with_name.svg" alt="AscendMOEA">
+  </a>
+</div>
+</div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+    
+    
+    
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/dqlme/AscendMOEA" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="源码库"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/dqlme/AscendMOEA/blob/main/docs/source/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+    
+    
+    
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+  <div class="book-language-switcher">
+  <button class="btn btn-sm nav-link pst-navbar-icon book-language-button" type="button" aria-haspopup="true" aria-expanded="false" aria-label="切换语言">
+    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+    <span data-language-label>中</span>
+  </button>
+  <div class="book-language-menu" role="menu">
+    <a href="../../../index.html" data-language-link="zh" lang="zh-CN" role="menuitem">中文</a>
+    <a href="../../../en/index.html" data-language-link="en" lang="en" role="menuitem">English</a>
   </div>
 </div>
-<div class="sy-page sy-container flex mx-auto">
-  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
-    <div class="sy-lside-inner md:sticky">
-      <div class="sy-scrollbar p-6">
-        <nav class="docs-nav globaltoc" aria-label="文档导航">
-  <details class="nav-section">
-  <summary class="caption">入门</summary>
-  <ul>
-  
-    <li><a href="../../../00_%E9%98%85%E8%AF%BB%E8%B7%AF%E7%BA%BF.html">阅读路线</a></li>
-    <li><a href="../../../01_%E5%B9%B3%E5%8F%B0%E5%AE%9A%E4%BD%8D%E4%B8%8E%E8%BE%B9%E7%95%8C.html">平台定位与边界</a></li>
-    <li><a href="../../../02_%E5%AE%89%E8%A3%85%E4%B8%8E%E6%98%87%E8%85%BE%E7%8E%AF%E5%A2%83.html">安装与昇腾环境</a></li>
-    <li><a href="../../../03_%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BC%98%E5%8C%96%E4%BB%BB%E5%8A%A1.html">全流程简单示例</a></li>
-  
-  </ul>
-  </details>
 
-  <details class="nav-section">
-  <summary class="caption">核心组件</summary>
-  <ul>
   
-    <li><a href="../../../04_%E6%A0%B8%E5%BF%83%E5%AF%B9%E8%B1%A1%E4%B8%8E%E6%89%A7%E8%A1%8C%E6%B5%81.html">核心对象与执行流</a></li>
-    <li><a href="../../../05_%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95%E4%B8%8E%E9%80%89%E6%8B%A9.html">算法目录与选择</a></li>
-    <li><a href="../../../06_%E9%97%AE%E9%A2%98%E5%BA%93%E4%B8%8E%E6%95%B0%E6%8D%AE%E8%B5%84%E6%BA%90.html">问题库与数据资源</a></li>
-    <li><a href="../../../07_%E5%BC%A0%E9%87%8F%E7%AE%97%E5%AD%90%E6%89%8B%E5%86%8C.html">张量算子手册</a></li>
-  
+<div class="theme-switch-container dropdown pst-js-only">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" aria-hidden="true"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" aria-hidden="true"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" aria-hidden="true"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1" aria-hidden="true"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1" aria-hidden="true"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1" aria-hidden="true"></i>暗色</button></li>
   </ul>
-  </details>
+</div>
+  
 
-  <details class="nav-section">
-  <summary class="caption">开发与扩展</summary>
-  <ul>
-  
-    <li><a href="../../../08_%E8%87%AA%E5%AE%9A%E4%B9%89%E9%97%AE%E9%A2%98%E5%BC%80%E5%8F%91.html">自定义问题开发</a></li>
-    <li><a href="../../../09_%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AE%97%E6%B3%95%E5%BC%80%E5%8F%91.html">自定义算法开发</a></li>
-    <li><a href="../../../14_%E5%8F%AF%E8%BF%90%E8%A1%8C%E6%A1%88%E4%BE%8B%E9%9B%86.html">可运行案例集</a></li>
-  
-  </ul>
-  </details>
-
-  <details class="nav-section">
-  <summary class="caption">实验、性能与排错</summary>
-  <ul>
-  
-    <li><a href="../../../10_%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E4%B8%8E%E7%9B%91%E6%8E%A7.html">指标、实验与监控</a></li>
-    <li><a href="../../../11_CPU%E4%B8%8ENPU%E6%80%A7%E8%83%BD%E8%A7%84%E8%8C%83.html">CPU 与 NPU 性能规范</a></li>
-    <li><a href="../../../12_%E5%A4%9ANPU%E6%89%B9%E9%87%8F%E8%B0%83%E5%BA%A6.html">多 NPU 批量调度</a></li>
-    <li><a href="../../../13_%E6%95%85%E9%9A%9C%E5%AE%9A%E4%BD%8D%E6%89%8B%E5%86%8C.html">故障定位</a></li>
-  
-  </ul>
-  </details>
-
-  <details class="nav-section">
-  <summary class="caption">API 参考</summary>
-  <ul>
-  
-    <li><a href="../../../15_API%E9%80%9F%E6%9F%A5.html">公共 API 索引</a></li>
-    <li><a href="../../../16_API%E6%A0%B8%E5%BF%83%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%B5%81.html">核心与工作流 API</a></li>
-    <li><a href="../../../17_API%E7%AE%97%E6%B3%95.html">算法 API</a></li>
-    <li><a href="../../../18_API%E9%97%AE%E9%A2%98.html">问题 API</a></li>
-    <li><a href="../../../19_API%E7%AE%97%E5%AD%90%E6%8C%87%E6%A0%87%E5%AE%9E%E9%AA%8C%E7%BB%98%E5%9B%BE.html">算子与分析 API</a></li>
-    <li><a href="../../index.html">Python API 文档</a></li>
-  
-  </ul>
-  </details>
-
-  <div class="sidebar-links discussion-last">
-    <ul><li><a class="icon-link" href="https://github.com/dqlme/AscendMOEA/discussions">
-      <span class="iconify-icon"><iconify-icon icon="lucide:messages-square"></iconify-icon></span>
-      <span>讨论</span>
-    </a></li></ul>
-  </div>
-</nav>
-      </div>
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+  <button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div>
+</div>
+      
     </div>
-  </aside>
-  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
-  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
-    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
-      <i class="i-lucide close"></i>
-    </button>
-    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>导航栏</h3><ul>
-<li><a class="reference internal" href="#module-contents">Module Contents</a><ul>
-<li><a class="reference internal" href="#classes">Classes</a></li>
-<li><a class="reference internal" href="#api">API</a><ul>
-<li><a class="reference internal" href="#ascendmoea.problems.mmmop2b.MMMOP2B"><code class="docutils literal notranslate"><span class="pre">MMMOP2B</span></code></a><ul>
-<li><a class="reference internal" href="#ascendmoea.problems.mmmop2b.MMMOP2B.name"><code class="docutils literal notranslate"><span class="pre">MMMOP2B.name</span></code></a></li>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ascendmoea.problems.mmmop2b</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ascendmoea.problems.mmmop2b.MMMOP2B"><code class="docutils literal notranslate"><span class="pre">MMMOP2B</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ascendmoea.problems.mmmop2b.MMMOP2B.name"><code class="docutils literal notranslate"><span class="pre">MMMOP2B.name</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -172,113 +442,24 @@ data-aria-dark="切换到自动模式">
 </ul>
 </li>
 </ul>
-</div><a class="js-repo-stats repo-stats flex items-center" href="https://github.com/dqlme/AscendMOEA"
-  data-type="github" data-user="dqlme" data-repo="AscendMOEA">
-  <span class="w-8 flex items-center justify-around shrink-0 text-3xl">
-    <iconify-icon icon="simple-icons:github"></iconify-icon>
-  </span>
-  <span class="flex-grow px-2 break-all">
-    
-    
-      <span>dqlme/AscendMOEA</span>
-    
-    <span class="flex text-sm repo-stats-count">
-      <span class="flex items-center pr-3">
-        <iconify-icon icon="lucide:star"></iconify-icon>
-        <strong class="js-repo-stars ml-1">0</strong>
-      </span>
-      <span class="flex items-center">
-        <iconify-icon icon="lucide:git-fork"></iconify-icon>
-        <strong class="js-repo-forks ml-1">0</strong>
-      </span>
-    </span>
-  </span>
-</a></div>
-  </aside>
-  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
-  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
-<div class="sy-breadcrumbs" role="navigation">
-  <div class="sy-breadcrumbs-inner flex items-center">
-    <div class="md:hidden mr-3">
-      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
-        <i class="i-lucide menu"></i>
-      </button>
+            </nav>
+        </div>
     </div>
-    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../../index.html"><span itemprop="name">AscendMOEA</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="1" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../../index.html"><span itemprop="name">Python API 文档</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="2" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="../index.html"><span itemprop="name">Python API Reference</span></a>
-        <span>/</span>
-        <meta itemprop="position" content="3" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a itemprop="item" href="ascendmoea.problems.html"><span itemprop="name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems</span></code></span></a>
-        <span>/</span>
-        <meta itemprop="position" content="4" />
-      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <strong itemprop="name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop2b</span></code></strong>
-        <meta itemprop="position" content="5" />
-      </li></ol>
-    <div class="xl:hidden ml-1">
-      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
-        aria-expanded="false">
-        <i class="i-lucide outdent"></i>
-      </button>
-    </div>
-  </div>
-</div><div class="flex flex-col break-words justify-between">
-      <div class="relative min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
-  
-  <div class="copy-page-wrapper relative pb-4 lg:absolute lg:top-8 lg:right-6 xl:right-12">
-  <div id="copy-page-trigger">
-    <button
-      type="button"
-      class="js-copy px-3 py-1 inline-flex items-center gap-1"
-      data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md.txt"
-    >
-      <i class="i-lucide" data-icon="copy"></i>
-      <span>复制页面</span>
-    </button>
-    <button class="js-menu px-2 py-1" type="button" aria-label="更多操作"
-      aria-haspopup="menu" aria-expanded="false" aria-controls="copy-page-content">
-      <i class="i-lucide chevron-down"></i>
-    </button>
-  </div>
-  <div id="copy-page-content" role="menu" aria-orientation="vertical" aria-hidden="true">
-    <div role="presentation">
-      <div class="flex flex-col" role="group">
-        <button class="js-copy" type="button" role="menuitem"
-          data-url="../../../_sources/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md.txt">
-          <span class="iconify-icon">
-            <i class="i-lucide" data-icon="copy"></i>
-          </span>
-          <span>复制页面</span>
-        </button>
-        <a role="menuitem" href="../../../_sources/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md.txt" target="_blank" rel="nofollow"><iconify-icon icon="bi:markdown"></iconify-icon>
-            <span>查看 Markdown 源代码</span></a><a role="menuitem" href="https://chatgpt.com/?hints=search&q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
-          <iconify-icon icon="bi:openai"></iconify-icon>
-          <span>在 ChatGPT 中打开</span>
-        </a><a role="menuitem" href="https://claude.ai/new?q=Read%20../../../_sources/api/generated/ascendmoea/ascendmoea.problems.mmmop2b.md.txt%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="nofollow">
-          <iconify-icon icon="bi:claude"></iconify-icon>
-          <span>在 Claude 中打开</span>
-        </a></div>
-    </div>
-  </div>
-</div><article class="yue" role="main">
-          <section id="module-ascendmoea.problems.mmmop2b">
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="module-ascendmoea.problems.mmmop2b">
 <span id="ascendmoea-problems-mmmop2b"></span><h1><a class="reference internal" href="#module-ascendmoea.problems.mmmop2b" title="ascendmoea.problems.mmmop2b"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop2b</span></code></a><a class="headerlink" href="#module-ascendmoea.problems.mmmop2b" title="链接到此标题。">#</a></h1>
 <p>Vectorized implementation of the mmmop2b problem.</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="链接到此标题。">#</a></h2>
 <section id="classes">
 <h3>Classes<a class="headerlink" href="#classes" title="链接到此标题。">#</a></h3>
-<div class="table-wrapper autosummary longtable docutils container">
-<table class="autosummary longtable docutils align-left">
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table table-left">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ascendmoea.problems.mmmop2b.MMMOP2B" title="ascendmoea.problems.mmmop2b.MMMOP2B"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MMMOP2B</span></code></a></p></td>
 <td><p>Define the MMMOP2B benchmark with batched tensor evaluation.</p></td>
@@ -308,49 +489,108 @@ data-aria-dark="切换到自动模式">
 </section>
 </section>
 
-        </article><button class="back-to-top" type="button">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
-  </svg>
-  <span>回到顶部</span>
-</button><div class="navigation flex print:hidden"><div class="navigation-prev">
-    <a href="ascendmoea.problems.mmmop2a.html">
-      <i class="i-lucide chevron-left"></i>
-      <div class="page-info">
-        <span>上一章</span><div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop2a</span></code></div></div>
-    </a>
-  </div><div class="navigation-next">
-    <a href="ascendmoea.problems.mmmop3a.html">
-      <div class="page-info">
-        <span>下一章</span>
-        <div class="title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop3a</span></code></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ascendmoea.problems.mmmop2a.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop2a</span></code></p>
       </div>
-      <i class="i-lucide chevron-right"></i>
     </a>
-  </div></div></div>
-    </div>
-  </main>
+    <a class="right-next"
+       href="ascendmoea.problems.mmmop3a.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ascendmoea.problems.mmmop3a</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-<footer class="sy-foot">
-  <div class="sy-foot-inner sy-container mx-auto">
-    <div class="sy-foot-reserved md:flex justify-between items-center">
-      <div class="sy-foot-copyright">
-  <p>© 2026, AscendMOEA Developers · AscendMOEA Documentation</p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div id="pst-page-navigation-heading-2" class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list" aria-hidden="true"></i>
+    <span data-lang-view="zh">本页导航</span>
+    <span data-lang-view="en" hidden>On this page</span>
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api">API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ascendmoea.problems.mmmop2b.MMMOP2B"><code class="docutils literal notranslate"><span class="pre">MMMOP2B</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#ascendmoea.problems.mmmop2b.MMMOP2B.name"><code class="docutils literal notranslate"><span class="pre">MMMOP2B.name</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav>
 </div>
-      <div class="sy-foot-socials">
-  <a href="https://github.com/dqlme/AscendMOEA" aria-label="GitHub">
-    <iconify-icon icon="simple-icons:github"></iconify-icon>
-  </a></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, AscendMOEA Developers.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  最后更新于 2026-09-06.
+  <br/>
+</p>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
   </div>
-</footer>
-      <script src="../../../_static/documentation_options.js?v=34088549"></script>
-      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
-      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
-      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
-      <script src="../../../_static/copybutton.js?v=fd10adb8"></script>
-      <script src="../../../_static/translations.js?v=540d3cec"></script>
-      <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
-      <script src="../../../_static/shibuya.js?v=50760d75"></script>
-      <script src="../../../_static/site.js?v=28a98c78"></script></body>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

@@ -1,8 +1,9 @@
-sphinx>=7
+sphinx>=9.0,<10
 jieba>=0.42
-shibuya>=2025.12.13
-myst-parser>=3
+myst-parser>=5.0,<6
 sphinx-autodoc2>=0.5
+sphinx-book-theme>=1.4,<2
 sphinx-copybutton>=0.5
-sphinx-design>=0.6
+sphinx-design>=0.7
 sphinxcontrib-mermaid>=0.9
+

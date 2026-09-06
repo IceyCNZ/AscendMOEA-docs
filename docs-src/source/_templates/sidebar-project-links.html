@@ -1,0 +1,7 @@
+{%- set is_en = pagename.startswith('en/') -%}
+<div class="book-sidebar-meta">
+  <span class="book-status-dot" aria-hidden="true"></span>
+  <strong>AscendMOEA {{ release }}</strong>
+  <a href="https://github.com/dqlme/AscendMOEA/discussions">{{ 'Discussions' if is_en else '讨论区' }}</a>
+</div>
+

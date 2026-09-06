@@ -1,0 +1,13 @@
+{% set page_toc = generate_toc_html() %}
+{%- if page_toc | length >= 1 %}
+{%- set page_navigation_heading_id = unique_html_id("pst-page-navigation-heading") -%}
+  <div id="{{ page_navigation_heading_id }}" class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list" aria-hidden="true"></i>
+    <span data-lang-view="zh"{% if pagename.startswith('en/') %} hidden{% endif %}>本页导航</span>
+    <span data-lang-view="en"{% if not pagename.startswith('en/') %} hidden{% endif %}>On this page</span>
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="{{ page_navigation_heading_id }}">
+    {{ page_toc }}
+  </nav>
+{%- endif %}
+

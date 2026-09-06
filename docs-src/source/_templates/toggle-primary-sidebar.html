@@ -1,0 +1,10 @@
+{%- set is_en = pagename.startswith('en/') -%}
+<div class="book-article-start">
+  <button class="sidebar-toggle primary-toggle btn btn-sm" title="{{ 'Toggle primary sidebar' if is_en else '打开文档导航' }}" data-bs-placement="bottom" data-bs-toggle="tooltip" aria-label="{{ 'Site navigation' if is_en else '文档导航' }}">
+    <span class="fa-solid fa-bars" aria-hidden="true"></span>
+  </button>
+  <a class="book-article-brand" href="{{ pathto('en/index' if is_en else 'index') }}" aria-label="AscendMOEA">
+    <img src="{{ pathto('_static/AscendMOEA_logo_with_name.svg', 1) }}" alt="AscendMOEA">
+  </a>
+</div>
+

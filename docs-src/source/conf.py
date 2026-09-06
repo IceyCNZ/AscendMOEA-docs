@@ -29,6 +29,7 @@ myst_enable_extensions = [
     "attrs_block",
     "colon_fence",
     "deflist",
+    "dollarmath",
     "fieldlist",
     "substitution",
     "tasklist",
@@ -37,7 +38,7 @@ myst_heading_anchors = 3
 myst_enable_checkboxes = True
 myst_fence_as_directive = ["mermaid"]
 
-# Static API analysis keeps documentation builds independent from Torch/NPU imports.
+# Parse the source tree statically so API pages do not import Torch or NPU code.
 package_setting = os.environ.get("ASCENDMOEA_SOURCE_DIR", "../../src/ascendmoea")
 package_path = Path(package_setting)
 if not package_path.is_absolute():
@@ -47,6 +48,7 @@ if not package_path.is_dir():
         "AscendMOEA source is required to build the API reference. "
         "Set ASCENDMOEA_SOURCE_DIR to the ascendmoea package directory."
     )
+
 autodoc2_packages = [
     {
         "path": package_setting,
@@ -63,9 +65,7 @@ autodoc2_module_all_regexes = [
     r"ascendmoea\.(?:experiment|metrics|plotting|workflow)$",
 ]
 autodoc2_hidden_objects = {"private", "dunder", "inherited"}
-autodoc2_skip_module_regexes = [
-    r"ascendmoea\.vendor(?:\..*)?",
-]
+autodoc2_skip_module_regexes = [r"ascendmoea\.vendor(?:\..*)?"]
 autodoc2_sort_names = False
 autodoc2_index_template = """Python API Reference
 ====================
@@ -99,33 +99,51 @@ intersphinx_mapping = {
     "torch": ("https://docs.pytorch.org/docs/stable/", None),
 }
 
-html_theme = "shibuya"
+html_theme = "sphinx_book_theme"
 html_title = "AscendMOEA Documentation"
 html_short_title = "AscendMOEA"
 html_logo = "_static/AscendMOEA_logo_with_name.svg"
 html_favicon = "_static/favicon.svg"
 html_static_path = ["_static"]
-html_css_files = ["custom.css"]
+html_css_files = ["book.css"]
 html_js_files = ["site.js"]
 html_copy_source = True
 html_show_sourcelink = True
+html_show_sphinx = False
 html_last_updated_fmt = "%Y-%m-%d"
 
 html_theme_options = {
-    "accent_color": "blue",
-    "color_mode": "auto",
-    # Let code blocks follow the active light/dark colour scheme.
-    "dark_code": False,
-    "github_url": "https://github.com/dqlme/AscendMOEA",
-    # Discussion is rendered after the documentation navigation by our layout.
-    "globaltoc_expand_depth": 0,
-    "toctree_maxdepth": 4,
-    "show_ai_links": True,
-    # A sentinel enables the header block; the override renders localized links.
-    "nav_links": [{"title": "navigation", "url": "index"}],
+    "repository_url": "https://github.com/dqlme/AscendMOEA",
+    "repository_branch": "main",
+    "path_to_docs": "docs/source",
+    "use_repository_button": True,
+    "use_source_button": True,
+    "use_issues_button": False,
+    "use_download_button": False,
+    "use_fullscreen_button": True,
+    "home_page_in_toc": False,
+    "show_navbar_depth": 1,
+    "max_navbar_depth": 4,
+    "collapse_navbar": False,
+    "navbar_start": [],
+    "navbar_center": [],
+    "navbar_end": [],
+    "navbar_persistent": [],
+    "secondary_sidebar_items": ["page-toc.html"],
+    "footer_content_items": ["copyright.html", "last-updated.html"],
+}
+
+html_sidebars = {
+    "**": [
+        "navbar-logo.html",
+        "search-button-field.html",
+        "sbt-sidebar-nav.html",
+        "sidebar-project-links.html",
+    ]
 }
 
 html_context = {
+    "default_mode": "auto",
     "source_type": "github",
     "source_user": "IceyCNZ",
     "source_repo": "AscendMOEA-docs",
@@ -134,7 +152,6 @@ html_context = {
     "repo_type": "github",
     "repo_user": "dqlme",
     "repo_repo": "AscendMOEA",
-    "languages": [("中文", "index.html"), ("English", "en/index.html")],
 }
 
 copybutton_prompt_text = r">>> |\.\.\. |\$ "
@@ -142,10 +159,3 @@ copybutton_prompt_is_regexp = True
 
 pygments_style = "friendly"
 pygments_dark_style = "github-dark"
-
-html_sidebars = {
-    "**": [
-        "sidebars/localtoc.html",
-        "sidebars/repo-stats.html",
-    ]
-}
