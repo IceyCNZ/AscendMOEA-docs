@@ -90,14 +90,31 @@
       ? DOCUMENTATION_OPTIONS.pagename || "index"
       : "index";
     const params = new URLSearchParams(window.location.search);
+    const currentUrl = new URL(window.location.href);
+    const rtdPathMatch = currentUrl.pathname.match(/^\/(zh-cn|en)\/([^/]+)(?:\/|$)/);
+    const rtdLanguageBuild = document.documentElement.dataset.rtdLanguageBuild
+      || rtdPathMatch?.[1];
+    const rtdVersion = rtdPathMatch?.[2];
+    const isRtdBuild = Boolean(document.documentElement.dataset.rtdLanguageBuild && rtdVersion);
     const sharedApiPage = pagename.startsWith("api/generated/");
     const searchPage = pagename === "search";
-    const isEnglish = pagename.startsWith("en/")
+    const isEnglish = rtdLanguageBuild === "en"
+      || pagename.startsWith("en/")
       || (sharedApiPage && params.get("lang") === "en")
       || (searchPage && params.get("lang") === "en");
     const siteScript = document.querySelector('script[src*="_static/site.js"]');
     const rootUrl = siteScript ? new URL("../", siteScript.src) : new URL("./", window.location.href);
-    const documentUrl = (target) => new URL(`${target}.html`, rootUrl);
+    const rtdDocumentUrl = (language, target) => {
+      const normalizedTarget = target.replace(/^en\//, "");
+      const relativePath = normalizedTarget === "index" ? "" : `${normalizedTarget}.html`;
+      return new URL(`/${language}/${rtdVersion}/${relativePath}`, currentUrl.origin);
+    };
+    const documentUrl = (target) => {
+      if (isRtdBuild) {
+        return rtdDocumentUrl(target.startsWith("en/") ? "en" : "zh-cn", target);
+      }
+      return new URL(`${target}.html`, rootUrl);
+    };
 
     document.documentElement.lang = isEnglish ? "en" : "zh-CN";
     document.body.dataset.docsLanguage = isEnglish ? "en" : "zh";
@@ -187,12 +204,15 @@
     const languageLabel = document.querySelector("[data-language-label]");
     if (languageLabel) languageLabel.textContent = isEnglish ? "EN" : "中";
 
-    const currentUrl = new URL(window.location.href);
     const pairedPage = PAGE_PAIRS[pagename];
     let chineseUrl;
     let englishUrl;
 
-    if (sharedApiPage) {
+    if (isRtdBuild && (sharedApiPage || searchPage)) {
+      const sharedTarget = searchPage ? "search" : pagename;
+      chineseUrl = rtdDocumentUrl("zh-cn", sharedTarget);
+      englishUrl = rtdDocumentUrl("en", sharedTarget);
+    } else if (sharedApiPage) {
       chineseUrl = new URL(currentUrl);
       chineseUrl.searchParams.delete("lang");
       englishUrl = new URL(currentUrl);
@@ -234,7 +254,7 @@
       }
     });
 
-    if (isEnglish) {
+    if (isEnglish && !isRtdBuild) {
       document.querySelectorAll('a[href*="/api/generated/"]').forEach((link) => {
         const target = new URL(link.href, window.location.href);
         target.searchParams.set("lang", "en");
