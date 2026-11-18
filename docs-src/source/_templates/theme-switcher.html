@@ -1,13 +1,14 @@
-{# Color-mode menu without the overlapping Bootstrap tooltip. #}
-<div class="theme-switch-container dropdown pst-js-only">
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="{{ _('Color mode') }}" data-bs-toggle="dropdown">
-    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" aria-hidden="true"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" aria-hidden="true"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" aria-hidden="true"></i>
+{%- set is_en = pagename.startswith('en/') -%}
+<div class="book-toolbar-switcher pst-js-only">
+  <button class="book-toolbar-toggle book-theme-button" type="button" aria-controls="book-theme-options"
+          aria-expanded="false" aria-label="{{ 'Color mode' if is_en else '颜色模式' }}">
+    <i class="fa-solid fa-sun" data-mode="light" aria-hidden="true"></i>
+    <i class="fa-solid fa-moon" data-mode="dark" aria-hidden="true"></i>
+    <i class="fa-solid fa-circle-half-stroke" data-mode="auto" aria-hidden="true"></i>
   </button>
-  <ul class="dropdown-menu dropdown-menu-end">
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1" aria-hidden="true"></i>{{ _('System Settings') }}</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1" aria-hidden="true"></i>{{ _('Light') }}</button></li>
-    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1" aria-hidden="true"></i>{{ _('Dark') }}</button></li>
-  </ul>
+  <div class="book-toolbar-menu" id="book-theme-options">
+    <button class="theme-change-button" type="button" data-mode="auto">{{ 'Auto' if is_en else '自动' }}</button>
+    <button class="theme-change-button" type="button" data-mode="light">{{ 'Light' if is_en else '浅色' }}</button>
+    <button class="theme-change-button" type="button" data-mode="dark">{{ 'Dark' if is_en else '深色' }}</button>
+  </div>
 </div>

@@ -156,37 +156,49 @@
       element.hidden = element.dataset.langView !== (isEnglish ? "en" : "zh");
     });
 
-    const languageSwitcher = document.querySelector(".book-language-switcher");
-    const languageButton = document.querySelector(".book-language-button");
-    let languageCloseTimer;
-    const setLanguageMenuOpen = (isOpen) => {
-      window.clearTimeout(languageCloseTimer);
-      languageSwitcher?.classList.toggle("is-open", isOpen);
-      languageButton?.setAttribute("aria-expanded", String(isOpen));
-    };
-    const scheduleLanguageMenuClose = () => {
-      window.clearTimeout(languageCloseTimer);
-      languageCloseTimer = window.setTimeout(() => setLanguageMenuOpen(false), 160);
-    };
+    document.querySelectorAll(".book-toolbar-switcher").forEach((switcher) => {
+      const toggle = switcher.querySelector(".book-toolbar-toggle");
+      const menu = switcher.querySelector(".book-toolbar-menu");
+      let closeTimer;
+      const setMenuOpen = (isOpen) => {
+        window.clearTimeout(closeTimer);
+        switcher.classList.toggle("is-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        if (isOpen) {
+          menu.querySelectorAll(".theme-change-button").forEach((option) => {
+            option.setAttribute("aria-pressed", String(option.dataset.mode === document.documentElement.dataset.mode));
+          });
+        }
+      };
 
-    languageSwitcher?.addEventListener("mouseenter", () => setLanguageMenuOpen(true));
-    languageSwitcher?.addEventListener("mouseleave", scheduleLanguageMenuClose);
-    languageSwitcher?.addEventListener("focusin", () => setLanguageMenuOpen(true));
-    languageSwitcher?.addEventListener("focusout", (event) => {
-      if (!languageSwitcher.contains(event.relatedTarget)) setLanguageMenuOpen(false);
-    });
-    languageButton?.addEventListener("click", (event) => {
-      if (!window.matchMedia("(hover: none)").matches) return;
-      event.stopPropagation();
-      setLanguageMenuOpen(!languageSwitcher?.classList.contains("is-open"));
-    });
-    document.addEventListener("click", () => {
-      setLanguageMenuOpen(false);
-    });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        setLanguageMenuOpen(false);
-      }
+      switcher.addEventListener("pointerenter", (event) => {
+        if (event.pointerType !== "touch") setMenuOpen(true);
+      });
+      switcher.addEventListener("pointerleave", (event) => {
+        if (event.pointerType === "touch") return;
+        closeTimer = window.setTimeout(() => {
+          if (!menu.contains(document.activeElement)) setMenuOpen(false);
+        }, 160);
+      });
+      switcher.addEventListener("focusout", (event) => {
+        if (!switcher.contains(event.relatedTarget)) setMenuOpen(false);
+      });
+      toggle.addEventListener("click", () => setMenuOpen(!switcher.classList.contains("is-open")));
+      menu.addEventListener("click", (event) => {
+        if (event.target.closest(".theme-change-button")) {
+          setMenuOpen(false);
+          toggle.focus();
+        }
+      });
+      document.addEventListener("click", (event) => {
+        if (!switcher.contains(event.target)) setMenuOpen(false);
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && switcher.classList.contains("is-open")) {
+          if (switcher.contains(document.activeElement)) toggle.focus();
+          setMenuOpen(false);
+        }
+      });
     });
 
     const bridgeSidebarToggle = (selector, modalSelector) => {
@@ -202,9 +214,6 @@
     };
     bridgeSidebarToggle(".primary-toggle", "#pst-primary-sidebar-modal");
     bridgeSidebarToggle(".secondary-toggle", "#pst-secondary-sidebar-modal");
-
-    const languageLabel = document.querySelector("[data-language-label]");
-    if (languageLabel) languageLabel.textContent = isEnglish ? "EN" : "中";
 
     const pairedPage = PAGE_PAIRS[pagename];
     let chineseUrl;
@@ -316,6 +325,7 @@
         ["搜索文档", "Search documentation"],
         ["搜索结果", "Search results"],
         ["颜色模式", "Color mode"],
+        ["自动", "Auto"],
         ["浅色", "Light"],
         ["深色", "Dark"],
         ["系统设置", "System settings"],
@@ -343,7 +353,8 @@
         button.title = "On this page";
         button.setAttribute("aria-label", "On this page");
       });
-      languageButton?.setAttribute("aria-label", "Switch language");
+      document.querySelector(".book-language-button")?.setAttribute("aria-label", "Switch language");
+      document.querySelector(".book-theme-button")?.setAttribute("aria-label", "Color mode");
     };
 
     localizeEnglishInterface();
