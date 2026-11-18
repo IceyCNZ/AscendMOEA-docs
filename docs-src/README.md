@@ -36,19 +36,24 @@ from `source/`.
 
 ## Visit statistics
 
-Both public documentation hosts use the same Cloudflare Worker. A SQLite-backed
-Durable Object accumulates page views by the country or region determined at
-Cloudflare's edge. Its database stores region codes and counts. The statistics
-page reads those counts and does not increment them. Browser privacy preferences
-and obvious automated requests are honored by the counter.
+Both documentation hosts call the same Cloudflare Pages Function, which
+forwards the request to the visit statistics Worker through a service binding.
+The Worker uses the country or region determined at Cloudflare's edge. A
+SQLite-backed Durable Object stores region codes and counts. The statistics
+page reads those counts without adding a visit. The counter honors browser
+privacy preferences and excludes obvious automated requests.
 
-The public Worker endpoint is configured in `source/conf.py`. Deploy updates
-from `analytics/` with `npx wrangler@4 deploy` using the authorized Cloudflare
-account. Keep the existing Durable Object binding and instance name to preserve
-the stored counts. Set `ASCENDMOEA_VISITS_API` during a Sphinx build to use a
-different endpoint, or set it to an empty string to preview without a service.
-The official Read the Docs and GitHub Pages origins are allowed by default.
-Local testing can set `VISITS_ORIGINS` through `wrangler dev --var`.
+The public endpoint is configured in `source/conf.py`. Deploy Worker updates
+from `analytics/` with `npx wrangler@4 deploy`. Deploy Pages Function updates
+from `analytics/pages/` with
+`npx wrangler@4 pages deploy ./public --project-name ascendmoea-visits --branch main`.
+Use the authorized Cloudflare account for both deployments. Keep the Durable
+Object namespace and instance name to retain the stored counts.
+
+Set `ASCENDMOEA_VISITS_API` during a Sphinx build to use a different endpoint, or
+set it to an empty string to preview without a service. The official Read the
+Docs and GitHub Pages origins are allowed by default. Local testing can set
+`VISITS_ORIGINS` through `wrangler dev --var`.
 
 The world map uses Natural Earth 1:50m Admin 0 map units. To refresh the
 preprojected asset, install `d3-geo@3.1.1` in `analytics/` and run

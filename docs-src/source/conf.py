@@ -150,7 +150,7 @@ html_context = {
     "default_mode": "auto",
     "visits_api": os.environ.get(
         "ASCENDMOEA_VISITS_API",
-        "https://ascendmoea-visit-statistics.ascendmoea-docs.workers.dev/v1/visits",
+        "https://ascendmoea-visits.pages.dev/v1/visits",
     ).strip(),
     "source_type": "github",
     "source_user": "IceyCNZ",
