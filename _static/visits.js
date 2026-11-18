@@ -138,8 +138,7 @@
       unavailable: "Visit statistics are temporarily unavailable.",
       mapFailure: "The world map could not load.",
       empty: "No page views have been recorded yet.",
-      mainlandChina: "Mainland China",
-      unknown: "Unknown region",
+      regionOverrides: { CN: "Mainland China", TW: "Taiwan, China", ZZ: "Unknown region" },
       map: "World map of page views by country or region",
     } : {
       sidebar: "访问统计",
@@ -148,16 +147,12 @@
       unavailable: "暂时无法读取访问统计。",
       mapFailure: "暂时无法加载世界地图。",
       empty: "目前还没有访问记录。",
-      mainlandChina: "中国大陆",
-      unknown: "未知地区",
+      regionOverrides: { CN: "中国大陆", TW: "中国台湾", ZZ: "未知地区" },
       map: "按国家或地区统计页面访问量的世界地图",
     };
     const numberFormat = new Intl.NumberFormat(locale);
     const regionNames = new Intl.DisplayNames([locale], { type: "region" });
-    const regionName = (code) => {
-      if (code === "CN") return labels.mainlandChina;
-      return code === "ZZ" ? labels.unknown : regionNames.of(code);
-    };
+    const regionName = (code) => labels.regionOverrides[code] ?? regionNames.of(code);
     const formatViews = (views) => english
       ? `${numberFormat.format(views)} page view${views === 1 ? "" : "s"}`
       : `累计 ${numberFormat.format(views)} 次访问`;

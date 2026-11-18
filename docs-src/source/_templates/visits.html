@@ -48,10 +48,6 @@
       </table>
     </div>
   </details>
-  <p class="book-visits-note">
-    {{ 'Totals combine Read the Docs and GitHub Pages since counting was enabled. The network IP is used to estimate the region. The statistics database stores only region codes and aggregate counts.'
-        if is_en else '访问量自统计启用起累计，合并 Read the Docs 和 GitHub Pages 的访问。地区根据网络出口 IP 推断，统计数据库仅保存地区代码与累计次数。' }}
-  </p>
   <noscript>{{ 'JavaScript is required to view live statistics.' if is_en else '查看实时统计需要启用 JavaScript。' }}</noscript>
 </section>
 {% endblock %}
