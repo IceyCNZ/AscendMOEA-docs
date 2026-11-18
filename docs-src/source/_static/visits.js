@@ -5,11 +5,11 @@
 
   const getLevel = (count) => thresholds.filter((threshold) => count >= threshold).length;
 
-  async function readJson(url, options = {}) {
+  async function readJson(url, { timeout = 8000, ...options } = {}) {
     const response = await fetch(url, {
       credentials: "omit",
       referrerPolicy: "no-referrer",
-      signal: AbortSignal.timeout(8000),
+      signal: AbortSignal.timeout(timeout),
       ...options,
     });
     if (!response.ok) throw new Error(`Visit statistics request failed: ${response.status}`);
@@ -138,6 +138,7 @@
       unavailable: "Visit statistics are temporarily unavailable.",
       mapFailure: "The world map could not load.",
       empty: "No page views have been recorded yet.",
+      mainlandChina: "Mainland China",
       unknown: "Unknown region",
       map: "World map of page views by country or region",
     } : {
@@ -147,12 +148,16 @@
       unavailable: "暂时无法读取访问统计。",
       mapFailure: "暂时无法加载世界地图。",
       empty: "目前还没有访问记录。",
+      mainlandChina: "中国大陆",
       unknown: "未知地区",
       map: "按国家或地区统计页面访问量的世界地图",
     };
     const numberFormat = new Intl.NumberFormat(locale);
     const regionNames = new Intl.DisplayNames([locale], { type: "region" });
-    const regionName = (code) => code === "ZZ" ? labels.unknown : regionNames.of(code);
+    const regionName = (code) => {
+      if (code === "CN") return labels.mainlandChina;
+      return code === "ZZ" ? labels.unknown : regionNames.of(code);
+    };
     const formatViews = (views) => english
       ? `${numberFormat.format(views)} page view${views === 1 ? "" : "s"}`
       : `累计 ${numberFormat.format(views)} 次访问`;
@@ -192,7 +197,10 @@
     const load = async () => {
       status.textContent = labels.loading;
       retry.hidden = true;
-      mapPromise ??= readJson(mapUrl).catch((error) => { mapPromise = undefined; throw error; });
+      mapPromise ??= readJson(mapUrl, { timeout: 30_000 }).catch((error) => {
+        mapPromise = undefined;
+        throw error;
+      });
       const [map, data] = await Promise.allSettled([mapPromise, api ? readJson(api) : null]);
       let counts = null;
       if (data.status === "fulfilled" && data.value) {
@@ -218,7 +226,8 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
+    // Start as soon as the page is parsed, even while theme assets are loading.
+    document.addEventListener("readystatechange", init, { once: true });
   } else {
     init();
   }

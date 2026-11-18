@@ -1,16 +1,21 @@
 .book-sidebar-meta .book-visits-link {
   display: grid;
-  grid-template-columns: 0.9rem minmax(0, 1fr) 0.65rem;
+  grid-column: 1 / -1;
+  grid-template-columns: var(--book-meta-icon-width) minmax(0, 1fr) 0.65rem;
   align-items: start;
-  gap: 0.45rem;
-  margin: 0.5rem -0.45rem 0;
-  padding: 0.42rem 0.45rem;
+  column-gap: var(--book-meta-column-gap);
+  margin: 0.5rem calc(-1 * var(--book-meta-column-gap)) 0;
+  padding: 0.42rem var(--book-meta-column-gap);
   border-radius: 4px;
   line-height: 1.45;
 }
 
-.book-visits-link > .fa-solid {
+.book-visits-link :is(.book-visits-icon, .book-visits-arrow) {
   margin-top: 0.18em;
+}
+
+.book-visits-link .book-visits-icon {
+  justify-self: center;
   color: var(--pst-color-primary);
 }
 

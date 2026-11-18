@@ -5,7 +5,7 @@
   <a href="https://github.com/dqlme/AscendMOEA/discussions">{{ 'Discussions' if is_en else '讨论区' }}</a>
   <a class="book-visits-link" href="{{ pathto('en/visits' if is_en else 'visits') }}"
      data-visit-sidebar data-visits-api="{{ visits_api | e }}">
-    <i class="fa-solid fa-globe" aria-hidden="true"></i>
+    <i class="fa-solid fa-globe book-visits-icon" aria-hidden="true"></i>
     <span class="book-visits-sidebar-text">
       <span data-visit-region>{{ 'Visit statistics' if is_en else '访问统计' }}</span>
       <span data-visit-count hidden></span>

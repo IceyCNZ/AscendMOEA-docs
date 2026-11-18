@@ -294,9 +294,12 @@ html[data-theme="dark"] .book-nav-section summary {
 }
 
 .book-sidebar-meta {
+  --book-meta-icon-width: 0.65rem;
+  --book-meta-column-gap: 0.45rem;
+
   display: grid;
-  grid-template-columns: 0.65rem minmax(0, 1fr);
-  gap: 0.15rem 0.45rem;
+  grid-template-columns: var(--book-meta-icon-width) minmax(0, 1fr);
+  gap: 0.15rem var(--book-meta-column-gap);
   margin: 1.15rem 1.1rem 1.8rem;
   padding-top: 1rem;
   border-top: 1px solid var(--ascend-line);
@@ -304,6 +307,7 @@ html[data-theme="dark"] .book-nav-section summary {
 }
 
 .book-status-dot {
+  justify-self: center;
   width: 0.5rem;
   height: 0.5rem;
   margin-top: 0.34rem;
