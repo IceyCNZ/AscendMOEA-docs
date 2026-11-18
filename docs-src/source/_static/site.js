@@ -9,6 +9,8 @@
   const PAGE_PAIRS = {
     "index": "en/index",
     "en/index": "index",
+    "visits": "en/visits",
+    "en/visits": "visits",
     "00_阅读路线": "en/00_reading_guide",
     "en/00_reading_guide": "00_阅读路线",
     "01_平台定位与边界": "en/01_platform_scope",
@@ -238,6 +240,13 @@
       const linkLanguage = link.dataset.languageLink;
       link.href = (linkLanguage === "en" ? englishUrl : chineseUrl).href;
       if ((linkLanguage === "en") === isEnglish) link.setAttribute("aria-current", "true");
+    });
+
+    document.querySelectorAll("[data-visit-sidebar]").forEach((link) => {
+      link.href = documentUrl(isEnglish ? "en/visits" : "visits").href;
+      if (pagename === "visits" || pagename === "en/visits") {
+        link.setAttribute("aria-current", "page");
+      }
     });
 
     document.querySelectorAll('form[role="search"], form.bd-search, form.searchform').forEach((form) => {

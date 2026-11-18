@@ -1,0 +1,57 @@
+{% extends "page.html" %}
+{% set is_en = pagename.startswith("en/") %}
+{% set title = "Global visit statistics" if is_en else "全球访问统计" %}
+{% set theme_secondary_sidebar_items = [] %}
+{% block body %}
+<section class="book-visits" data-visits-page>
+  <h1>{{ title }}</h1>
+  <p class="book-visits-status" data-visits-status role="status"></p>
+  <button class="btn book-visits-retry" type="button" data-visits-retry hidden>
+    <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+    {{ 'Retry' if is_en else '重试' }}
+  </button>
+  <dl class="book-visits-overview" data-visits-overview hidden>
+    <div>
+      <dt>{{ 'Total page views' if is_en else '累计页面访问' }}</dt>
+      <dd data-visits-total></dd>
+    </div>
+    <div>
+      <dt>{{ 'Countries and regions reached' if is_en else '到访国家和地区' }}</dt>
+      <dd data-visits-region-total></dd>
+    </div>
+  </dl>
+  <figure class="book-visits-map" data-visits-map hidden>
+    <div class="book-visits-map-canvas" data-visits-canvas>
+      <div class="book-visits-tooltip" data-visits-tooltip hidden>
+        <strong></strong>
+        <span></span>
+      </div>
+    </div>
+    <figcaption class="book-visits-map-caption">
+      <ul class="book-visits-legend" aria-label="{{ 'Page views by region' if is_en else '地区访问量图例' }}"
+          data-visits-legend hidden>
+      </ul>
+      <a href="https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-details/">
+        {{ 'Map data: Natural Earth' if is_en else '底图数据：Natural Earth' }}
+      </a>
+    </figcaption>
+  </figure>
+  <details class="book-visits-breakdown" data-visits-breakdown hidden>
+    <summary>{{ 'Visits by country or region' if is_en else '各国家和地区访问明细' }}</summary>
+    <div class="book-table-scroll">
+      <table>
+        <thead><tr>
+          <th scope="col">{{ 'Country or region' if is_en else '国家或地区' }}</th>
+          <th scope="col">{{ 'Page views' if is_en else '页面访问量' }}</th>
+        </tr></thead>
+        <tbody data-visits-rows></tbody>
+      </table>
+    </div>
+  </details>
+  <p class="book-visits-note">
+    {{ 'Totals combine Read the Docs and GitHub Pages since counting was enabled. The network IP is used to estimate the region. Only region codes and aggregate counts are stored.'
+        if is_en else '访问量自统计启用起累计，合并 Read the Docs 和 GitHub Pages 的访问。地区根据网络出口 IP 推断，系统仅保存地区代码与累计次数。' }}
+  </p>
+  <noscript>{{ 'JavaScript is required to view live statistics.' if is_en else '查看实时统计需要启用 JavaScript。' }}</noscript>
+</section>
+{% endblock %}

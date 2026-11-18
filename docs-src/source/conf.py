@@ -105,8 +105,12 @@ html_short_title = "AscendMOEA"
 html_logo = "_static/AscendMOEA_logo_with_name.svg"
 html_favicon = "_static/favicon.svg"
 html_static_path = ["_static"]
-html_css_files = ["book.css"]
-html_js_files = ["site.js"]
+html_css_files = ["book.css", "visits.css"]
+html_js_files = ["site.js", "visits.js"]
+html_additional_pages = {
+    "visits": "visits.html",
+    "en/visits": "visits.html",
+}
 html_copy_source = True
 html_show_sourcelink = True
 html_show_sphinx = False
@@ -144,6 +148,10 @@ html_sidebars = {
 
 html_context = {
     "default_mode": "auto",
+    "visits_api": os.environ.get(
+        "ASCENDMOEA_VISITS_API",
+        "https://ascendmoea-visit-statistics.ascendmoea-docs.workers.dev/v1/visits",
+    ).strip(),
     "source_type": "github",
     "source_user": "IceyCNZ",
     "source_repo": "AscendMOEA-docs",
